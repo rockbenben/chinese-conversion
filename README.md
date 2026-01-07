@@ -11,7 +11,7 @@
 
 <p>
 无需上传文本至第三方，所有转换均在本地完成，确保隐私安全。<br>
-基于成熟的 <a href="https://github.com/nk2028/opencc-js">opencc-js</a> 引擎，支持简体中文、台湾繁体、香港繁体及日本新字体互转，适合批量处理海量文本。
+基于 <a href="https://github.com/BYVoid/OpenCC">opencc</a> 引擎，支持简体中文、台湾繁体、香港繁体及日本新字体互转，适合批量处理海量文本。
 </p>
 
 [在线使用](https://tools.newzone.top/zh/chinese-conversion) · [文档](https://docs.newzone.top/guide/others/chinese-conversion.html) · [报告问题](https://github.com/rockbenben/chinese-conversion/issues)
@@ -22,15 +22,23 @@
 
 ## 目录
 
-- [核心功能](#核心功能)
-- [支持格式](#支持格式)
-- [项目演示](#项目演示)
-- [使用场景](#使用场景)
-- [技术栈](#技术栈)
-- [快速开始](#快速开始)
-- [使用指南](#使用指南)
-- [贡献指南](#贡献指南)
-- [License](#license)
+- [🇨🇳 本地批量简繁转换](#-本地批量简繁转换)
+    - [Chinese Conversion](#chinese-conversion)
+  - [目录](#目录)
+  - [核心功能](#核心功能)
+  - [支持格式](#支持格式)
+  - [项目演示](#项目演示)
+  - [使用场景](#使用场景)
+  - [快速开始](#快速开始)
+    - [环境要求](#环境要求)
+    - [安装步骤](#安装步骤)
+    - [构建生产版本](#构建生产版本)
+  - [使用指南](#使用指南)
+    - [快速转换](#快速转换)
+    - [自定义转换](#自定义转换)
+    - [高级功能](#高级功能)
+  - [贡献指南](#贡献指南)
+  - [License](#license)
 
 ## 核心功能
 
@@ -60,16 +68,6 @@
 - **📚 学术研究**：简化古籍、港台学术资料等繁体文献的处理流程。
 - **✍️ 内容创作**：支持博客、小说等内容的简繁体版本发布。
 - **🔢 数据处理**：批量处理含中文数据的 JSON、CSV 等格式文件。
-
-## 技术栈
-
-本项目基于现代 Web 技术构建：
-
-- **核心框架**: [Next.js 16](https://nextjs.org/) + [React 19](https://react.dev/)
-- **UI 组件库**: [Ant Design 6](https://ant.design/)
-- **转换引擎**: [opencc-js](https://github.com/nk2028/opencc-js)
-- **文件处理**: file-saver, jszip
-- **编码检测**: jszip, spark-md5
 
 ## 快速开始
 

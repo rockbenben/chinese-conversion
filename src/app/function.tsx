@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button, Input, Typography, Select, Form, App, Upload, Tooltip, Checkbox, Card, Space, Spin, Row, Col, Divider } from "antd";
-import { SwapOutlined, CopyOutlined, InboxOutlined, DownloadOutlined, ClearOutlined, VerticalAlignBottomOutlined, VerticalAlignTopOutlined } from "@ant-design/icons";
+import { Button, Input, Typography, Select, Form, App, Upload, Tooltip, Checkbox, Card, Space, Spin, Row, Col, Divider, Collapse, Switch } from "antd";
+import { SwapOutlined, CopyOutlined, InboxOutlined, DownloadOutlined, ClearOutlined, SettingOutlined, TranslationOutlined } from "@ant-design/icons";
 import { cleanLines, downloadFile, punctuationEndRegex, specialLineStartRegex, pureNumberRegex } from "@/app/utils";
 import { useTextStats } from "@/app/hooks/useTextStats";
 import { useCopyToClipboard } from "@/app/hooks/zh/useCopyToClipboard";
 import { useLocalStorage } from "@/app/hooks/useLocalStorage";
 import useFileUpload from "@/app/hooks/useFileUpload";
-import * as OpenCC from "opencc-js";
+import { createConverter } from "js-opencc";
 
 const { TextArea } = Input;
 const { Dragger } = Upload;
@@ -22,9 +22,6 @@ const cnLanguages = [
   { value: "t", label: "繁体中文（OpenCC）" },
   { value: "jp", label: "日文新字体" },
 ];
-
-const DEFAULT_CN_SOURCE_LANG = "tw";
-const DEFAULT_CN_TARGET_LANG = "cn";
 
 const ClientPage = () => {
   const { message } = App.useApp();
@@ -51,41 +48,22 @@ const ClientPage = () => {
   const sourceStats = useTextStats(sourceText);
   const resultStats = useTextStats(result);
 
-  const [sourceCNLanguage, setSourceCNLanguage] = useLocalStorage("sourceCNLanguage", DEFAULT_CN_SOURCE_LANG);
-  const [targetCNLanguage, setTargetCNLanguage] = useLocalStorage("targetCNLanguage", DEFAULT_CN_TARGET_LANG);
+  const [phraseConversion, setPhraseConversion] = useLocalStorage("chineseConversion_phraseConversion", false);
   const [directExport, setDirectExport] = useLocalStorage("chineseConversion_directExport", false);
   const [smartLineBreak, setSmartLineBreak] = useLocalStorage("chineseConversion_smartLineBreak", false);
+
+  // 自定义语言（高级选项）
+  const [customFrom, setCustomFrom] = useLocalStorage("chineseConversion_customFrom", "cn");
+  const [customTo, setCustomTo] = useLocalStorage("chineseConversion_customTo", "twp");
+
+  // Collapse 展开状态
+  const [collapseActiveKeys, setCollapseActiveKeys] = useLocalStorage<string[]>("chineseConversion_collapseKeys", []);
 
   const [prevSourceText, setPrevSourceText] = useState(sourceText);
   if (sourceText !== prevSourceText) {
     setPrevSourceText(sourceText);
     setResult("");
   }
-
-  const handleLanguageChange = (type: "source" | "target", value: string) => {
-    // 获取另一个语言值
-    const otherValue = type === "source" ? targetCNLanguage : sourceCNLanguage;
-
-    // 如果源语言和目标语言相同
-    if (value === otherValue) {
-      const newValue = value === DEFAULT_CN_SOURCE_LANG ? DEFAULT_CN_TARGET_LANG : DEFAULT_CN_SOURCE_LANG;
-      if (type === "source") {
-        setSourceCNLanguage(value);
-        setTargetCNLanguage(newValue);
-      } else {
-        setTargetCNLanguage(value);
-        setSourceCNLanguage(newValue);
-      }
-      message.warning(`源语言和目标语言不能相同，已自动切换${type === "source" ? "目标" : "源"}语言为${newValue === DEFAULT_CN_TARGET_LANG ? "简体中文" : "繁体中文（台湾）"}`);
-      return;
-    }
-    // 只有在值发生变化时才更新
-    if (type === "source" && value !== sourceCNLanguage) {
-      setSourceCNLanguage(value);
-    } else if (type === "target" && value !== targetCNLanguage) {
-      setTargetCNLanguage(value);
-    }
-  };
 
   const handleExportFile = (text: string) => {
     const uploadFileName = multipleFiles[0]?.name;
@@ -100,7 +78,7 @@ const ClientPage = () => {
       message.error("请输入或粘贴待转换文本");
       return;
     }
-    const converter = OpenCC.Converter({ from: from as "cn", to: to as "cn" });
+    const converter = await createConverter({ from: from as any, to: to as any });
     let convertedText = converter(sourceText);
     if (smartLineBreak) {
       // 分割文本，修剪每行并过滤空行
@@ -135,18 +113,10 @@ const ClientPage = () => {
   };
 
   const handleMultipleConversion = async (from: string, to: string) => {
-    //const isValid = await validateTranslate();
-    //if (!isValid) {
-    //  return;
-    //  }
-
     if (multipleFiles.length === 0) {
       message.error("请先上传待处理文件");
       return;
     }
-
-    //setTranslateInProgress(true);
-    //setProgressPercent(0);
 
     for (let i = 0; i < multipleFiles.length; i++) {
       const currentFile = multipleFiles[i];
@@ -158,8 +128,20 @@ const ClientPage = () => {
       });
     }
 
-    //setTranslateInProgress(false);
     message.success("处理完成，文件已自动下载", 10);
+  };
+
+  // 自定义语言转换
+  const handleCustomConversion = () => {
+    if (customFrom === customTo) {
+      message.warning("源语言和目标语言不能相同");
+      return;
+    }
+    if (uploadMode === "single") {
+      handleConversion(customFrom, customTo, sourceText);
+    } else {
+      handleMultipleConversion(customFrom, customTo);
+    }
   };
 
   return (
@@ -252,94 +234,114 @@ const ClientPage = () => {
         </Col>
 
         <Col xs={24} md={6}>
-          <Space orientation="vertical" size="middle" style={{ width: "100%" }}>
-            <Card title="配置选项">
-              <Form layout="vertical">
-                <Form.Item label="源语言" style={{ marginBottom: 12 }}>
-                  <Select
-                    value={sourceCNLanguage}
-                    onChange={(e) => handleLanguageChange("source", e)}
-                    options={cnLanguages}
-                    placeholder="请选择源语言"
-                    style={{ width: "100%" }}
-                    showSearch={{
-                      optionFilterProp: "label",
-                    }}
-                    aria-label="源语言"
-                  />
-                </Form.Item>
-                <Form.Item label="目标语言" style={{ marginBottom: 12 }}>
-                  <Select
-                    value={targetCNLanguage}
-                    onChange={(e) => handleLanguageChange("target", e)}
-                    options={cnLanguages}
-                    placeholder="请选择目标语言"
-                    style={{ width: "100%" }}
-                    showSearch={{
-                      optionFilterProp: "label",
-                    }}
-                    aria-label="目标语言"
-                  />
-                </Form.Item>
-                <Tooltip title="按当前设置执行简繁转换">
-                  <Button
-                    block
-                    icon={<SwapOutlined />}
-                    onClick={() => (uploadMode === "single" ? handleConversion(sourceCNLanguage, targetCNLanguage, sourceText) : handleMultipleConversion(sourceCNLanguage, targetCNLanguage))}>
-                    执行转换
-                  </Button>
-                </Tooltip>
-                <Divider style={{ margin: "12px 0" }} />
-                <Space orientation="vertical" size={0}>
-                  <Tooltip title="自动合并断开的段落，优化排版">
-                    <Checkbox checked={smartLineBreak} onChange={(e) => setSmartLineBreak(e.target.checked)}>
-                      智能换行
-                    </Checkbox>
-                  </Tooltip>
-                  <Tooltip title="每次只处理一个文件，上传新文件时自动替换">
-                    <Checkbox checked={singleFileMode} onChange={(e) => setSingleFileMode(e.target.checked)}>
-                      单文件模式
-                    </Checkbox>
-                  </Tooltip>
-                  <Tooltip title="关闭预览以加快处理速度，适合处理大文件">
-                    <Checkbox checked={largeMode} onChange={(e) => setLargeMode(e.target.checked)}>
-                      大文件模式
-                    </Checkbox>
-                  </Tooltip>
-                  {multipleFiles.length < 2 && (
-                    <Tooltip title="转换完成后直接下载文件，跳过预览">
-                      <Checkbox checked={directExport} onChange={(e) => setDirectExport(e.target.checked)}>
-                        处理后自动导出
-                      </Checkbox>
-                    </Tooltip>
-                  )}
+          <Card title="转换设置">
+            <Space direction="vertical" size="middle" style={{ width: "100%" }}>
+              {/* 词汇转换开关 */}
+              <Tooltip title="同时转换台湾地区惯用词汇（如：视频↔影片、幼儿园↔幼稚園）">
+                <Space>
+                  <Switch checked={phraseConversion} onChange={setPhraseConversion} size="small" />
+                  <span>转换地区词汇</span>
                 </Space>
-              </Form>
-            </Card>
+              </Tooltip>
 
-            <Card title="快捷转换">
-              <Space orientation="vertical" style={{ width: "100%" }}>
-                <Tooltip title="一键将繁体文本转换为简体">
+              {/* 简繁转换按钮 */}
+              <Row gutter={[8, 8]}>
+                <Col span={12}>
                   <Button
                     block
                     type="primary"
-                    icon={<VerticalAlignBottomOutlined />}
-                    onClick={() => (uploadMode === "single" ? handleConversion("t", "cn", sourceText) : handleMultipleConversion("tw", "cn"))}>
-                    繁 ➔ 简
+                    size="large"
+                    onClick={() => {
+                      const from = phraseConversion ? "twp" : "t";
+                      uploadMode === "single" ? handleConversion(from, "cn", sourceText) : handleMultipleConversion(from, "cn");
+                    }}>
+                    繁➔简
                   </Button>
-                </Tooltip>
-                <Tooltip title="一键将简体文本转换为繁体">
+                </Col>
+                <Col span={12}>
                   <Button
                     block
                     type="primary"
-                    icon={<VerticalAlignTopOutlined />}
-                    onClick={() => (uploadMode === "single" ? handleConversion("cn", "t", sourceText) : handleMultipleConversion("cn", "tw"))}>
-                    简 ➔ 繁
+                    size="large"
+                    onClick={() => {
+                      const to = phraseConversion ? "twp" : "t";
+                      uploadMode === "single" ? handleConversion("cn", to, sourceText) : handleMultipleConversion("cn", to);
+                    }}>
+                    简➔繁
                   </Button>
-                </Tooltip>
-              </Space>
-            </Card>
-          </Space>
+                </Col>
+              </Row>
+
+              <Divider style={{ margin: "8px 0" }} />
+
+              {/* 高级选项 */}
+              <Collapse
+                ghost
+                size="small"
+                activeKey={collapseActiveKeys}
+                onChange={(keys) => setCollapseActiveKeys(keys as string[])}
+                items={[
+                  {
+                    key: "options",
+                    label: (
+                      <Space>
+                        <SettingOutlined />
+                        <span>高级选项</span>
+                      </Space>
+                    ),
+                    children: (
+                      <Space direction="vertical" size={4}>
+                        <Tooltip title="自动合并断开的段落，优化排版">
+                          <Checkbox checked={smartLineBreak} onChange={(e) => setSmartLineBreak(e.target.checked)}>
+                            智能换行
+                          </Checkbox>
+                        </Tooltip>
+                        <Tooltip title="每次只处理一个文件，上传新文件时自动替换">
+                          <Checkbox checked={singleFileMode} onChange={(e) => setSingleFileMode(e.target.checked)}>
+                            单文件模式
+                          </Checkbox>
+                        </Tooltip>
+                        <Tooltip title="关闭预览以加快处理速度，适合处理大文件">
+                          <Checkbox checked={largeMode} onChange={(e) => setLargeMode(e.target.checked)}>
+                            大文件模式
+                          </Checkbox>
+                        </Tooltip>
+                        {multipleFiles.length < 2 && (
+                          <Tooltip title="转换完成后直接下载文件，跳过预览">
+                            <Checkbox checked={directExport} onChange={(e) => setDirectExport(e.target.checked)}>
+                              处理后自动导出
+                            </Checkbox>
+                          </Tooltip>
+                        )}
+                      </Space>
+                    ),
+                  },
+                  {
+                    key: "custom",
+                    label: (
+                      <Space>
+                        <TranslationOutlined />
+                        <span>自定义语言</span>
+                      </Space>
+                    ),
+                    children: (
+                      <Form layout="vertical" size="small">
+                        <Form.Item label="源语言" style={{ marginBottom: 8 }}>
+                          <Select value={customFrom} onChange={setCustomFrom} options={cnLanguages} style={{ width: "100%" }} aria-label="自定义源语言" />
+                        </Form.Item>
+                        <Form.Item label="目标语言" style={{ marginBottom: 8 }}>
+                          <Select value={customTo} onChange={setCustomTo} options={cnLanguages} style={{ width: "100%" }} aria-label="自定义目标语言" />
+                        </Form.Item>
+                        <Button block onClick={handleCustomConversion} icon={<SwapOutlined />}>
+                          自定义转换
+                        </Button>
+                      </Form>
+                    ),
+                  },
+                ]}
+              />
+            </Space>
+          </Card>
         </Col>
       </Row>
     </Spin>
