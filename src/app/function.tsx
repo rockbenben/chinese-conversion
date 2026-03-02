@@ -143,7 +143,7 @@ const ClientPage = () => {
   };
 
   return (
-    <Spin spinning={isFileProcessing} tip="请稍候..." size="large">
+    <Spin spinning={isFileProcessing} description="请稍候..." size="large">
       <Row gutter={[16, 16]}>
         <Col xs={24} md={18}>
           <Card
