@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Button, Input, Typography, Select, Form, App, Upload, Tooltip, Card, Space, Spin, Row, Col, Divider, Collapse, Switch, Flex } from "antd";
 import { SwapOutlined, InboxOutlined, ClearOutlined, TranslationOutlined, ControlOutlined } from "@ant-design/icons";
-import { cleanLines, downloadFile, punctuationEndRegex, specialLineStartRegex, pureNumberRegex } from "@/app/utils";
+import { cleanLines, downloadFile, punctuationEndRegex, specialLineStartRegex, pureNumberRegex, getFileTypePresetConfig } from "@/app/utils";
 import { useTextStats } from "@/app/hooks/useTextStats";
 import { useCopyToClipboard } from "@/app/hooks/zh/useCopyToClipboard";
 import { useLocalStorage } from "@/app/hooks/useLocalStorage";
@@ -13,6 +13,8 @@ import ZhResultCard from "@/app/components/zh/ZhResultCard";
 
 const { TextArea } = Input;
 const { Dragger } = Upload;
+
+const uploadFileTypes = getFileTypePresetConfig("richText");
 
 const cnLanguages = [
   { value: "cn", label: "简体中文" },
@@ -166,7 +168,7 @@ const ClientPage = () => {
             }>
             <Dragger
               customRequest={({ file }) => handleFileUpload(file as File)}
-              accept=".txt,.md,.markdown,.json,.srt,.ass,.vtt,.csv,.tsv,.xml,.yaml,.yml,.log,.ini,.html,.css,.js,.py,.java,.sql"
+              accept={uploadFileTypes.accept}
               multiple={!singleFileMode}
               showUploadList
               beforeUpload={singleFileMode ? resetUpload : undefined}
@@ -177,7 +179,7 @@ const ClientPage = () => {
                 <InboxOutlined />
               </p>
               <p className="ant-upload-text">点击或拖拽文件到此处上传</p>
-              <p className="ant-upload-hint">支持的格式：.txt .md .json .srt .ass .vtt .csv .tsv .xml .yaml .yml .log .ini .html .css .js .py .java .sql</p>
+              <p className="ant-upload-hint">支持的格式：{uploadFileTypes.formatLabel({ maxVisible: 8, separator: " " })}</p>
             </Dragger>
             {uploadMode === "single" && (
               <TextArea
