@@ -6,6 +6,7 @@ import { SwapOutlined, InboxOutlined, ClearOutlined, TranslationOutlined, Contro
 import { cleanLines, downloadFile, punctuationEndRegex, specialLineStartRegex, pureNumberRegex, getFileTypePresetConfig } from "@/app/utils";
 import { useTextStats } from "@/app/hooks/useTextStats";
 import { useCopyToClipboard } from "@/app/hooks/zh/useCopyToClipboard";
+import { useZhText } from "@/app/hooks/zh/useZhText";
 import { useLocalStorage } from "@/app/hooks/useLocalStorage";
 import useFileUpload from "@/app/hooks/useFileUpload";
 import { createConverter } from "js-opencc";
@@ -28,6 +29,9 @@ const cnLanguages = [
 const ClientPage = () => {
   const { message } = App.useApp();
   const { copyToClipboard } = useCopyToClipboard();
+  const z = useZhText();
+
+  const localizedCnLanguages = cnLanguages.map(lang => ({ ...lang, label: z(lang.label) }));
 
   const {
     isFileProcessing,
@@ -75,7 +79,7 @@ const ClientPage = () => {
   const handleConversion = async (from: string, to: string, sourceText: string, fileName?: string) => {
     setResult("");
     if (!sourceText.trim()) {
-      message.error("请输入或粘贴待转换文本");
+      message.error(z("请输入或粘贴待转换文本"));
       return;
     }
     const converter = await createConverter({ from: from as "cn" | "tw" | "twp" | "hk" | "t" | "jp", to: to as "cn" | "tw" | "twp" | "hk" | "t" | "jp" });
@@ -105,7 +109,7 @@ const ClientPage = () => {
 
     if (directExport) {
       const dfileName = handleExportFile(convertedText);
-      message.success(`导出成功：${dfileName}`);
+      message.success(z(`导出成功：${dfileName}`));
       return;
     }
 
@@ -114,7 +118,7 @@ const ClientPage = () => {
 
   const handleMultipleConversion = async (from: string, to: string) => {
     if (multipleFiles.length === 0) {
-      message.error("请先上传待处理文件");
+      message.error(z("请先上传待处理文件"));
       return;
     }
 
@@ -128,13 +132,13 @@ const ClientPage = () => {
       });
     }
 
-    message.success("处理完成，文件已自动下载", 10);
+    message.success(z("处理完成，文件已自动下载"), 10);
   };
 
   // 自定义语言转换
   const handleCustomConversion = () => {
     if (customFrom === customTo) {
-      message.warning("源语言和目标语言不能相同");
+      message.warning(z("源语言和目标语言不能相同"));
       return;
     }
     if (uploadMode === "single") {
@@ -145,23 +149,23 @@ const ClientPage = () => {
   };
 
   return (
-    <Spin spinning={isFileProcessing} description="请稍候..." size="large">
+    <Spin spinning={isFileProcessing} description={z("请稍候...")} size="large">
       <Row gutter={[16, 16]}>
         <Col xs={24} md={18}>
           <Card
-            title="输入区"
+            title={z("输入区")}
             extra={
               <Space>
-                <Tooltip title="清空输入内容和上传的文件">
+                <Tooltip title={z("清空输入内容和上传的文件")}>
                   <Button
                     type="text"
                     danger
                     onClick={() => {
                       resetUpload();
-                      message.success("已清空");
+                      message.success(z("已清空"));
                     }}
                     icon={<ClearOutlined />}>
-                    清空
+                    {z("清空")}
                   </Button>
                 </Tooltip>
               </Space>
@@ -178,25 +182,25 @@ const ClientPage = () => {
               <p className="ant-upload-drag-icon">
                 <InboxOutlined />
               </p>
-              <p className="ant-upload-text">点击或拖拽文件到此处上传</p>
-              <p className="ant-upload-hint">支持的格式：{uploadFileTypes.formatLabel({ maxVisible: 8, separator: " " })}</p>
+              <p className="ant-upload-text">{z("点击或拖拽文件到此处上传")}</p>
+              <p className="ant-upload-hint">{z("支持的格式：")}{uploadFileTypes.formatLabel({ maxVisible: 8, separator: " " })}</p>
             </Dragger>
             {uploadMode === "single" && (
               <TextArea
-                placeholder="请输入或粘贴待转换文本..."
+                placeholder={z("请输入或粘贴待转换文本...")}
                 value={sourceStats.isEditable ? sourceText : sourceStats.displayText}
                 onChange={sourceStats.isEditable ? (e) => setSourceText(e.target.value) : undefined}
                 rows={8}
                 className="mt-1"
                 allowClear
                 readOnly={!sourceStats.isEditable}
-                aria-label="输入区"
+                aria-label={z("输入区")}
               />
             )}
             {sourceText && (
               <Flex justify="end" className="mt-2">
                 <Typography.Text type="secondary" className="!text-xs">
-                  {sourceStats.charCount} 字符 / {sourceStats.lineCount} 行
+                  {sourceStats.charCount} {z("字符")} / {sourceStats.lineCount} {z("行")}
                 </Typography.Text>
               </Flex>
             )}
@@ -209,7 +213,7 @@ const ClientPage = () => {
               onCopy={() => copyToClipboard(result)}
               onExport={() => {
                 const fileName = handleExportFile(result);
-                message.success(`文件已导出：${fileName}`);
+                message.success(z(`文件已导出：${fileName}`));
               }}
               className="!mt-3"
             />
@@ -217,13 +221,13 @@ const ClientPage = () => {
         </Col>
 
         <Col xs={24} md={6}>
-          <Card title="转换设置">
+          <Card title={z("转换设置")}>
             <Space orientation="vertical" size="middle" className="w-full">
               {/* 词汇转换开关 */}
-              <Tooltip title="同时转换台湾地区惯用词汇（如：视频↔影片、幼儿园↔幼稚園）">
+              <Tooltip title={z("同时转换台湾地区惯用词汇（如：视频↔影片、幼儿园↔幼稚園）")}>
                 <Space>
                   <Switch checked={phraseConversion} onChange={setPhraseConversion} size="small" />
-                  <span>转换地区词汇</span>
+                  <span>{z("转换地区词汇")}</span>
                 </Space>
               </Tooltip>
 
@@ -242,7 +246,7 @@ const ClientPage = () => {
                         handleMultipleConversion(from, "cn");
                       }
                     }}>
-                    繁➔简
+                    {z("繁➔简")}
                   </Button>
                 </Col>
                 <Col span={12}>
@@ -258,7 +262,7 @@ const ClientPage = () => {
                         handleMultipleConversion("cn", to);
                       }
                     }}>
-                    简➔繁
+                    {z("简➔繁")}
                   </Button>
                 </Col>
               </Row>
@@ -277,30 +281,30 @@ const ClientPage = () => {
                     label: (
                       <Space>
                         <ControlOutlined />
-                        <Typography.Text strong>高级设置</Typography.Text>
+                        <Typography.Text strong>{z("高级设置")}</Typography.Text>
                       </Space>
                     ),
                     children: (
                       <Flex vertical gap="small">
                         <Flex justify="space-between" align="center">
-                          <Tooltip title="自动合并断开的段落，优化排版">
-                            <span>智能换行</span>
+                          <Tooltip title={z("自动合并断开的段落，优化排版")}>
+                            <span>{z("智能换行")}</span>
                           </Tooltip>
-                          <Switch size="small" checked={smartLineBreak} onChange={setSmartLineBreak} aria-label="智能换行" />
+                          <Switch size="small" checked={smartLineBreak} onChange={setSmartLineBreak} aria-label={z("智能换行")} />
                         </Flex>
                         <Flex justify="space-between" align="center">
-                          <Tooltip title="每次只处理一个文件，上传新文件时自动替换">
-                            <span>单文件模式</span>
+                          <Tooltip title={z("每次只处理一个文件，上传新文件时自动替换")}>
+                            <span>{z("单文件模式")}</span>
                           </Tooltip>
-                          <Switch size="small" checked={singleFileMode} onChange={setSingleFileMode} aria-label="单文件模式" />
+                          <Switch size="small" checked={singleFileMode} onChange={setSingleFileMode} aria-label={z("单文件模式")} />
                         </Flex>
 
                         {multipleFiles.length < 2 && (
                           <Flex justify="space-between" align="center">
-                            <Tooltip title="转换完成后直接下载文件，跳过预览">
-                              <span>处理后自动导出</span>
+                            <Tooltip title={z("转换完成后直接下载文件，跳过预览")}>
+                              <span>{z("处理后自动导出")}</span>
                             </Tooltip>
-                            <Switch size="small" checked={directExport} onChange={setDirectExport} aria-label="处理后自动导出" />
+                            <Switch size="small" checked={directExport} onChange={setDirectExport} aria-label={z("处理后自动导出")} />
                           </Flex>
                         )}
                       </Flex>
@@ -311,19 +315,19 @@ const ClientPage = () => {
                     label: (
                       <Space>
                         <TranslationOutlined />
-                        <Typography.Text strong>自定义语言</Typography.Text>
+                        <Typography.Text strong>{z("自定义语言")}</Typography.Text>
                       </Space>
                     ),
                     children: (
                       <Form layout="vertical" size="small">
-                        <Form.Item label="源语言" className="!mb-2">
-                          <Select value={customFrom} onChange={setCustomFrom} options={cnLanguages} className="w-full" aria-label="自定义源语言" />
+                        <Form.Item label={z("源语言")} className="!mb-2">
+                          <Select value={customFrom} onChange={setCustomFrom} options={localizedCnLanguages} className="w-full" aria-label={z("自定义源语言")} />
                         </Form.Item>
-                        <Form.Item label="目标语言" className="!mb-2">
-                          <Select value={customTo} onChange={setCustomTo} options={cnLanguages} className="w-full" aria-label="自定义目标语言" />
+                        <Form.Item label={z("目标语言")} className="!mb-2">
+                          <Select value={customTo} onChange={setCustomTo} options={localizedCnLanguages} className="w-full" aria-label={z("自定义目标语言")} />
                         </Form.Item>
                         <Button block onClick={handleCustomConversion} icon={<SwapOutlined />}>
-                          自定义转换
+                          {z("自定义转换")}
                         </Button>
                       </Form>
                     ),
