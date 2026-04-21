@@ -12,7 +12,7 @@ const ClientPage = () => {
   const z = useZhText();
   return (
     <>
-      <Title level={3}>
+      <Title level={1} style={{ fontSize: "1.6em", fontWeight: 600, marginTop: 0 }}>
         <ProfileOutlined /> {z("简繁转换工具")}
       </Title>
       <Paragraph type="secondary" ellipsis={{ rows: 3, expandable: true, symbol: "more" }}>
