@@ -17,7 +17,7 @@
 
 👉 **Try it online**: <https://tools.newzone.top/en/chinese-conversion>
 
-![Chinese Converter interface](./public/chinese-conversion.gif "Chinese Converter interface")
+![Chinese Converter interface](./public/img/chinese-conversion-en.webp "Chinese Converter interface")
 
 ## Key Features
 
@@ -74,7 +74,7 @@ For other combinations (`tw ↔ hk`, `t ↔ jp`, etc.):
 
 ### Protected Dictionary
 
-Define terms that should NOT be converted:
+Define terms that should NOT be converted — e.g. add "软件" to the dictionary and Simp → Trad keeps it as "软件" instead of "軟體":
 
 - **s2t rules**: applied during Simp → Trad (`from` is the Simplified word, `to` is the Traditional form to preserve)
 - **t2s rules**: applied during Trad → Simp
@@ -85,14 +85,25 @@ When rules apply:
 - ✅ `cn → tw/twp/hk/t/jp` → applies **s2t rules**
 - ✅ `tw/twp/hk/t/jp → cn` → applies **t2s rules**
 - ❌ `tw ↔ hk`, `t ↔ jp`, and other pure-Traditional pairs → dictionary skipped
+- ❌ When the master toggle is off → no rules applied
 
-Supports JSON import / export for the entire dictionary.
+Click **Manage Rules** on the Protected Dictionary panel to open the drawer, where you can switch between s2t / t2s direction tabs, add/edit/delete individual rules (from → to), and batch import / export the whole dictionary as JSON. **This dictionary is shared with the [Novel Processor](https://tools.newzone.top/en/novel-processor) tool.**
 
 ### Other settings
 
-- **Smart Line Break**: re-merge wrap-broken lines based on Chinese punctuation (OCR cleanup helper)
+- **Smart Line Break**: re-detect paragraph boundaries via Chinese end-of-sentence punctuation (。？！…), pure-numeric lines, and special starters, then re-merge wrap-broken lines (OCR cleanup helper, toggle-able independently)
 - **Single-File Mode**: process one file at a time; uploading a new file replaces the current one
 - **Auto-Export After Conversion**: skip the preview and download directly — useful for batch runs
+
+### Result card
+
+After a single-file conversion, the result card appears with:
+
+- **Copy**: one-click clipboard
+- **Export**: download under the original filename (or `jianfan.txt`)
+- **Edit in place**: modify the result text directly in the card
+
+With Auto-Export enabled, the preview is skipped and the result downloads immediately.
 
 ## Use cases
 
@@ -150,7 +161,7 @@ PRs and issues welcome.
 
 ## Links
 
-- 📖 [Documentation](https://docs.newzone.top/en/guide/tools/chinese-conversion)
+- 📖 [Documentation](https://docs.newzone.top/en/guide/text/chinese-conversion)
 - 🐛 [Report Issues](https://github.com/rockbenben/chinese-conversion/issues)
 
 ## License

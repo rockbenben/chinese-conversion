@@ -17,7 +17,7 @@
 
 👉 **在线体验**：<https://tools.newzone.top/zh/chinese-conversion>
 
-![简繁转换工具界面](./public/chinese-conversion.gif "简繁转换工具使用界面")
+![简繁转换工具界面](./public/img/chinese-conversion-zh.webp "简繁转换工具使用界面")
 
 ## 核心功能
 
@@ -74,7 +74,7 @@
 
 ### 保护词典
 
-定义"不应被转换"的词组清单：
+定义"不应被转换"的词组清单 —— 例如把"软件"列入保护词典，简 → 繁时它仍保留为"软件"而非"軟體"：
 
 - **s2t 规则**：简 → 繁方向生效（`from` 是简体词，`to` 是希望保留的繁体写法）
 - **t2s 规则**：繁 → 简方向生效
@@ -85,14 +85,25 @@
 - ✅ `cn → tw/twp/hk/t/jp` → 应用 **s2t 规则**
 - ✅ `tw/twp/hk/t/jp → cn` → 应用 **t2s 规则**
 - ❌ `tw ↔ hk`、`t ↔ jp` 等纯繁体间转换 → 不应用规则
+- ❌ 保护词典总开关关闭时 → 不应用任何规则
 
-支持 JSON 批量导入 / 导出整套词典。
+点击保护词典面板的「管理规则」按钮打开抽屉，可切换 s2t / t2s 方向 tab、增删改单条规则（from → to），并支持 JSON 批量导入 / 导出整套词典。**该词典与[小说文本整理器](https://tools.newzone.top/zh/novel-processor)共享同一份数据**。
 
 ### 其他设置
 
-- **智能换行**：根据中文标点合并断行（OCR 修复利器）
+- **智能换行**：根据中文标点（。？！…）、纯数字行、特殊起始符判断段落边界，合并 OCR / PDF 复制造成的错误断行（可独立开关）
 - **单文件模式**：开启后一次仅处理一个文件，新上传的文件替换当前文件
 - **处理后自动导出**：转换结果直接下载为文件，跳过页面预览（适合大批量处理）
+
+### 结果区
+
+单文件转换完成后显示结果卡：
+
+- **复制**：一键复制结果到剪贴板
+- **导出文件**：以原文件名（或 `jianfan.txt`）下载
+- **编辑结果**：直接在卡片内修改结果文本
+
+启用「处理后自动导出」时跳过结果显示，直接下载。
 
 ## 使用场景
 
@@ -150,7 +161,7 @@ yarn build
 
 ## 相关链接
 
-- 📖 [使用文档](https://docs.newzone.top/zh/guide/tools/chinese-conversion)
+- 📖 [使用文档](https://docs.newzone.top/guide/text/chinese-conversion)
 - 🐛 [报告问题](https://github.com/rockbenben/chinese-conversion/issues)
 
 ## License
