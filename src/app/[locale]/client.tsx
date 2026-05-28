@@ -10,7 +10,7 @@ import ChineseConversion from "./ChineseConversion";
 const ClientPage = () => {
   const t = useTranslations("ChineseConversion");
   const locale = useLocale();
-  const userGuideUrl = getDocUrl("guide/tools/chinese-conversion.html", locale);
+  const userGuideUrl = getDocUrl("guide/text/chinese-conversion.html", locale);
 
   return (
     <ToolPage icon={<ProfileOutlined />} toolKey="chineseConversion" description={`${t("description1")} ${t("description2")}`} guideUrl={userGuideUrl}>
