@@ -117,7 +117,7 @@
     "resultToSource": "Sonuç ➔ Kaynak",
     "resultToSourceTooltip": "Giriş kutusunun içeriğini sonuç metniyle değiştir",
     "readOnlyMode": "Salt Okunur Mod",
-    "readOnlyModeTooltip": "Metin çok uzun; sayfa performansını korumak için salt okunur mod otomatik olarak etkinleştirildi",
+    "readOnlyModeTooltip": "Metin çok uzun: düzenleyici geçici olarak salt okunur ve yalnızca kısmi bir önizleme gösteriyor. Tüm içeriğiniz etkilenmez; işleme ve dışa aktarma hâlâ metnin tamamını kullanır.",
     "clearInputTooltip": "Giriş içeriğini ve yüklenen dosyaları temizle",
     "fileExported": "Dışa aktarılan dosya: {fileName}",
     "exportSuccess": "Dışa aktarma başarılı: {fileName}",
@@ -143,26 +143,35 @@
     "langPresetIndian": "Hint alt kıtası",
     "selectedCount": "{count} seçildi",
     "recentLanguages": "Son kullanılanlar",
-    "langGroupAmericasOceania": "Amerika & Okyanusya"
+    "langGroupAmericasOceania": "Amerika & Okyanusya",
+    "relatedTools": "İlgili Araçlar"
   },
   "tools": {
     "chineseConversion": {
       "title": "Bas/Gel Çince Dönüştürücü",
       "description": "Basitleştirilmiş, Tayvan geleneksel, Hong Kong geleneksel ve Japonca karakterleri toplu dönüştür",
-      "metaTitle": "Çince Sempl./Trad. Çevirici - Yerel, Gizli, Toplu",
-      "metaDescription": "Çince dönüştürmede gizlilikten endişeli misiniz? Tarayıcınızda yerel çalışır — sunucu yüklemesi yok. Basitleştirilmiş ↔ Tayvan/HK Geleneksel ve Shinjitai.",
+      "metaTitle": "Çince Dönüştürücü - Basitleştirilmiş, Geleneksel, Shinjitai",
+      "metaDescription": "OpenCC Çince dönüştürücü, tarayıcıda: Basitleştirilmiş, Tayvan Geleneksel, Hong Kong Geleneksel, Shinjitai. Korumalı sözlük.",
       "faq": [
         {
           "q": "Basitleştirilmiş'ten geleneksele dönüştürmek için en iyi çevrimiçi araç hangisi?",
           "a": "Bu araç OpenCC motorunu kullanır ve basitleştirilmiş↔Tayvan geleneksel↔Hong Kong↔modern Japonca karakterleri karşılıklı dönüştürmeyi destekler; yazılım yüklemeden tamamen tarayıcıda çalışır. Hassas ve gizliliğe saygılı dönüştürme."
         },
         {
+          "q": "Tayvan gelenekseli ve Hong Kong gelenekseli arasındaki fark nedir?",
+          "a": "Tayvan gelenekseli ve Hong Kong gelenekseli bazı karakterler ve kelimeler bakımından farklılık gösterir; örneğin «記憶體» (Tayvan) ve «內存» (Hong Kong). Bu araç iki geleneksel standardı hassas biçimde ayırt eder."
+        },
+        {
+          "q": "Dönüştürmeden önce bir Basitleştirilmiş Çince romanın biçimini de düzeltmem gerekirse hangi araç bununla eşleşir?",
+          "a": "Önce [Roman Metin Düzenleyici](../novel-processor) ile web roman TXT dosyalarındaki satır sonu, bölüm başlığı ve reklamları düzeltin, ardından bu dönüştürücüyü Basitleştirilmiş/Geleneksel geçişi için çalıştırın. Her iki araç aynı korunan kelime sözlüğü biçimini paylaşır, böylece karakter ve yer adları uçtan uca korunur. Daha fazla toplu regex değişimi, karakter adı ayıklama veya filtreleme için [Metin Araç Kutusu](../text-toolbox) ile zincirleyin."
+        },
+        {
           "q": "Basitleştirilmiş/geleneksel dönüştürme içeriklerimi sızdırabilir mi?",
           "a": "Hayır. Tüm dönüştürme işlemi tarayıcıda yerel olarak gerçekleşir; metin hiçbir sunucuya gönderilmez. Hassas içerikleri ve büyük metin hacimlerini güvenle işleyebilirsiniz."
         },
         {
-          "q": "Tayvan gelenekseli ve Hong Kong gelenekseli arasındaki fark nedir?",
-          "a": "Tayvan gelenekseli ve Hong Kong gelenekseli bazı karakterler ve kelimeler bakımından farklılık gösterir; örneğin «記憶體» (Tayvan) ve «內存» (Hong Kong). Bu araç iki geleneksel standardı hassas biçimde ayırt eder."
+          "q": "Araç açık kaynak mı? Dönüştürülen metin bir yere kaydediliyor mu?",
+          "a": "%100 tarayıcıda yerel: OpenCC sözlüğü frontend'e gömülüdür ve ne metniniz ne de korunan kelime listeniz sunucuya yüklenmez. Kaynak kod GitHub'da (rockbenben/chinese-conversion) açık, kendi sunucunuza kurabilir veya inceleyebilirsiniz."
         }
       ],
       "howto": [
@@ -201,11 +210,11 @@
   },
   "Metadata": {
     "title": "ToolsByAI - Geliştiriciler İçin Yapay Zeka ve Veri Araçları",
-    "description": "Geliştiriciler için ücretsiz AI araç seti: Altyazı çevirisi, i18n, Markdown ve JSON düzenleme. Güvenli, yerel işlem ve açık kaynaklı çözüm.",
+    "description": "ToolsByAI: altyazı, Markdown, JSON i18n çevirisi ve metin/JSON toplu işleme için 17 ücretsiz açık kaynak araç. 25+ AI motoru.",
     "homeTitle": "ToolsByAI Paketi",
     "homeDescription": "Çeviri, metin, JSON ve veri dönüşümü için 20+ araç. Geliştirici ve yaratıcı verimliliğini artırın.",
     "ogTitle": "ToolsByAI - Ücretsiz ve Açık Kaynak Geliştirici Araçları",
-    "ogDescription": "Çeviri, veri işleme ve JSON düzenleme için 20+ araç. Yerel işlem gücüyle gizliliğinizi koruyan açık kaynaklı platform."
+    "ogDescription": "ToolsByAI: altyazı, Markdown, JSON i18n çevirisi ve metin/JSON toplu işleme için 17 ücretsiz açık kaynak araç. 25+ AI motoru."
   },
   "languages": {
     "auto": "Otomatik Algılama",
@@ -415,13 +424,19 @@
   },
   "feedback": {
     "feedback1": "Geri Bildirim & Öneriler",
-    "feedback2": "Sorun yaşarsanız veya önerileriniz varsa, bana bildirin! Geri bildiriminiz gelecekteki geliştirmeleri etkiler ve daha iyi araçlar oluşturmamıza yardımcı olur.",
+    "feedback2": "Sorun yaşarsanız veya önerileriniz varsa, bana bildirin!Geri bildiriminiz gelecekteki geliştirmeleri etkiler ve daha iyi araçlar oluşturmamıza yardımcı ol…",
     "feedback3": "Kullanım durumunuzu, sorunu veya fikri açıklayın. Her mesajı okuyorum ve en kısa sürede yanıtlayacağım/optimize edeceğim.",
     "reaction0": "Beğen",
     "reaction1": "Destek",
     "reaction2": "Harika",
     "reaction3": "Ne?",
     "reaction4": "Kafam Karıştı",
-    "placeholder": "Mesaj bırakın (giriş gerekmez, yanıt için e-posta isteğe bağlı)"
+    "placeholder": "Mesaj bırakın (giriş gerekmez, yanıt için e-posta isteğe bağlı)",
+    "metaDescription": "Tools By AI geri bildirim sayfası: hata bildir, özellik öner veya kullanım örneklerini paylaş. Waline tabanlı, anonim gönderim mümkün, ücretsiz."
+  },
+  "NotFound": {
+    "title": "Sayfa Bulunamadı",
+    "description": "Ziyaret ettiğiniz sayfa mevcut değil veya taşınmış.",
+    "goHome": "Ana Sayfaya Dön"
   }
 }

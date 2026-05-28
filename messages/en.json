@@ -77,7 +77,7 @@
     "resultToSource": "Result ➔ Source",
     "resultToSourceTooltip": "Overwrite input area with result text",
     "readOnlyMode": "Read-Only Mode",
-    "readOnlyModeTooltip": "Text is too long; automatically switched to read-only mode to maintain page performance",
+    "readOnlyModeTooltip": "Text is too long: the editor is temporarily read-only and shows a partial preview only. Your full content is unaffected — processing and export still use the entire text.",
     "clearInputTooltip": "Clear input content and uploaded files",
     "smartLineBreak": "Smart Line Break",
     "replaceText": "Replace Text",
@@ -143,26 +143,35 @@
     "langPresetIndian": "Indian Subcontinent",
     "selectedCount": "{count} selected",
     "recentLanguages": "Recent",
-    "langGroupAmericasOceania": "Americas & Oceania"
+    "langGroupAmericasOceania": "Americas & Oceania",
+    "relatedTools": "Related Tools"
   },
   "tools": {
     "chineseConversion": {
       "title": "Chinese Conversion",
       "description": "Bulk convert Simplified, Taiwan Traditional, Hong Kong Traditional, and Japanese New Character Form",
-      "metaTitle": "Chinese Converter | Simplified ↔ Traditional, Local & Private",
-      "metaDescription": "Worried about privacy converting Chinese? Runs locally in your browser, no server upload. Supports Simplified ↔ Taiwan/HK Traditional and Japanese Shinjitai.",
+      "metaTitle": "Chinese Converter - Simplified, Traditional, Shinjitai",
+      "metaDescription": "OpenCC Chinese converter, runs in browser: Simplified, Taiwan Traditional, Hong Kong Traditional, Japanese Shinjitai. Protected-words dict.",
       "faq": [
         {
           "q": "Which online Simplified-to-Traditional Chinese converter is the best?",
           "a": "This tool is powered by the OpenCC engine and supports Simplified ↔ Taiwan Traditional ↔ Hong Kong Traditional ↔ Japanese New Character Form, running entirely locally in your browser with no software to install — accurate and privacy-safe."
         },
         {
+          "q": "What is the difference between Taiwan Traditional and Hong Kong Traditional Chinese?",
+          "a": "Taiwan Traditional and Hong Kong Traditional differ in some characters and vocabulary — for example 記憶體 (Taiwan) vs 內存 (Hong Kong). This tool accurately distinguishes the two standards to meet the needs of different regions."
+        },
+        {
+          "q": "If I need to also fix the formatting of a Simplified-Chinese novel before converting, what tool pairs with this?",
+          "a": "Use [Novel Text Formatter](../novel-processor) first to fix line breaks, chapter headers, and remove ads from web-novel TXT files, then run this converter for the Simplified/Traditional pass. Both tools share the same protected-words dictionary format so character and place names are preserved end-to-end. For further bulk regex replacement, character-name extraction, or filtering, chain it with the [Text Toolbox](../text-toolbox)."
+        },
+        {
           "q": "Does Chinese conversion expose my text content?",
           "a": "No. All conversion happens entirely in your browser; text is never uploaded to any server, so you can safely process sensitive content and large volumes of text."
         },
         {
-          "q": "What is the difference between Taiwan Traditional and Hong Kong Traditional Chinese?",
-          "a": "Taiwan Traditional and Hong Kong Traditional differ in some characters and vocabulary — for example 記憶體 (Taiwan) vs 內存 (Hong Kong). This tool accurately distinguishes the two standards to meet the needs of different regions."
+          "q": "Is the tool open source? Is converted text saved anywhere?",
+          "a": "100% browser-local: the OpenCC dictionary is bundled into the frontend, and neither your text nor your protected-words list is ever uploaded. Source code is open on GitHub (rockbenben/chinese-conversion) for self-hosting or auditing."
         }
       ],
       "howto": [
@@ -201,11 +210,11 @@
   },
   "Metadata": {
     "title": "ToolsByAI | Free Open Source AI Translation & Data Tools",
-    "description": "Looking for efficient dev tools? ToolsByAI offers 20+ free apps like Subtitle Translator & JSON Editor. Powered by DeepSeek & AI, secure & local. Start now!",
+    "description": "ToolsByAI: 17 free open-source tools for subtitle, Markdown, JSON i18n translation and text/JSON batch processing. 25+ AI engines.",
     "homeTitle": "ToolsByAI Toolset",
     "homeDescription": "20+ tools for translation, text, JSON, and data conversion. Boost efficiency for developers and creators.",
     "ogTitle": "ToolsByAI | Free Open Source AI Translation & Data Tools",
-    "ogDescription": "Looking for efficient dev tools? ToolsByAI offers 20+ free apps like Subtitle Translator & JSON Editor. Powered by DeepSeek & AI, secure & local. Start now!"
+    "ogDescription": "ToolsByAI: 17 free open-source tools for subtitle, Markdown, JSON i18n translation and text/JSON batch processing. 25+ AI engines."
   },
   "languages": {
     "auto": "Auto Detect",
@@ -422,6 +431,12 @@
     "reaction2": "Cool",
     "reaction3": "What?",
     "reaction4": "Confused",
-    "placeholder": "Leave a message (no login required, email optional for reply)"
+    "placeholder": "Leave a message (no login required, email optional for reply)",
+    "metaDescription": "Feedback for Tools By AI: report bugs, suggest features, share use-case ideas. Built on Waline, anonymous posting allowed, free."
+  },
+  "NotFound": {
+    "title": "Page Not Found",
+    "description": "The page you visited doesn't exist or has been moved.",
+    "goHome": "Back to Home"
   }
 }

@@ -117,7 +117,7 @@
     "resultToSource": "Hasil ➔ Sumber",
     "resultToSourceTooltip": "Timpa kotak input dengan teks hasil",
     "readOnlyMode": "Mode Hanya-Baca",
-    "readOnlyModeTooltip": "Teks terlalu panjang, otomatis beralih ke mode hanya-baca untuk menjaga performa halaman",
+    "readOnlyModeTooltip": "Teks terlalu panjang: editor sementara hanya-baca dan hanya menampilkan pratinjau sebagian. Konten lengkap Anda tidak terpengaruh — pemrosesan dan ekspor tetap menggunakan seluruh teks.",
     "clearInputTooltip": "Bersihkan konten input dan file yang diunggah",
     "fileExported": "File diekspor: {fileName}",
     "exportSuccess": "Ekspor berhasil: {fileName}",
@@ -143,26 +143,35 @@
     "langPresetIndian": "Anak Benua India",
     "selectedCount": "{count} dipilih",
     "recentLanguages": "Terbaru",
-    "langGroupAmericasOceania": "Amerika & Oseania"
+    "langGroupAmericasOceania": "Amerika & Oseania",
+    "relatedTools": "Alat Terkait"
   },
   "tools": {
     "chineseConversion": {
       "title": "Konversi Karakter Tionghoa",
       "description": "Konversi batch antara Sederhana, Tradisional Taiwan, Tradisional Hong Kong, dan Aksara Jepang Baru",
-      "metaTitle": "Konversi Tionghoa - Sederhana ↔ Tradisional, Lokal & Privat",
-      "metaDescription": "Khawatir privasi saat konversi Tionghoa? Berjalan lokal di browser — tanpa unggah server. Sederhana ↔ Tradisional Taiwan/HK & Shinjitai Jepang.",
+      "metaTitle": "Konverter Tionghoa - Sederhana, Tradisional, Shinjitai",
+      "metaDescription": "Konverter Tionghoa OpenCC, berjalan di browser: Sederhana, Tradisional Taiwan, Tradisional Hong Kong, Shinjitai. Kamus terlindungi.",
       "faq": [
         {
           "q": "Apa alat terbaik untuk konversi Tionghoa Sederhana ke Tradisional online?",
           "a": "Alat ini berbasis mesin OpenCC dan berjalan sepenuhnya lokal di browser. Mendukung konversi Sederhana ↔ Tradisional (Taiwan dan Hong Kong) dengan akurat, tanpa instalasi perangkat lunak."
         },
         {
+          "q": "Apa perbedaan Tradisional Taiwan dan Tradisional Hong Kong?",
+          "a": "Keduanya berbeda dalam beberapa karakter dan kosakata, misalnya「記憶體」(Taiwan) dan「內存」(Hong Kong). Alat ini membedakan kedua standar dengan akurat."
+        },
+        {
+          "q": "Setelah merapikan novel Sederhana ingin konversi ke Tradisional, pemisahan bab, dan pembersihan iklan…",
+          "a": "Disarankan gabungkan dengan [Pemformat Novel](../novel-processor): pertama perbaiki masalah format TXT novel web seperti line break, bab, iklan, lalu gunakan alat ini untuk konversi Sederhana-Tradisional. Kedua alat dapat berbagi «kamus kata-kata terlindungi» yang sama untuk menjaga nama tokoh, tempat dll dari konversi salah. Untuk operasi penggantian massal judul bab, ekstraksi daftar tokoh, dll, hubungkan dengan [Pemroses Teks](../text-toolbox) untuk pencocokan regex."
+        },
+        {
           "q": "Apakah konversi karakter Tionghoa akan membocorkan teks saya?",
           "a": "Tidak. Semua konversi dilakukan sepenuhnya di browser secara lokal, tidak ada teks yang dikirim ke server mana pun."
         },
         {
-          "q": "Apa perbedaan Tradisional Taiwan dan Tradisional Hong Kong?",
-          "a": "Keduanya berbeda dalam beberapa karakter dan kosakata, misalnya「記憶體」(Taiwan) dan「內存」(Hong Kong). Alat ini membedakan kedua standar dengan akurat."
+          "q": "Apakah alat ini open source? Apakah teks yang dikonversi disimpan?",
+          "a": "Pemrosesan lokal browser 100%, kamus OpenCC juga dibundel di frontend, teks dan kamus terlindungi tidak diunggah ke server. Kode sumber open source di GitHub (rockbenben/chinese-conversion), bisa self-deploy atau audit detail implementasi."
         }
       ],
       "howto": [
@@ -201,11 +210,11 @@
   },
   "Metadata": {
     "title": "ToolsByAI - Peralatan Data & Terjemahan AI untuk Developer",
-    "description": "Kumpulan alat AI gratis untuk developer: terjemahan subtitle, i18n, Markdown, dan edit JSON. Proses batch cepat, aman secara lokal, dan open source.",
+    "description": "ToolsByAI: 17 alat open source gratis untuk penerjemahan subtitle, Markdown, JSON i18n, dan pemrosesan teks/JSON batch. 25+ AI engine.",
     "homeTitle": "Suite ToolsByAI",
     "homeDescription": "20+ alat untuk terjemahan, teks, JSON, dan konversi data. Tingkatkan efisiensi pengembang dan kreator.",
     "ogTitle": "ToolsByAI - Alat Dev AI Gratis dan Open Source",
-    "ogDescription": "20+ utilitas untuk pengembang: terjemahan, pemrosesan data, dan JSON. Hormati privasi Anda dengan pemrosesan lokal di browser."
+    "ogDescription": "ToolsByAI: 17 alat open source gratis untuk penerjemahan subtitle, Markdown, JSON i18n, dan pemrosesan teks/JSON batch. 25+ AI engine."
   },
   "languages": {
     "auto": "Deteksi Otomatis",
@@ -415,13 +424,19 @@
   },
   "feedback": {
     "feedback1": "Umpan Balik & Saran",
-    "feedback2": "Jika Anda menemukan masalah atau memiliki saran, beri tahu saya! Umpan balik Anda memengaruhi pengembangan masa depan dan membantu kami membuat alat yang lebih baik.",
+    "feedback2": "Jika Anda menemukan masalah atau memiliki saran, beri tahu saya!Umpan balik Anda memengaruhi pengembangan masa depan dan membantu kami membuat alat yang l…",
     "feedback3": "Jelaskan kasus penggunaan, masalah, atau ide Anda. Saya membaca setiap pesan dan akan merespons/mengoptimalkan sesegera mungkin.",
     "reaction0": "Suka",
     "reaction1": "Dukung",
     "reaction2": "Keren",
     "reaction3": "Apa?",
     "reaction4": "Bingung",
-    "placeholder": "Tinggalkan pesan (tidak perlu login, email opsional untuk balasan)"
+    "placeholder": "Tinggalkan pesan (tidak perlu login, email opsional untuk balasan)",
+    "metaDescription": "Halaman feedback Tools By AI: laporkan bug, sarankan fitur, atau bagikan ide penggunaan. Berbasis Waline, posting anonim diizinkan, gratis."
+  },
+  "NotFound": {
+    "title": "Halaman Tidak Ditemukan",
+    "description": "Halaman yang Anda kunjungi tidak ada atau telah dipindahkan.",
+    "goHome": "Kembali ke Beranda"
   }
 }

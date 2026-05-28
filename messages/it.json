@@ -117,7 +117,7 @@
     "resultToSource": "Risultato ➔ Originale",
     "resultToSourceTooltip": "Sostituire il testo nella casella di input con il testo del risultato",
     "readOnlyMode": "Modalità Sola Lettura",
-    "readOnlyModeTooltip": "Testo troppo lungo; modalità sola lettura attivata automaticamente per garantire le prestazioni della pagina",
+    "readOnlyModeTooltip": "Testo troppo lungo: l'editor è temporaneamente di sola lettura e mostra solo un'anteprima parziale. Il contenuto completo non è interessato: elaborazione ed esportazione usano comunque l'intero testo.",
     "clearInputTooltip": "Cancella contenuto di input e file caricati",
     "fileExported": "File esportato: {fileName}",
     "exportSuccess": "Esportazione riuscita: {fileName}",
@@ -143,26 +143,35 @@
     "langPresetIndian": "Subcontinente indiano",
     "selectedCount": "{count} selezionate",
     "recentLanguages": "Recenti",
-    "langGroupAmericasOceania": "Americhe e Oceania"
+    "langGroupAmericasOceania": "Americhe e Oceania",
+    "relatedTools": "Strumenti correlati"
   },
   "tools": {
     "chineseConversion": {
       "title": "Conversor Semp/Trad",
       "description": "Converti in batch semplificato, tradizionale di Taiwan, Hong Kong e caratteri giapponesi",
-      "metaTitle": "Convertitore Cinese | Semplificato ↔ Tradizionale, locale",
-      "metaDescription": "Preoccupato per la privacy durante la conversione cinese? Esegue localmente nel browser — nessun upload al server. Semplificato ↔ Tradizionale Taiwan/HK & Shinjitai.",
+      "metaTitle": "Convertitore cinese - Semplificato, Tradizionale, Shinjitai",
+      "metaDescription": "Convertitore cinese OpenCC nel browser: semplificato, tradizionale Taiwan, Hong Kong, shinjitai. Dizionario di parole protette.",
       "faq": [
         {
           "q": "Qual è il miglior strumento online per convertire semplificato in tradizionale?",
           "a": "Questo strumento usa il motore OpenCC e supporta la conversione reciproca tra semplificato↔tradizionale Taiwan↔Hong Kong↔caratteri giapponesi moderni, funzionando completamente nel browser senza installare software. Conversione precisa e rispettosa della privacy."
         },
         {
+          "q": "Qual è la differenza tra il tradizionale di Taiwan e quello di Hong Kong?",
+          "a": "Il tradizionale di Taiwan e quello di Hong Kong differiscono in alcuni caratteri e vocaboli, come «記憶體» (Taiwan) e «內存» (Hong Kong). Questo strumento distingue con precisione i due standard tradizionali."
+        },
+        {
+          "q": "Se devo anche correggere il formato di un romanzo in cinese semplificato prima di convertirlo, quale strumento…",
+          "a": "Usa prima il [Formattatore di romanzi](../novel-processor) per riparare interruzioni di riga, intestazioni di capitolo e rimuovere annunci dai file TXT di web novel, poi esegui questo convertitore per il passaggio Semplificato/Tradizionale. Entrambi gli strumenti condividono lo stesso formato di dizionario parole protette, così i nomi di personaggi e luoghi vengono preservati end-to-end. Per ulteriore sostituzione regex di massa, estrazione nomi o filtraggio, concatena con la [Cassetta strumenti testo](../text-toolbox)."
+        },
+        {
           "q": "La conversione semplificato/tradizionale può far trapelare i miei contenuti?",
           "a": "No. Tutta la conversione avviene localmente nel browser; il testo non viene inviato a nessun server. Puoi elaborare in sicurezza contenuti sensibili e grandi volumi di testo."
         },
         {
-          "q": "Qual è la differenza tra il tradizionale di Taiwan e quello di Hong Kong?",
-          "a": "Il tradizionale di Taiwan e quello di Hong Kong differiscono in alcuni caratteri e vocaboli, come «記憶體» (Taiwan) e «內存» (Hong Kong). Questo strumento distingue con precisione i due standard tradizionali."
+          "q": "Lo strumento è open source? Il testo convertito viene salvato da qualche parte?",
+          "a": "100% locale nel browser: il dizionario OpenCC è incluso nel frontend, e né il tuo testo né la lista di parole protette vengono mai caricati. Codice sorgente aperto su GitHub (rockbenben/chinese-conversion) per self-hosting o audit."
         }
       ],
       "howto": [
@@ -201,11 +210,11 @@
   },
   "Metadata": {
     "title": "ToolsByAI - Utility Sviluppatori & Traduzione IA Online",
-    "description": "Suite di strumenti IA per sviluppatori: traduzione sottotitoli, i18n, Markdown e editing JSON. Gratuito, open source ed elaborazione locale sicura.",
+    "description": "ToolsByAI: 17 strumenti open source gratuiti per traduzione sottotitoli, Markdown, JSON i18n e elaborazione batch. 25+ motori IA.",
     "homeTitle": "Suite ToolsByAI",
     "homeDescription": "20+ strumenti per traduzione, testo, JSON e conversione dati. Potenzia l'efficienza di sviluppatori e creatori.",
     "ogTitle": "ToolsByAI - Strumenti Dev IA Gratuiti e Open Source",
-    "ogDescription": "20+ utility per sviluppatori: traduzione, elaborazione dati e JSON. Rispetta la tua privacy con elaborazione locale."
+    "ogDescription": "ToolsByAI: 17 strumenti open source gratuiti per traduzione sottotitoli, Markdown, JSON i18n e elaborazione batch. 25+ motori IA."
   },
   "languages": {
     "auto": "Rilevamento Auto",
@@ -422,6 +431,12 @@
     "reaction2": "Fico",
     "reaction3": "Cosa?",
     "reaction4": "Confuso",
-    "placeholder": "Lascia un messaggio (nessun login richiesto, email opzionale per risposta)"
+    "placeholder": "Lascia un messaggio (nessun login richiesto, email opzionale per risposta)",
+    "metaDescription": "Pagina feedback per Tools By AI: segnala bug, suggerisci funzionalità, condividi casi d'uso. Basata su Waline, anonimo consentito."
+  },
+  "NotFound": {
+    "title": "Pagina non trovata",
+    "description": "La pagina che hai visitato non esiste o è stata spostata.",
+    "goHome": "Torna alla home"
   }
 }

@@ -48,7 +48,7 @@
     "resultToSource": "結果 ➔ 原文",
     "resultToSourceTooltip": "將結果文字覆蓋到輸入框",
     "readOnlyMode": "只讀模式",
-    "readOnlyModeTooltip": "文字過長，為保證頁面性能已自動切換為只讀模式",
+    "readOnlyModeTooltip": "文字過長，編輯框暫為唯讀、僅顯示部分預覽；完整內容不受影響，處理與匯出仍按全文進行",
     "exportFile": "匯出",
     "exportAllFile": "匯出所有檔案",
     "exportedFile": "已匯出",
@@ -143,26 +143,35 @@
     "langPresetIndian": "印度系",
     "selectedCount": "已選 {count} 種",
     "recentLanguages": "最近使用",
-    "langGroupAmericasOceania": "美洲及大洋洲"
+    "langGroupAmericasOceania": "美洲及大洋洲",
+    "relatedTools": "相關工具"
   },
   "tools": {
     "chineseConversion": {
       "title": "簡繁轉換",
       "description": "批次轉換簡體、臺灣繁體、香港繁體和日本新字體",
-      "metaTitle": "簡繁轉換工具 - 簡體↔台灣/香港繁體，本地瀏覽器隱私安全",
-      "metaDescription": "簡繁轉換擔心隱私洩露？這款工具完全在瀏覽器本地完成轉換，文字不上傳任何伺服器。支援簡體、台灣繁體、香港繁體與日本新字體互轉，批次處理無大小限制。",
+      "metaTitle": "簡繁轉換工具 - 簡體↔台灣/香港繁體/日本新字體，OpenCC 本地轉換",
+      "metaDescription": "簡繁轉換工具，基於 OpenCC 引擎本地執行，文字不上傳伺服器，簡體、台灣繁體、香港繁體與日本新字體互轉，可定義保護字典。",
       "faq": [
         {
           "q": "簡體轉繁體線上工具哪個好用？",
           "a": "本工具基於 OpenCC 引擎，支援簡體↔臺灣繁體↔香港繁體↔日本新字體互轉，完全在瀏覽器本地執行，無需安裝軟體，轉換精準且隱私安全。"
         },
         {
+          "q": "臺灣繁體和香港繁體有什麼區別？",
+          "a": "臺灣繁體和香港繁體在部分用字和詞彙上有差異，例如「記憶體」（臺灣）和「記憶體」（香港）。本工具支援精確區分兩種繁體標準，滿足不同地區的用字需求。"
+        },
+        {
+          "q": "整理簡體小說後想再做繁化、章節切分和廣告清理，有更整套的流程嗎？",
+          "a": "推薦配合 [小說排版整理](../novel-processor) 使用：先用小說排版工具修復網文 TXT 的換行、章節、廣告等格式問題，再用本工具做簡繁轉換，可共用同一份「保護詞典」保留人名、地名等不被誤轉。如果還需要批次替換章節標題、擷取人物名單等操作，可接 [文字處理神器](../text-toolbox) 做正則匹配和過濾。"
+        },
+        {
           "q": "簡繁轉換會洩露我的文字內容嗎？",
           "a": "不會。所有轉換完全在瀏覽器本地完成，文字不會上傳到任何伺服器，可以放心處理敏感內容和大量文字。"
         },
         {
-          "q": "臺灣繁體和香港繁體有什麼區別？",
-          "a": "臺灣繁體和香港繁體在部分用字和詞彙上有差異，例如「記憶體」（臺灣）和「記憶體」（香港）。本工具支援精確區分兩種繁體標準，滿足不同地區的用字需求。"
+          "q": "工具是否開源？轉換的文字會被儲存嗎？",
+          "a": "100% 瀏覽器本地處理，OpenCC 詞典也打包在前端，文字和保護詞典都不上傳任何伺服器。原始碼開源在 GitHub（rockbenben/chinese-conversion），可自部署或審查實作細節。"
         }
       ],
       "howto": [
@@ -201,11 +210,11 @@
   },
   "Metadata": {
     "title": "ToolsByAI | 免費開源的 AI 翻譯與資料處理工具集",
-    "description": "尋找高效開發工具？ToolsByAI 匯集字幕翻譯、i18n 處理等 20+ 款免費開源應用。接入 DeepSeek 等主流模型，支援批次處理且資料隱私安全，立即開啟 AI 提效之旅！",
+    "description": "ToolsByAI 集合 17 款免費工具：字幕、Markdown、JSON i18n 翻譯，文字/JSON 批次處理。25+ AI 引擎，全前端處理。",
     "homeTitle": "ToolsByAI 工具集",
     "homeDescription": "20+ 實用工具，涵蓋多語言翻譯、文字處理、JSON 編輯和資料轉換，助力開發者和創作者提升效率。",
     "ogTitle": "ToolsByAI | 免費開源的 AI 翻譯與資料處理工具集",
-    "ogDescription": "尋找高效開發工具？ToolsByAI 匯集字幕翻譯、i18n 處理等 20+ 款免費開源應用。接入 DeepSeek 等主流模型，支援批次處理且資料隱私安全，立即開啟 AI 提效之旅！"
+    "ogDescription": "ToolsByAI 集合 17 款免費工具：字幕、Markdown、JSON i18n 翻譯，文字/JSON 批次處理。25+ AI 引擎，全前端處理。"
   },
   "languages": {
     "auto": "自動檢測",
@@ -362,8 +371,8 @@
     "clearFilter": "清除過濾",
     "emptyCount": "⚠ {count} 條空值",
     "shadowedCount": "⚠ {count} 條被覆蓋",
-    "searchPlaceholder": "搜索 from 或 to",
-    "searchAriaLabel": "搜索規則",
+    "searchPlaceholder": "搜尋 from 或 to",
+    "searchAriaLabel": "搜尋規則",
     "sortOriginal": "原序",
     "sortAlphabetical": "字典序",
     "sortRecent": "最近加入",
@@ -422,6 +431,12 @@
     "reaction2": "有點酷",
     "reaction3": "啥玩意",
     "reaction4": "看不懂",
-    "placeholder": "請留言，無需登錄（填寫郵箱可獲回復提醒）"
+    "placeholder": "請留言，無需登錄（填寫郵箱可獲回復提醒）",
+    "metaDescription": "意見回饋頁：回報使用問題、提交功能建議、參與工具改進。基於 Waline 評論系統，匿名也可發言。"
+  },
+  "NotFound": {
+    "title": "頁面未找到",
+    "description": "你訪問的頁面不存在或已移動。",
+    "goHome": "返回首頁"
   }
 }
