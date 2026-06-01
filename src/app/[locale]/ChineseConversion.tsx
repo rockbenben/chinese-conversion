@@ -45,6 +45,9 @@ const ChineseConversion = () => {
 
   const { isFileProcessing, fileList, multipleFiles, readFile, sourceText, setSourceText, uploadMode, singleFileMode, setSingleFileMode, handleFileUpload, handleUploadRemove, handleUploadChange, resetUpload } = useFileUpload();
   const [result, setResult] = useState("");
+  // Single-text conversion is async (cold js-opencc load can take a beat) and isn't covered
+  // by the file-reading Spin — track it so the buttons show progress and block double-submit.
+  const [processing, setProcessing] = useState(false);
 
   const sourceStats = useTextStats(sourceText);
   const resultStats = useTextStats(result);
@@ -73,15 +76,15 @@ const ChineseConversion = () => {
   const handleExportFile = (text: string) => {
     const uploadFileName = multipleFiles[0]?.name;
     const fileName = uploadFileName || "jianfan.txt";
-    downloadFile(text, fileName);
-    return fileName;
+    void downloadFile(text, fileName);
+    message.success(tCommon("fileExported", { fileName }));
   };
 
-  const handleConversion = async (from: string, to: string, sourceText: string, fileName?: string) => {
+  const handleConversion = async (from: string, to: string, sourceText: string, fileName?: string): Promise<boolean> => {
     setResult("");
     if (!sourceText.trim()) {
-      message.error(t("enterTextError"));
-      return;
+      message.warning(tCommon("noSourceText"));
+      return false;
     }
     const direction = getProtectedDirection(from, to);
     const activeRules: ProtectedRule[] = enableProtectedRules ? (direction === "s2t" ? s2tRules : direction === "t2s" ? t2sRules : []) : [];
@@ -108,17 +111,18 @@ const ChineseConversion = () => {
 
       if (fileName) {
         await downloadFile(convertedText, fileName);
-        return;
+        return true;
       }
       if (directExport) {
-        const dfileName = handleExportFile(convertedText);
-        message.success(tCommon("exportSuccess", { fileName: dfileName }));
-        return;
+        handleExportFile(convertedText);
+        return true;
       }
       setResult(convertedText);
+      return true;
     } catch (err) {
       console.error("chinese-conversion failed", err);
       message.error(t("conversionFailed"));
+      return false;
     }
   };
 
@@ -127,34 +131,59 @@ const ChineseConversion = () => {
       message.error(t("uploadFilesFirst"));
       return;
     }
-    await Promise.all(
+    const results = await Promise.all(
       multipleFiles.map(
         (currentFile) =>
-          new Promise<void>((resolve) => {
-            readFile(currentFile, async (text) => {
-              await handleConversion(from, to, text, currentFile.name);
-              resolve();
-            });
+          new Promise<boolean>((resolve) => {
+            readFile(
+              currentFile,
+              async (text) => {
+                // Always resolve, even if conversion throws, so one bad file can't hang the batch.
+                try {
+                  resolve(await handleConversion(from, to, text, currentFile.name));
+                } catch {
+                  resolve(false);
+                }
+              },
+              // Decode/read failure: count as failed and unblock the batch.
+              () => resolve(false)
+            );
           })
       )
     );
-    message.success(tCommon("batchDownloaded"), 10);
+    // Only claim success when every file converted+downloaded; otherwise the per-file
+    // conversionFailed error already fired and "batchDownloaded" would contradict it.
+    if (results.every(Boolean)) {
+      message.success(tCommon("batchDownloaded"), 10);
+    } else {
+      message.error(t("conversionFailed"), 10);
+    }
   };
 
-  const runQuick = (direction: "t2s" | "s2t") => {
+  const runQuick = async (direction: "t2s" | "s2t") => {
     const fromLang = direction === "t2s" ? (phraseConversion ? "twp" : "t") : "cn";
     const toLang = direction === "t2s" ? "cn" : phraseConversion ? "twp" : "t";
-    if (uploadMode === "single") handleConversion(fromLang, toLang, sourceText);
-    else handleMultipleConversion(fromLang, toLang);
+    setProcessing(true);
+    try {
+      if (uploadMode === "single") await handleConversion(fromLang, toLang, sourceText);
+      else await handleMultipleConversion(fromLang, toLang);
+    } finally {
+      setProcessing(false);
+    }
   };
 
-  const handleCustomConversion = () => {
+  const handleCustomConversion = async () => {
     if (customFrom === customTo) {
       message.warning(t("sameLangError"));
       return;
     }
-    if (uploadMode === "single") handleConversion(customFrom, customTo, sourceText);
-    else handleMultipleConversion(customFrom, customTo);
+    setProcessing(true);
+    try {
+      if (uploadMode === "single") await handleConversion(customFrom, customTo, sourceText);
+      else await handleMultipleConversion(customFrom, customTo);
+    } finally {
+      setProcessing(false);
+    }
   };
 
   return (
@@ -213,10 +242,10 @@ const ChineseConversion = () => {
             </PageCard>
 
             <Flex gap="small" wrap>
-              <Button type="primary" size="large" block className="flex-1 !min-w-[140px]" onClick={() => runQuick("t2s")}>
+              <Button type="primary" size="large" block className="flex-1 !min-w-[140px]" loading={processing} onClick={() => runQuick("t2s")}>
                 {tPR("directionT2s")}
               </Button>
-              <Button type="primary" size="large" block className="flex-1 !min-w-[140px]" onClick={() => runQuick("s2t")}>
+              <Button type="primary" size="large" block className="flex-1 !min-w-[140px]" loading={processing} onClick={() => runQuick("s2t")}>
                 {tPR("directionS2t")}
               </Button>
             </Flex>
@@ -227,10 +256,7 @@ const ChineseConversion = () => {
                 stats={resultStats}
                 onChange={setResult}
                 onCopy={() => copyToClipboard(result)}
-                onExport={() => {
-                  const fileName = handleExportFile(result);
-                  message.success(t("exportedFile", { fileName }));
-                }}
+                onExport={() => handleExportFile(result)}
               />
             )}
           </Flex>
@@ -288,7 +314,7 @@ const ChineseConversion = () => {
                     {t("customRulesNotActive")}
                   </Typography.Text>
                 )}
-                <Button block onClick={handleCustomConversion} icon={<SwapOutlined />}>
+                <Button block loading={processing} onClick={handleCustomConversion} icon={<SwapOutlined />}>
                   {t("customConvert")}
                 </Button>
               </Flex>
