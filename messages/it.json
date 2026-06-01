@@ -1,5 +1,10 @@
 {
   "common": {
+    "fileProcessFailed": "Elaborazione del file non riuscita — controlla la codifica o prova un altro file",
+    "fileReadFailed": "Lettura del file non riuscita",
+    "unrecognizedLangCodes": "Codici lingua non riconosciuti: {codes}",
+    "ignoredLangCodes": "Codici lingua non riconosciuti ignorati: {codes}",
+    "partialExportFailed": "Esportazione di alcune lingue non riuscita: {items}",
     "userGuide": "Guida Utente",
     "privacyNotice": "La tua chiave API e i dati sono memorizzati solo localmente nel tuo browser per garantire la privacy. Se hai domande o suggerimenti, contattaci tramite la community o la pagina di feedback.",
     "dragAndDropText": "Clicca o trascina un file qui per caricare",
@@ -76,10 +81,8 @@
     "importSettingError": "Importazione fallita, riprova",
     "removeCharsAfterTranslation": "Rimuovi caratteri dopo traduzione",
     "removeCharsAfterTranslationTooltip": "Rimuovi automaticamente caratteri specificati dopo la traduzione (separare con spazi)",
-    "selectedLanguages": "Selezionati",
     "search": "Cerca",
     "noMatches": "Nessuno strumento corrispondente",
-    "selectAll": "Seleziona tutto",
     "clearAll": "Cancella tutto",
     "cancel": "Annulla",
     "apply": "Applica",
@@ -120,11 +123,10 @@
     "readOnlyModeTooltip": "Testo troppo lungo: l'editor è temporaneamente di sola lettura e mostra solo un'anteprima parziale. Il contenuto completo non è interessato: elaborazione ed esportazione usano comunque l'intero testo.",
     "clearInputTooltip": "Cancella contenuto di input e file caricati",
     "fileExported": "File esportato: {fileName}",
-    "exportSuccess": "Esportazione riuscita: {fileName}",
     "batchDownloaded": "Elaborazione completata, file scaricati automaticamente",
     "sourceTextPlaceholder": "Inserisci o incolla il testo da elaborare...",
     "smartLineBreak": "A capo automatico intelligente",
-    "replaceText": "Sostituisci testo",
+    "replaceText": "Sostituisci testo ",
     "generateJson": "Genera JSON",
     "gtxFreeAPIUnavailable": "Il servizio GTX Free è temporaneamente irraggiungibile — potrebbe essere una restrizione di rete. Riprova più tardi o passa a un altro servizio di traduzione.",
     "translategemmaUnavailable": "Il servizio TranslateGemma è temporaneamente irraggiungibile, assicurati che il tuo server locale (LM Studio / llama.cpp / Ollama) sia in esecuzione e l'URL sia corretto.",
@@ -147,6 +149,22 @@
     "relatedTools": "Strumenti correlati"
   },
   "tools": {
+    "subtitleTranslator": {
+      "title": "Traduttore Sottotitoli",
+      "description": "Traduzione in batch SRT, ASS, VTT, LRC. 120+ lingue."
+    },
+    "jsonTranslate": {
+      "title": "Traduttore JSON i18n",
+      "description": "Strumento efficiente di traduzione JSON multilingua"
+    },
+    "mdTranslator": {
+      "title": "Traduttore Markdown",
+      "description": "Traduzione Markdown in batch, preserva formato e codice"
+    },
+    "textSplitter": {
+      "title": "Divisore Testo",
+      "description": "Divisione intelligente testo lungo per IA e social media"
+    },
     "chineseConversion": {
       "title": "Conversor Semp/Trad",
       "description": "Converti in batch semplificato, tradizionale di Taiwan, Hong Kong e caratteri giapponesi",
@@ -197,6 +215,54 @@
         "Motore OpenCC per conversioni accurate",
         "Regole di sostituzione personalizzate — i termini corrispondenti bypassano il dizionario integrato"
       ]
+    },
+    "novelProcessor": {
+      "title": "Formattatore di romanzi web cinesi",
+      "description": "Correggi i problemi di formattazione dei romanzi web cinesi scaricati con un clic, con interruzione di riga intelligente"
+    },
+    "textToolbox": {
+      "title": "Assistente Testo Regex",
+      "description": "Integra corrispondenza regex, ordinamento, filtraggio e altre funzionalità per elaborazione in batch"
+    },
+    "dataBatch": {
+      "title": "Elaboratore di Testo",
+      "description": "Elaborazione batch di dati Excel — deduplicazione, estrazione colonne, fusione, regole concatenate"
+    },
+    "jsonValueExtractor": {
+      "title": "Estrattore Valore JSON",
+      "description": "Estrai valori JSON in batch, output formattato"
+    },
+    "jsonNodeEdit": {
+      "title": "Modifica JSON in Batch",
+      "description": "Modifica nodi JSON in batch, prefisso/suffisso/sostituisci"
+    },
+    "jsonValueTransformer": {
+      "title": "Mappatore Valore JSON",
+      "description": "Mappatura e migrazione valori con JSONPath"
+    },
+    "jsonValueSwapper": {
+      "title": "Scambiatore Valore JSON",
+      "description": "Scambia valori di due campi in un clic"
+    },
+    "jsonNodeInserter": {
+      "title": "Inseritore Nodo JSON",
+      "description": "Inserisci nuovi nodi in posizione specificata in batch"
+    },
+    "jsonSortClassify": {
+      "title": "Ordina & Classifica JSON",
+      "description": "Ordina e raggruppa array, regole personalizzate"
+    },
+    "jsonMatchUpdate": {
+      "title": "Aggiornamento Match JSON",
+      "description": "Aggiornamento in batch basato su corrispondenza campi"
+    },
+    "dataParserFlare": {
+      "title": "Convertitore Flare",
+      "description": "Conversione preferiti browser e formato Flare"
+    },
+    "dataParserImgPrompt": {
+      "title": "Generatore Dati IMGPrompt",
+      "description": "Genera dati JSON IMGPrompt in batch"
     }
   },
   "navigation": {
@@ -216,130 +282,6 @@
     "ogTitle": "ToolsByAI - Strumenti Dev IA Gratuiti e Open Source",
     "ogDescription": "ToolsByAI: 17 strumenti open source gratuiti per traduzione sottotitoli, Markdown, JSON i18n e elaborazione batch. 25+ motori IA."
   },
-  "languages": {
-    "auto": "Rilevamento Auto",
-    "en": "Inglese",
-    "zh": "Cinese",
-    "zh-hant": "Cinese Tradizionale",
-    "es": "Spagnolo",
-    "fr": "Francese",
-    "de": "Tedesco",
-    "ja": "Giapponese",
-    "ko": "Coreano",
-    "hi": "Hindi",
-    "ar": "Arabo",
-    "ru": "Russo",
-    "pt-br": "Portoghese (Brasile)",
-    "id": "Indonesiano",
-    "vi": "Vietnamita",
-    "it": "Italiano",
-    "yue": "Cantonese",
-    "pl": "Polacco",
-    "uk": "Ucraino",
-    "nl": "Olandese",
-    "ro": "Rumeno",
-    "el": "Greco",
-    "hu": "Ungherese",
-    "sv": "Svedese",
-    "cs": "Ceco",
-    "pt-pt": "Portoghese (Portogallo)",
-    "ca": "Catalano",
-    "sr": "Serbo",
-    "bg": "Bulgaro",
-    "hy": "Armeno",
-    "da": "Danese",
-    "sq": "Albanese",
-    "fi": "Finlandese",
-    "nb": "Norvegese",
-    "sk": "Slovacco",
-    "hr": "Croato",
-    "be": "Bielorusso",
-    "scn": "Siciliano",
-    "ka": "Georgiano",
-    "lmo": "Lombardo",
-    "lt": "Lituano",
-    "gl": "Galiziano",
-    "bs": "Bosniaco",
-    "sl": "Sloveno",
-    "mk": "Macedone",
-    "lv": "Lettone",
-    "et": "Estone",
-    "is": "Islandese",
-    "mt": "Maltese",
-    "cy": "Gallese",
-    "ga": "Irlandese",
-    "br": "Bretone",
-    "eu": "Basco",
-    "yi": "Yiddish",
-    "lb": "Lussemburghese",
-    "oc": "Occitano",
-    "an": "Aragonese",
-    "la": "Latino",
-    "eo": "Esperanto",
-    "tr": "Turco",
-    "he": "Ebraico",
-    "fa": "Persiano",
-    "ur": "Urdu",
-    "ps": "Pashto",
-    "prs": "Dari",
-    "ckb": "Curdo centrale",
-    "kmr": "Curdo settentrionale",
-    "uz": "Uzbeko",
-    "kk": "Kazako",
-    "ky": "Kirghiso",
-    "tk": "Turkmeno",
-    "az": "Azero",
-    "tg": "Tagiko",
-    "mn": "Mongolo",
-    "ba": "Baschiro",
-    "tt": "Tataro",
-    "ug": "Uiguro",
-    "bn": "Bengalese",
-    "mr": "Marathi",
-    "te": "Telugu",
-    "ta": "Tamil",
-    "gu": "Gujarati",
-    "kn": "Kannada",
-    "pa": "Punjabi",
-    "ml": "Malayalam",
-    "bho": "Bhojpuri",
-    "mai": "Maithili",
-    "ne": "Nepalese",
-    "si": "Singalese",
-    "as": "Assamese",
-    "gom": "Konkani",
-    "sa": "Sanscrito",
-    "th": "Tailandese",
-    "lo": "Lao",
-    "my": "Birmano",
-    "ms": "Malese",
-    "fil": "Filippino (Tagalog)",
-    "jv": "Giavanese",
-    "su": "Sundanese",
-    "ace": "Aceh",
-    "pag": "Pangasinan",
-    "pam": "Kapampangan",
-    "ceb": "Cebuano",
-    "sw": "Swahili",
-    "ha": "Hausa",
-    "am": "Amarico",
-    "ig": "Igbo",
-    "wo": "Wolof",
-    "xh": "Xhosa",
-    "zu": "Zulu",
-    "af": "Afrikaans",
-    "om": "Oromo",
-    "st": "Sotho meridionale",
-    "tn": "Tswana",
-    "ts": "Tsonga",
-    "mg": "Malgascio",
-    "ln": "Lingala",
-    "ht": "Creolo haitiano",
-    "qu": "Quechua",
-    "ay": "Aymara",
-    "gn": "Guaranì",
-    "mi": "Maori"
-  },
   "CopyToClipboard": {
     "empty": "Contenuto vuoto, nulla da copiare",
     "unsupported": "Browser non supportato, copia manualmente",
@@ -349,7 +291,6 @@
   "ChineseConversion": {
     "description1": "Nessun testo caricato su server di terze parti — tutte le conversioni vengono eseguite localmente nel browser per preservare la privacy. Supporta la conversione bidirezionale tra cinese semplificato, cinese tradizionale (Taiwan), cinese tradizionale (Hong Kong) e shinjitai giapponese. Ideale per l'elaborazione in batch di grandi volumi di testo. Clicca sul pulsante della direzione corrispondente per convertire in un clic; gli utenti avanzati possono scegliere liberamente le scritture di origine e destinazione.",
     "description2": "Esempi: Semplificato 自行车 → tradizionale Taiwan 腳踏車, 视频 → 影片, 内存 → 記憶體 — le differenze regionali di vocabolario vengono convertite automaticamente. Per domande o suggerimenti, contattaci tramite la community o la pagina di feedback.",
-    "exportedFile": "File esportato: {fileName}",
     "conversionSettings": "Impostazioni di Conversione",
     "phraseConversionTooltip": "Converti anche il vocabolario regionale di Taiwan (es.: 视频↔影片, 幼儿园↔幼稚園)",
     "phraseConversion": "Converti Vocabolario Regionale",
@@ -360,7 +301,6 @@
     "customTargetLanguage": "Lingua di Destinazione Personalizzata",
     "customRulesNotActive": "⚠ Le regole di sostituzione personalizzate non si applicano a questa direzione (è necessario che «da» o «a» sia semplificato)",
     "customConvert": "Conversione Personalizzata",
-    "enterTextError": "Inserisci o incolla il testo da convertire",
     "conversionFailed": "Conversione fallita. Verifica il testo inserito o le regole di protezione",
     "uploadFilesFirst": "Carica prima i file da elaborare",
     "sameLangError": "La lingua di origine e quella di destinazione non possono essere uguali",
@@ -386,7 +326,6 @@
     "deletedNRules": "{count} regola/e eliminata/e",
     "exportEmpty": "Nessuna regola valida da esportare",
     "exportedNRules": "{count} regola/e esportata/e",
-    "fileReadFailed": "Lettura file fallita",
     "importNoRules": "Nessuna regola valida trovata nel file (formato OpenCC: ogni riga: chiave[TAB]valore)",
     "importedWithDedup": "{added} regola/e importata/e in {direction}, {dedup} duplicato/i con la stessa origine rimosso/i automaticamente",
     "imported": "{added} regola/e importata/e nella direzione {direction}",
