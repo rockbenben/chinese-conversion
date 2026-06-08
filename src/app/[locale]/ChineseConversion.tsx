@@ -9,7 +9,7 @@ import { useCopyToClipboard } from "@/app/hooks/useCopyToClipboard";
 import { useTranslations } from "next-intl";
 import { useLocalStorage } from "@/app/hooks/useLocalStorage";
 import useFileUpload from "@/app/hooks/useFileUpload";
-import { createConverter } from "js-opencc";
+import { createConverter, type LocaleCode } from "js-opencc";
 import ResultCard from "@/app/components/ResultCard";
 import PageCard from "@/app/components/styled/PageCard";
 import SourceArea from "@/app/components/SourceArea";
@@ -91,10 +91,9 @@ const ChineseConversion = () => {
     const protectedDict: string[][] = activeRules.filter((r) => r.from && r.to).map((r) => [r.from, r.to]);
 
     try {
-      const converter = await createConverter(
-        { from: from as "cn" | "tw" | "twp" | "hk" | "t" | "jp", to: to as "cn" | "tw" | "twp" | "hk" | "t" | "jp" },
-        protectedDict.length > 0 ? protectedDict : undefined
-      );
+      // 传 [] 而非 undefined:undefined 会触发 createConverter 自动加载打包内
+      // ProtectedDict.txt(走 node:fs,浏览器里多余),[] 显式跳过 + 表示不保护。
+      const converter = await createConverter({ from: from as LocaleCode, to: to as LocaleCode }, protectedDict.length > 0 ? protectedDict : []);
       let convertedText = converter(sourceText);
       if (smartLineBreak) {
         const lines = cleanLines(convertedText, true);
