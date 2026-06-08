@@ -113,6 +113,7 @@
     "apiStatusTesting": "テスト中",
     "apiStatusConnected": "✓ 接続済み",
     "apiStatusFailed": "接続失敗",
+    "apiStatusTimeout": "接続がタイムアウトしました",
     "testConnection": "接続テスト",
     "moreProviderSettings": "その他のProvider設定",
     "format": "フォーマット",

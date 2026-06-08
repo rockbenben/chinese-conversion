@@ -113,6 +113,7 @@
     "apiStatusTesting": "Testando",
     "apiStatusConnected": "✓ Conectado",
     "apiStatusFailed": "Falha na conexão",
+    "apiStatusTimeout": "Tempo de conexão esgotado",
     "testConnection": "Testar conexão",
     "moreProviderSettings": "Mais configurações do Provider",
     "format": "Formatar",
@@ -180,7 +181,7 @@
           "a": "O tradicional de Taiwan e o de Hong Kong diferem em alguns caracteres e vocabulário, como «記憶體» (Taiwan) e «內存» (Hong Kong). Esta ferramenta distingue com precisão os dois padrões tradicionais."
         },
         {
-          "q": "Se eu precisar corrigir a formatação de um romance em chinês simplificado antes de converter, qual ferramenta…",
+          "q": "Depois de organizar um romance em chinês simplificado, quero também convertê-lo para tradicional, dividi-lo em capítulos e remover anúncios. Existe um fluxo de trabalho mais completo?",
           "a": "Use [Formatador de Romances](../novel-processor) primeiro para corrigir quebras de linha, títulos de capítulo e remover anúncios de arquivos TXT de web novels, depois rode este conversor para a passagem Simplificado/Tradicional. Ambas as ferramentas compartilham o mesmo formato de dicionário de palavras protegidas, então nomes de personagens e lugares são preservados de ponta a ponta. Para substituições adicionais por regex, extração de nomes ou filtragem, encadeie com o [Manipulador de Texto](../text-toolbox)."
         },
         {

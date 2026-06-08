@@ -113,6 +113,7 @@
     "apiStatusTesting": "परीक्षण हो रहा है",
     "apiStatusConnected": "✓ कनेक्टेड",
     "apiStatusFailed": "कनेक्शन विफल",
+    "apiStatusTimeout": "कनेक्शन टाइम आउट",
     "testConnection": "कनेक्शन परीक्षण",
     "moreProviderSettings": "अधिक Provider सेटिंग्स",
     "format": "फ़ॉर्मेट करें",

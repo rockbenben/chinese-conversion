@@ -113,6 +113,7 @@
     "apiStatusTesting": "Test ediliyor",
     "apiStatusConnected": "✓ Bağlandı",
     "apiStatusFailed": "Bağlantı başarısız",
+    "apiStatusTimeout": "Bağlantı zaman aşımına uğradı",
     "testConnection": "Bağlantıyı test et",
     "moreProviderSettings": "Daha fazla Provider ayarı",
     "format": "Biçimlendir",
@@ -363,7 +364,7 @@
   },
   "feedback": {
     "feedback1": "Geri Bildirim & Öneriler",
-    "feedback2": "Sorun yaşarsanız veya önerileriniz varsa, bana bildirin!Geri bildiriminiz gelecekteki geliştirmeleri etkiler ve daha iyi araçlar oluşturmamıza yardımcı ol…",
+    "feedback2": "Kullanım sırasında bir sorunla karşılaşırsanız veya herhangi bir öneriniz ya da fikriniz varsa, lütfen bana bildirin! Geri bildiriminiz gelecekteki özelliklerin geliştirilmesini ve iyileştirilmesini doğrudan etkiler ve herkesin ihtiyaçlarına daha uygun araçlar oluşturmamıza yardımcı olur.",
     "feedback3": "Kullanım durumunuzu, sorunu veya fikri açıklayın. Her mesajı okuyorum ve en kısa sürede yanıtlayacağım/optimize edeceğim.",
     "reaction0": "Beğen",
     "reaction1": "Destek",

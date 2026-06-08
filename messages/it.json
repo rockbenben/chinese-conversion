@@ -113,6 +113,7 @@
     "apiStatusTesting": "Test in corso",
     "apiStatusConnected": "✓ Connesso",
     "apiStatusFailed": "Connessione fallita",
+    "apiStatusTimeout": "Connessione scaduta",
     "testConnection": "Testa connessione",
     "moreProviderSettings": "Altre impostazioni Provider",
     "format": "Formatta",
@@ -180,7 +181,7 @@
           "a": "Il tradizionale di Taiwan e quello di Hong Kong differiscono in alcuni caratteri e vocaboli, come «記憶體» (Taiwan) e «內存» (Hong Kong). Questo strumento distingue con precisione i due standard tradizionali."
         },
         {
-          "q": "Se devo anche correggere il formato di un romanzo in cinese semplificato prima di convertirlo, quale strumento…",
+          "q": "Dopo aver sistemato un romanzo in cinese semplificato, vorrei anche convertirlo in tradizionale, dividerlo in capitoli e rimuovere la pubblicità. Esiste un flusso di lavoro più completo?",
           "a": "Usa prima il [Formattatore di romanzi](../novel-processor) per riparare interruzioni di riga, intestazioni di capitolo e rimuovere annunci dai file TXT di web novel, poi esegui questo convertitore per il passaggio Semplificato/Tradizionale. Entrambi gli strumenti condividono lo stesso formato di dizionario parole protette, così i nomi di personaggi e luoghi vengono preservati end-to-end. Per ulteriore sostituzione regex di massa, estrazione nomi o filtraggio, concatena con la [Cassetta strumenti testo](../text-toolbox)."
         },
         {

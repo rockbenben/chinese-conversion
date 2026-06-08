@@ -126,6 +126,7 @@
     "apiStatusTesting": "Test en cours",
     "apiStatusConnected": "✓ Connecté",
     "apiStatusFailed": "Échec de connexion",
+    "apiStatusTimeout": "Délai de connexion dépassé",
     "testConnection": "Tester la connexion",
     "moreProviderSettings": "Plus de paramètres Provider",
     "gtxFreeAPIUnavailable": "Le service GTX Free est temporairement inaccessible — il pourrait s'agir d'une restriction réseau. Réessayez plus tard ou changez de service de traduction.",

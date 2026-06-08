@@ -126,6 +126,7 @@
     "apiStatusTesting": "Probando",
     "apiStatusConnected": "✓ Conectado",
     "apiStatusFailed": "Fallo de conexión",
+    "apiStatusTimeout": "Tiempo de conexión agotado",
     "testConnection": "Probar conexión",
     "moreProviderSettings": "Más ajustes del Provider",
     "gtxFreeAPIUnavailable": "El servicio GTX Free está temporalmente inaccesible — podría ser una restricción de red. Inténtalo de nuevo más tarde o cambia a otro servicio de traducción.",
@@ -180,7 +181,7 @@
           "a": "El tradicional de Taiwán y el de Hong Kong difieren en algunos caracteres y términos — por ejemplo 記憶體 (Taiwán) vs 內存 (Hong Kong). Esta herramienta distingue con precisión ambos estándares para satisfacer las necesidades de distintas regiones."
         },
         {
-          "q": "Si también necesito arreglar el formato de una novela en chino simplificado antes de convertir, ¿qué herramienta…",
+          "q": "Después de limpiar una novela en chino simplificado, quiero además convertirla a tradicional, dividirla en capítulos y eliminar anuncios. ¿Existe un flujo de trabajo más completo?",
           "a": "Usa primero el [Formateador de novelas](../novel-processor) para arreglar saltos de línea, encabezados de capítulo y eliminar anuncios de archivos TXT de novelas web, luego ejecuta este conversor para la pasada Simplificado/Tradicional. Ambas herramientas comparten el mismo formato de diccionario de palabras protegidas, por lo que nombres de personajes y lugares se preservan de extremo a extremo. Para más reemplazos regex masivos, extracción de nombres o filtrado, encadena con la [Caja de herramientas de texto](../text-toolbox)."
         },
         {

@@ -126,6 +126,7 @@
     "apiStatusTesting": "Testing",
     "apiStatusConnected": "✓ Connected",
     "apiStatusFailed": "Connection Failed",
+    "apiStatusTimeout": "Connection timed out",
     "testConnection": "Test Connection",
     "moreProviderSettings": "More Provider Settings",
     "gtxFreeAPIUnavailable": "GTX Free service is temporarily unreachable — could be a network restriction. Please try again later, or switch to a different translation service.",

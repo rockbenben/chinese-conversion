@@ -126,6 +126,7 @@
     "apiStatusTesting": "Teste",
     "apiStatusConnected": "✓ Verbunden",
     "apiStatusFailed": "Verbindung fehlgeschlagen",
+    "apiStatusTimeout": "Zeitüberschreitung der Verbindung",
     "testConnection": "Verbindung testen",
     "moreProviderSettings": "Weitere Provider-Einstellungen",
     "gtxFreeAPIUnavailable": "Der GTX Free-Dienst ist vorübergehend nicht erreichbar — möglicherweise eine Netzwerkbeschränkung. Versuche es später erneut oder wechsle zu einem anderen Übersetzungsdienst.",
@@ -180,7 +181,7 @@
           "a": "Taiwan-Traditionell und Hongkong-Traditionell unterscheiden sich in einigen Zeichen und Begriffen — zum Beispiel 記憶體 (Taiwan) vs. 內存 (Hongkong). Dieses Tool unterscheidet beide Standards präzise für die Bedürfnisse verschiedener Regionen."
         },
         {
-          "q": "Wenn ich vor der Konvertierung das Format eines vereinfachten chinesischen Romans korrigieren muss, welches…",
+          "q": "Ich habe einen vereinfachten chinesischen Roman bereinigt und möchte ihn anschließend in Langzeichen konvertieren, Kapitel aufteilen und Werbung entfernen — gibt es dafür einen kompletteren Workflow?",
           "a": "Nutzen Sie zuerst den [Roman-Formatierer](../novel-processor), um Zeilenumbrüche, Kapitelüberschriften und Werbung aus Web-Roman-TXT-Dateien zu reparieren, und führen Sie dann diesen Konverter für den Vereinfacht/Traditionell-Durchlauf aus. Beide Tools teilen dasselbe Schutzwörter-Wörterbuch-Format, sodass Charakter- und Ortsnamen durchgehend erhalten bleiben. Für weitere Massen-Regex-Ersetzung, Charakter-Namens-Extraktion oder Filterung verketten Sie mit der [Text-Toolbox](../text-toolbox)."
         },
         {
@@ -350,7 +351,7 @@
     "colTo": "Nach",
     "fromEmpty": "Von ist leer",
     "toEmpty": "Nach ist leer",
-    "shadowedTooltip": "Verdeckt von Zeile {rowNumber}; effektives Ergebnis ist '{winnerTo}'",
+    "shadowedTooltip": "Verdeckt von Zeile {rowNumber}; effektives Ergebnis ist \"{winnerTo}\"",
     "fromPlaceholder": "Zu findender Begriff",
     "toPlaceholder": "Ersetzen durch",
     "emptyTable": "Keine Regeln. Klicken Sie auf 'Regel hinzufügen', um zu beginnen.",
@@ -363,7 +364,7 @@
   },
   "feedback": {
     "feedback1": "Feedback & Vorschläge",
-    "feedback2": "Wenn Sie Probleme haben oder Vorschläge, lassen Sie es mich wissen!Ihr Feedback beeinflusst die zukünftige Entwicklung und hilft uns, bessere Tools zu bau…",
+    "feedback2": "Wenn Sie bei der Nutzung auf Probleme stoßen oder Vorschläge und Ideen haben, lassen Sie es mich gerne jederzeit wissen! Ihr Feedback fließt direkt in die Entwicklung und Verbesserung künftiger Funktionen ein und hilft uns, gemeinsam Tools zu bauen, die den Bedürfnissen aller besser entsprechen.",
     "feedback3": "Bitte beschreiben Sie Ihren Anwendungsfall, das Problem oder Ihre Idee. Ich lese jede Nachricht und werde so schnell wie möglich antworten/optimieren.",
     "reaction0": "Gefällt mir",
     "reaction1": "Unterstützung",

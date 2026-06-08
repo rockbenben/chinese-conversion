@@ -113,6 +113,7 @@
     "apiStatusTesting": "Đang kiểm tra",
     "apiStatusConnected": "✓ Đã kết nối",
     "apiStatusFailed": "Kết nối thất bại",
+    "apiStatusTimeout": "Hết thời gian kết nối",
     "testConnection": "Kiểm tra kết nối",
     "moreProviderSettings": "Thêm cài đặt Provider",
     "format": "Định dạng",
@@ -363,7 +364,7 @@
   },
   "feedback": {
     "feedback1": "Phản hồi & Gợi ý",
-    "feedback2": "Nếu bạn gặp vấn đề hoặc có gợi ý, hãy cho tôi biết!Phản hồi của bạn ảnh hưởng đến sự phát triển trong tương lai và giúp chúng tôi tạo ra các công cụ tốt h…",
+    "feedback2": "Nếu bạn gặp vấn đề trong quá trình sử dụng, hoặc có bất kỳ góp ý và ý tưởng nào, hãy cho tôi biết bất cứ lúc nào! Phản hồi của bạn sẽ ảnh hưởng trực tiếp đến việc phát triển và cải tiến các tính năng trong tương lai, giúp chúng tôi cùng nhau xây dựng những công cụ phù hợp hơn với nhu cầu của mọi người.",
     "feedback3": "Mô tả trường hợp sử dụng, vấn đề hoặc ý tưởng của bạn. Tôi đọc từng tin nhắn và sẽ phản hồi/tối ưu hóa sớm nhất có thể.",
     "reaction0": "Thích",
     "reaction1": "Ủng hộ",

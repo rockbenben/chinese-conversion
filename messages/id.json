@@ -113,6 +113,7 @@
     "apiStatusTesting": "Menguji",
     "apiStatusConnected": "✓ Terhubung",
     "apiStatusFailed": "Koneksi gagal",
+    "apiStatusTimeout": "Waktu koneksi habis",
     "testConnection": "Uji koneksi",
     "moreProviderSettings": "Pengaturan Provider lain",
     "format": "Format",
@@ -176,7 +177,7 @@
           "a": "Keduanya berbeda dalam beberapa karakter dan kosakata, misalnya「記憶體」(Taiwan) dan「內存」(Hong Kong). Alat ini membedakan kedua standar dengan akurat."
         },
         {
-          "q": "Setelah merapikan novel Sederhana ingin konversi ke Tradisional, pemisahan bab, dan pembersihan iklan…",
+          "q": "Setelah merapikan novel Sederhana, saya ingin lanjut melakukan konversi ke Tradisional, pemisahan bab, dan pembersihan iklan — adakah alur kerja yang lebih lengkap?",
           "a": "Disarankan gabungkan dengan [Pemformat Novel](../novel-processor): pertama perbaiki masalah format TXT novel web seperti line break, bab, iklan, lalu gunakan alat ini untuk konversi Sederhana-Tradisional. Kedua alat dapat berbagi «kamus kata-kata terlindungi» yang sama untuk menjaga nama tokoh, tempat dll dari konversi salah. Untuk operasi penggantian massal judul bab, ekstraksi daftar tokoh, dll, hubungkan dengan [Pemroses Teks](../text-toolbox) untuk pencocokan regex."
         },
         {
@@ -363,7 +364,7 @@
   },
   "feedback": {
     "feedback1": "Umpan Balik & Saran",
-    "feedback2": "Jika Anda menemukan masalah atau memiliki saran, beri tahu saya!Umpan balik Anda memengaruhi pengembangan masa depan dan membantu kami membuat alat yang l…",
+    "feedback2": "Jika Anda menemukan masalah saat menggunakan alat ini, atau punya saran dan ide apa pun, jangan ragu untuk memberi tahu saya! Umpan balik Anda akan langsung memengaruhi pengembangan dan penyempurnaan fitur di masa depan, serta membantu kami bersama-sama membangun alat yang lebih sesuai dengan kebutuhan semua orang.",
     "feedback3": "Jelaskan kasus penggunaan, masalah, atau ide Anda. Saya membaca setiap pesan dan akan merespons/mengoptimalkan sesegera mungkin.",
     "reaction0": "Suka",
     "reaction1": "Dukung",
