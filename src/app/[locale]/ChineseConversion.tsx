@@ -269,7 +269,7 @@ const ChineseConversion = () => {
                   <Tooltip title={t("phraseConversionTooltip")}>
                     <span>{t("phraseConversion")}</span>
                   </Tooltip>
-                  <Switch size="small" checked={phraseConversion} onChange={setPhraseConversion} />
+                  <Switch size="small" checked={phraseConversion} onChange={setPhraseConversion} aria-label={t("phraseConversion")} />
                 </Flex>
                 <Flex justify="space-between" align="center">
                   <Tooltip title={t("smartLineBreakTooltip")}>
