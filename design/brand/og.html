@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+SC:wght@500;700&display=swap');
+  :root { --bg:#15171C; --panel:#1A1D23; --ink:#ECEAE3; --muted:#9AA1AB; --line:#2A2F38;
+    --gold:#E8B23A; --red:#E0533D; --red-t:#FF918C; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:1200px; height:630px; }
+  body { background:var(--bg); color:var(--ink); display:flex; overflow:hidden;
+    position:relative; font-family:'Schibsted Grotesk',system-ui,sans-serif; }
+  body::before { content:""; position:absolute; inset:0;
+    background:radial-gradient(900px 520px at 86% 30%, rgba(232,178,58,.10), transparent 60%); }
+  .left { flex:1; padding:60px 36px 56px 78px; display:flex; flex-direction:column;
+    justify-content:center; gap:24px; position:relative; z-index:1; }
+  .eyebrow { font-family:'JetBrains Mono',monospace; font-size:17px; font-weight:500;
+    letter-spacing:.26em; text-transform:uppercase; color:var(--muted);
+    display:flex; align-items:center; gap:13px; }
+  .eyebrow .marks { display:inline-flex; gap:6px; }
+  .eyebrow .marks i { width:11px; height:11px; display:block; border-radius:2px; }
+  .eyebrow .marks .a { background:var(--gold); } .eyebrow .marks .b { background:var(--red); }
+  .title { font-weight:800; font-size:72px; line-height:1.02; letter-spacing:-.03em; }
+  .title .hl { color:var(--gold); }
+  .pills { display:flex; gap:12px; margin-top:2px; }
+  .pill { display:flex; align-items:center; gap:9px; padding:11px 20px;
+    border:1px solid rgba(232,178,58,.30); background:rgba(232,178,58,.08);
+    border-radius:999px; font-size:21px; font-weight:700; color:var(--gold); }
+  .pill .dot { width:8px; height:8px; border-radius:50%; background:var(--gold); }
+  .desc { font-family:'JetBrains Mono',monospace; font-size:16px; color:var(--muted);
+    line-height:1.6; max-width:42ch; }
+  .url { font-family:'JetBrains Mono',monospace; font-size:19px; font-weight:500;
+    color:var(--ink); display:flex; align-items:center; gap:12px; margin-top:2px; }
+  .url::before { content:""; width:26px; height:2px; background:var(--gold); }
+
+  .right { width:486px; flex:none; display:flex; align-items:center;
+    padding-right:64px; position:relative; z-index:1; }
+  .card { width:100%; border-radius:16px; padding:28px 30px 32px; background:var(--panel);
+    border:1px solid var(--line); box-shadow:0 40px 80px -30px rgba(0,0,0,.7); }
+  .toggle { display:flex; padding:5px; background:#12151a; border-radius:12px;
+    border:1px solid #262b33; margin-bottom:26px; font-family:'Noto Sans SC',sans-serif;
+    font-weight:700; font-size:21px; }
+  .toggle .opt { flex:1; text-align:center; padding:11px 0; border-radius:9px; color:var(--muted); }
+  .toggle .opt.on { background:var(--gold); color:#1a1205; }
+  .conv .row { display:flex; align-items:center; gap:16px; padding:13px 0;
+    border-bottom:1px solid #20242b; }
+  .conv .row:last-child { border-bottom:none; }
+  .conv .s { flex:1; font-size:27px; color:#7d838d;
+    font-family:'Noto Sans SC','Microsoft YaHei',sans-serif; }
+  .conv .ar { color:var(--gold); font-family:'JetBrains Mono',monospace; font-size:19px; }
+  .conv .t { flex:1; text-align:right; font-size:27px; color:var(--red-t); font-weight:500;
+    font-family:'Noto Sans SC','Microsoft YaHei',sans-serif; }
+</style>
+</head>
+<body>
+  <div class="left">
+    <div class="eyebrow"><span class="marks"><i class="a"></i><i class="b"></i></span> Tools&nbsp;By&nbsp;AI · Chinese&nbsp;Converter</div>
+    <div class="title">Simplified ⇄ Traditional,<br><span class="hl">in one click</span></div>
+    <div class="pills">
+      <span class="pill"><span class="dot"></span>Free</span>
+      <span class="pill"><span class="dot"></span>No signup</span>
+      <span class="pill"><span class="dot"></span>In&#8209;browser</span>
+    </div>
+    <div class="desc">Taiwan · Hong Kong · Japanese Shinjitai · batch 100+ files · protected-term dictionary.</div>
+    <div class="url">tools.newzone.top</div>
+  </div>
+  <div class="right">
+    <div class="card">
+      <div class="toggle"><div class="opt">简体</div><div class="opt on">繁體</div></div>
+      <div class="conv">
+        <div class="row"><span class="s">汉字处理</span><span class="ar">→</span><span class="t">漢字處理</span></div>
+        <div class="row"><span class="s">国际化设置</span><span class="ar">→</span><span class="t">國際化設置</span></div>
+        <div class="row"><span class="s">数据备份恢复</span><span class="ar">→</span><span class="t">數據備份恢復</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

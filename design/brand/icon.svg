@@ -1,0 +1,8 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Chinese Converter favicon — a single 简 glyph. Few strokes keep it legible down
+       to 16px; unmistakably a Chinese-script tool. The logo carries the full 简⇄繁 story. -->
+  <rect width="512" height="512" fill="#15171C"/>
+  <text x="256" y="392" text-anchor="middle"
+        font-family="'Source Han Sans SC','Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif"
+        font-weight="700" font-size="400" fill="#E8B23A">简</text>
+</svg>

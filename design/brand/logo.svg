@@ -1,0 +1,21 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Chinese Converter — 简 ⇄ 繁: simplified (gold) and traditional (red) characters
+       with a bidirectional swap between them. The product, spelled out. -->
+  <rect width="512" height="512" fill="#15171C"/>
+
+  <!-- 简 simplified -->
+  <text x="138" y="318" text-anchor="middle"
+        font-family="'Source Han Sans SC','Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif"
+        font-weight="700" font-size="176" fill="#E8B23A">简</text>
+
+  <!-- swap arrows -->
+  <rect x="232" y="222" width="48" height="9" rx="4.5" fill="#E8B23A"/>
+  <path d="M274 215 L300 226.5 L274 238 Z" fill="#E8B23A"/>
+  <rect x="232" y="281" width="48" height="9" rx="4.5" fill="#E0533D"/>
+  <path d="M238 274 L212 285.5 L238 297 Z" fill="#E0533D"/>
+
+  <!-- 繁 traditional -->
+  <text x="374" y="318" text-anchor="middle"
+        font-family="'Source Han Sans SC','Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif"
+        font-weight="700" font-size="176" fill="#E0533D">繁</text>
+</svg>
