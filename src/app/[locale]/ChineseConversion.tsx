@@ -3,12 +3,13 @@
 import React, { useState } from "react";
 import { Button, Typography, Select, App, Upload, Tooltip, Space, Spin, Row, Col, Switch, Flex } from "antd";
 import { SwapOutlined, InboxOutlined, ClearOutlined } from "@ant-design/icons";
-import { cleanLines, downloadFile, punctuationEndRegex, specialLineStartRegex, pureNumberRegex, getFileTypePresetConfig } from "@/app/utils";
+import { cleanLines, downloadFile, punctuationEndRegex, specialLineStartRegex, pureNumberRegex, chapterTitleRegex, getFileTypePresetConfig } from "@/app/utils";
 import { useTextStats } from "@/app/hooks/useTextStats";
 import { useCopyToClipboard } from "@/app/hooks/useCopyToClipboard";
 import { useTranslations } from "next-intl";
 import { useLocalStorage } from "@/app/hooks/useLocalStorage";
 import useFileUpload from "@/app/hooks/useFileUpload";
+import { useResetOnSourceChange } from "@/app/hooks/useResetOnSourceChange";
 import { createConverter, type LocaleCode } from "js-opencc";
 import ResultCard from "@/app/components/ResultCard";
 import PageCard from "@/app/components/styled/PageCard";
@@ -67,11 +68,7 @@ const ChineseConversion = () => {
   const activeS2tCount = effectiveCount(s2tRules);
   const activeT2sCount = effectiveCount(t2sRules);
 
-  const [prevSourceText, setPrevSourceText] = useState(sourceText);
-  if (sourceText !== prevSourceText) {
-    setPrevSourceText(sourceText);
-    setResult("");
-  }
+  useResetOnSourceChange(sourceText, () => setResult(""));
 
   const handleExportFile = (text: string) => {
     const uploadFileName = multipleFiles[0]?.name;
@@ -100,9 +97,23 @@ const ChineseConversion = () => {
         if (lines.length === 0) {
           convertedText = "";
         } else {
+          // 章节标题前后都要断行:specialLineStartRegex 的 `第.*[章节卷]`
+          // 分支锚定行尾,"第一章 初见" 这类带副标题的行两个方向都测不中,
+          // 标题会与正文无分隔地黏成一行("第一章 初见他推开门。")。
+          // 排除【数词开头】的行:chapterTitleRegex 的编号分支接受无「第」的
+          // "一部/三幕/十集…" —— 硬折行首的量词短语("一部手机递了过来。")
+          // 会被当标题在句子中间插空行。无第前缀的纯数词标题在本合并启发式
+          // 里与量词散文不可区分,放弃支持(novel-processor 不受影响)。
+          const isTitleForBreak = (l: string) => chapterTitleRegex.test(l) && !/^[\d〇零一二两三四五六七八九十百千万壹贰叁肆伍陆柒捌玖拾佰仟]/.test(l);
           convertedText = lines.reduce((merged, current, index, arr) => {
             if (index === 0) return current;
-            const shouldAddNewline = punctuationEndRegex.test(arr[index - 1]) || pureNumberRegex.test(current) || pureNumberRegex.test(arr[index - 1]) || specialLineStartRegex.test(current);
+            const shouldAddNewline =
+              punctuationEndRegex.test(arr[index - 1]) ||
+              pureNumberRegex.test(current) ||
+              pureNumberRegex.test(arr[index - 1]) ||
+              specialLineStartRegex.test(current) ||
+              isTitleForBreak(current) ||
+              isTitleForBreak(arr[index - 1]);
             return merged + (shouldAddNewline ? "\n\n" : "") + current;
           }, "");
         }
