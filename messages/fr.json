@@ -56,6 +56,7 @@
     "batchDownloaded": "Traitement terminé, le fichier a été téléchargé automatiquement",
     "extractedText": "Texte extrait",
     "translating": "Traduction...",
+    "translateDone": "Traduction terminée",
     "multiTranslating": "Traduction en cours, total langues :",
     "model": "Modèle",
     "sameLanguageTarget": "Langues source et cible identiques ; cible ajustée automatiquement à",
@@ -110,7 +111,7 @@
     "requestTimeoutSec": "Délai d'attente",
     "requestTimeoutSecTooltip": "Attente maximale par requête (secondes). La réflexion des LLM prend plus de temps ; 180 s ou plus recommandé.",
     "customExportFilename": "Modèle de nom de fichier",
-    "customExportFilenameTooltip": "'{'name'}' = nom original, '{'lang'}' = langue, '{'ext'}' = extension, '{'date'}' = date, '{'time'}' = heure",
+    "customExportFilenameTooltip": "'{'name'}' = nom original, '{'lang'}' = langue, '{'ext'}' = extension, '{'date'}' = date, '{'time'}' = heure; en mode multilingue, '{'lang'}' est ajouté automatiquement pour éviter les conflits de noms",
     "partialFailureTitle": "{count} ligne(s) ont échoué",
     "partialFailureDesc": "Les lignes échouées ont conservé le texte original comme espace réservé, le fichier reste utilisable. Ces échecs sont généralement dus à des aléas réseau ou à une instabilité temporaire du service de traduction — les services gratuits et les serveurs auto-hébergés y sont particulièrement sensibles, et ce n'est pas un problème de votre configuration. Cliquez sur Réessayer pour continuer (les lignes réussies viennent du cache, pas de retraduction) ; si l'échec persiste, réessayez plus tard ou essayez un autre service de traduction. Ou cliquez sur Voir les lignes échouées pour les traiter manuellement.",
     "retryFailedLines": "Réessayer",
@@ -135,6 +136,7 @@
     "translategemmaUnavailable": "Le service TranslateGemma est temporairement inaccessible, vérifiez que votre serveur local (LM Studio / llama.cpp / Ollama) est en cours d'exécution et que l'URL est correcte.",
     "networkUnavailable": "Le service de traduction est temporairement inaccessible — cela peut être un problème réseau ou un incident côté service. Réessayez plus tard ou changez de service de traduction.",
     "translationTimeout": "La requête de traduction a expiré — il pourrait s'agir d'un réseau lent ou le service met trop de temps à répondre. Réessayez plus tard ou changez de service de traduction.",
+    "translationTimeoutLocal": "Délai dépassé pour la traduction avec le modèle local. Un LLM local peut se bloquer dans une boucle de répétition — réduisez max_tokens (la limite de sortie) dans les paramètres avancés et assurez-vous que la langue source sélectionnée correspond au texte réel.",
     "langGroupCommon": "Courantes",
     "langGroupEurope": "Europe",
     "langGroupMiddleEast": "Moyen-Orient",
@@ -209,20 +211,6 @@
           "a": "100% local au navigateur : le dictionnaire OpenCC est embarqué dans le front-end, et ni votre texte ni votre liste de mots protégés ne sont jamais envoyés. Code source ouvert sur GitHub (rockbenben/chinese-conversion) pour auto-hébergement ou audit."
         }
       ],
-      "howto": [
-        {
-          "name": "Coller ou saisir le texte",
-          "text": "Collez le texte chinois simplifié ou traditionnel à convertir dans la zone de saisie."
-        },
-        {
-          "name": "Choisir la direction de conversion",
-          "text": "Choisissez une direction — Simplifié ↔ Traditionnel Taïwan ↔ Traditionnel Hong Kong ↔ Shinjitai japonais."
-        },
-        {
-          "name": "Convertir et copier",
-          "text": "L'outil convertit en temps réel, localement dans votre navigateur. Copiez le résultat — le texte n'est jamais envoyé sur un serveur."
-        }
-      ],
       "features": [
         "Chinois simplifié vers traditionnel (Taïwan/Hong Kong)",
         "Chinois traditionnel vers simplifié",
@@ -293,7 +281,11 @@
     "textParser": "Outils Texte",
     "jsonParser": "Outils JSON",
     "dataParser": "Outils Données",
-    "otherTools": "Autres Outils"
+    "otherTools": "Autres Outils",
+    "externalTools": {
+      "legendtalk": "Table ronde des penseurs IA",
+      "imgprompt": "Prompts d'images IA"
+    }
   },
   "Metadata": {
     "title": "ToolsByAI | Outils de Traduction & Dev IA Gratuits",

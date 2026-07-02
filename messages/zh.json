@@ -60,6 +60,7 @@
     "exportedFile": "已导出",
     "extractedText": "提取的文本",
     "translating": "翻译中",
+    "translateDone": "翻译完成",
     "multiTranslating": "正在翻译，目标语言共",
     "model": "模型",
     "sameLanguageTarget": "源语言与目标语言相同，已自动调整目标语言为",
@@ -103,7 +104,7 @@
     "requestTimeoutSec": "超时时间",
     "requestTimeoutSecTooltip": "单次请求的最大等待时间（秒）。LLM 思考耗时较长，建议 180 秒以上",
     "customExportFilename": "导出文件名格式",
-    "customExportFilenameTooltip": "'{'name'}' = 原始文件名, '{'lang'}' = 语言, '{'ext'}' = 扩展名, '{'date'}' = 日期, '{'time'}' = 时间",
+    "customExportFilenameTooltip": "'{'name'}' = 原始文件名, '{'lang'}' = 语言, '{'ext'}' = 扩展名, '{'date'}' = 日期, '{'time'}' = 时间；多语言模式会自动加 '{'lang'}' 防止文件名冲突",
     "partialFailureTitle": "翻译失败 {count} 行",
     "partialFailureDesc": "失败的行已用原文占位（不影响文件结构）。这种失败大多是网络抖动或翻译服务临时不稳定——免费服务和自建服务器特别容易碰到，不是你的设置问题。点「再试一次」即可继续，已成功的行走缓存不会重翻；如果还是失败，稍后再点或换个翻译服务试试。也可点「查看失败行」自己处理。",
     "retryFailedLines": "再试一次",
@@ -135,6 +136,7 @@
     "translategemmaUnavailable": "TranslateGemma 服务暂时连不上，请确认本地服务器（LM Studio / llama.cpp / Ollama）已启动且 URL 正确。",
     "networkUnavailable": "翻译服务暂时连不上，可能是网络或服务的临时问题。稍后再试，或换一个翻译服务。",
     "translationTimeout": "翻译请求超时，可能是网络较慢或翻译服务响应慢。稍后再试，或换一个翻译服务。",
+    "translationTimeoutLocal": "本地模型翻译超时。本地大模型可能陷入复读循环——请在高级设置中调低 max_tokens（输出上限），并确认所选源语言与文本实际语言一致。",
     "langGroupCommon": "常用",
     "langGroupEurope": "欧洲",
     "langGroupMiddleEast": "中东",
@@ -209,20 +211,6 @@
           "a": "100% 浏览器本地处理，OpenCC 词典也打包在前端，文本和保护词典都不上传任何服务器。源代码开源在 GitHub（rockbenben/chinese-conversion），可自部署或审查实现细节。"
         }
       ],
-      "howto": [
-        {
-          "name": "粘贴或输入文本",
-          "text": "将需要转换的简体或繁体中文文本粘贴到输入区。"
-        },
-        {
-          "name": "选择转换方向",
-          "text": "选择转换方向：简体↔台湾繁体↔香港繁体↔日本新字体。"
-        },
-        {
-          "name": "转换并复制",
-          "text": "工具本地实时转换。复制结果即可使用，文本不会上传服务器。"
-        }
-      ],
       "features": [
         "简体中文转繁体（台湾/香港/标准繁体）",
         "繁体中文转简体",
@@ -293,7 +281,11 @@
     "textParser": "文本处理",
     "jsonParser": "JSON 处理",
     "dataParser": "数据转换",
-    "otherTools": "其他工具"
+    "otherTools": "其他工具",
+    "externalTools": {
+      "legendtalk": "AI 思想家圆桌",
+      "imgprompt": "AI 绘图提示词"
+    }
   },
   "Metadata": {
     "title": "ToolsByAI | 免费开源的 AI 翻译与数据处理工具集",

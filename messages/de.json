@@ -56,6 +56,7 @@
     "batchDownloaded": "Verarbeitung abgeschlossen, Datei wurde automatisch heruntergeladen",
     "extractedText": "Extrahierter Text",
     "translating": "Übersetze...",
+    "translateDone": "Übersetzung abgeschlossen",
     "multiTranslating": "Übersetze, Zielsprachen gesamt:",
     "model": "Modell",
     "sameLanguageTarget": "Quell- und Zielsprache sind gleich; Zielsprache automatisch angepasst auf",
@@ -110,7 +111,7 @@
     "requestTimeoutSec": "Zeitüberschreitung",
     "requestTimeoutSecTooltip": "Maximale Wartezeit pro Anfrage (in Sekunden). Das Denken von LLMs dauert länger; 180 Sekunden oder mehr werden empfohlen.",
     "customExportFilename": "Dateinamenmuster",
-    "customExportFilenameTooltip": "'{'name'}' = Originalname, '{'lang'}' = Sprache, '{'ext'}' = Endung, '{'date'}' = Datum, '{'time'}' = Zeit",
+    "customExportFilenameTooltip": "'{'name'}' = Originalname, '{'lang'}' = Sprache, '{'ext'}' = Endung, '{'date'}' = Datum, '{'time'}' = Zeit; im Mehrsprachenmodus wird '{'lang'}' automatisch hinzugefügt, um Namenskonflikte zu vermeiden",
     "partialFailureTitle": "{count} Zeile(n) fehlgeschlagen",
     "partialFailureDesc": "Fehlgeschlagene Zeilen behielten den Originaltext als Platzhalter, sodass die Datei nutzbar bleibt. Solche Fehler sind meist Netzwerkschwankungen oder vorübergehende Probleme des Übersetzungsdienstes — kostenlose Dienste und selbst gehostete Server sind besonders anfällig, und es ist kein Konfigurationsproblem auf deiner Seite. Klicke auf Erneut versuchen, um fortzufahren (erfolgreiche Zeilen kommen aus dem Cache, ohne erneute Übersetzung); wenn es weiterhin fehlschlägt, versuche es später erneut oder probiere einen anderen Übersetzungsdienst. Oder klicke auf Fehlgeschlagene Zeilen anzeigen, um sie manuell zu bearbeiten.",
     "retryFailedLines": "Erneut versuchen",
@@ -135,6 +136,7 @@
     "translategemmaUnavailable": "Der TranslateGemma-Dienst ist vorübergehend nicht erreichbar, stelle sicher, dass dein lokaler Server (LM Studio / llama.cpp / Ollama) läuft und die URL korrekt ist.",
     "networkUnavailable": "Der Übersetzungsdienst ist vorübergehend nicht erreichbar — möglicherweise ein Netzwerkproblem oder der Dienst hat einen kurzen Aussetzer. Versuche es später erneut oder wechsle zu einem anderen Übersetzungsdienst.",
     "translationTimeout": "Die Übersetzungsanfrage hat das Zeitlimit überschritten — möglicherweise ein langsames Netzwerk oder der Dienst braucht zu lange zum Antworten. Versuche es später erneut oder wechsle zu einem anderen Übersetzungsdienst.",
+    "translationTimeoutLocal": "Zeitüberschreitung bei der Übersetzung mit lokalem Modell. Ein lokales LLM kann in einer Wiederholungsschleife hängen bleiben — verringern Sie max_tokens (das Ausgabelimit) in den erweiterten Einstellungen und stellen Sie sicher, dass die gewählte Ausgangssprache zum tatsächlichen Text passt.",
     "langGroupCommon": "Häufig",
     "langGroupEurope": "Europa",
     "langGroupMiddleEast": "Naher Osten",
@@ -209,20 +211,6 @@
           "a": "100% browserlokal: Das OpenCC-Wörterbuch ist im Frontend gebündelt, und weder Ihr Text noch Ihre Schutzwörter-Liste werden je hochgeladen. Quellcode auf GitHub (rockbenben/chinese-conversion) für Self-Hosting oder Audits."
         }
       ],
-      "howto": [
-        {
-          "name": "Text einfügen oder eingeben",
-          "text": "Fügen Sie den zu konvertierenden vereinfachten oder traditionellen chinesischen Text in den Eingabebereich ein."
-        },
-        {
-          "name": "Konvertierungsrichtung wählen",
-          "text": "Wählen Sie eine Richtung — Vereinfacht ↔ Taiwan-Traditionell ↔ Hongkong-Traditionell ↔ japanisches Shinjitai."
-        },
-        {
-          "name": "Konvertieren und kopieren",
-          "text": "Das Tool konvertiert in Echtzeit, lokal in Ihrem Browser. Kopieren Sie das Ergebnis — Text wird niemals auf einen Server hochgeladen."
-        }
-      ],
       "features": [
         "Vereinfachtes Chinesisch zu Traditionell (Taiwan/Hongkong)",
         "Traditionelles Chinesisch zu Vereinfacht",
@@ -293,7 +281,11 @@
     "textParser": "Text-Tools",
     "jsonParser": "JSON-Tools",
     "dataParser": "Daten-Tools",
-    "otherTools": "Andere Tools"
+    "otherTools": "Andere Tools",
+    "externalTools": {
+      "legendtalk": "KI-Denkerrunde",
+      "imgprompt": "KI-Bild-Prompts"
+    }
   },
   "Metadata": {
     "title": "ToolsByAI | Kostenlose KI-Dev- & Übersetzungstools",
