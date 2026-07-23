@@ -2,10 +2,11 @@
 🇨🇳 简繁转换工具
 </h1>
 <p align="center">
-    <a href="./README.en.md">English</a> | 中文
-</p>
-<p align="center">
     <em>本地批量简繁体、地区词汇互转，含可编辑保护词典，全程不上传服务器</em>
+</p>
+
+<p align="center">
+    <a href="./README.en.md">English</a> · <b>简体中文</b>
 </p>
 
 <p align="center">
@@ -113,14 +114,6 @@
 - **✍️ 内容创作**：博客、小说等内容的简繁体版本发布
 - **🔢 数据处理**：批量处理含中文数据的 JSON、CSV 等文件
 
-## 技术栈
-
-- **框架**：[Next.js 16](https://nextjs.org/)（App Router）
-- **UI**：[Ant Design](https://ant.design/) + [Tailwind CSS 4](https://tailwindcss.com/)
-- **i18n**：[next-intl](https://next-intl-docs.vercel.app/)
-- **转换引擎**：[js-opencc](https://github.com/rockbenben/js-opencc)（[OpenCC](https://github.com/BYVoid/OpenCC) 的 JS 移植）
-- **编码检测**：jschardet
-
 ## 快速开始
 
 ### 环境要求
@@ -163,7 +156,3 @@ yarn build
 
 - 📖 [使用文档](https://docs.newzone.top/guide/text/chinese-conversion)
 - 🐛 [报告问题](https://github.com/rockbenben/chinese-conversion/issues)
-
-## License
-
-本项目采用 [MIT](./LICENSE) 许可证。

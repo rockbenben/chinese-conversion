@@ -2,10 +2,11 @@
 🇨🇳 Chinese Converter
 </h1>
 <p align="center">
-    English | <a href="./README.md">中文</a>
-</p>
-<p align="center">
     <em>Browser-local Simplified ↔ Traditional ↔ Japanese conversion with an editable protected dictionary</em>
+</p>
+
+<p align="center">
+    <b>English</b> · <a href="./README.md">简体中文</a>
 </p>
 
 <p align="center">
@@ -113,14 +114,6 @@ With Auto-Export enabled, the preview is skipped and the result downloads immedi
 - **✍️ Content publishing**: ship blog / novel content in both Simp and Trad
 - **🔢 Data wrangling**: batch-convert JSON / CSV files containing Chinese fields
 
-## Tech stack
-
-- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
-- **UI**: [Ant Design](https://ant.design/) + [Tailwind CSS 4](https://tailwindcss.com/)
-- **i18n**: [next-intl](https://next-intl-docs.vercel.app/)
-- **Conversion engine**: [js-opencc](https://github.com/rockbenben/js-opencc) (a JS port of [OpenCC](https://github.com/BYVoid/OpenCC))
-- **Encoding detection**: jschardet
-
 ## Getting started
 
 ### Requirements
@@ -163,7 +156,3 @@ PRs and issues welcome.
 
 - 📖 [Documentation](https://docs.newzone.top/en/guide/text/chinese-conversion)
 - 🐛 [Report Issues](https://github.com/rockbenben/chinese-conversion/issues)
-
-## License
-
-[MIT](./LICENSE)
