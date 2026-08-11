@@ -11,6 +11,7 @@ import { useLocalStorage } from "@/app/hooks/useLocalStorage";
 import useFileUpload from "@/app/hooks/useFileUpload";
 import { useResetOnSourceChange } from "@/app/hooks/useResetOnSourceChange";
 import { createConverter, type LocaleCode } from "js-opencc";
+import { tryAutoReload } from "@/app/lib/autoReload";
 import ResultCard from "@/app/components/ResultCard";
 import PageCard from "@/app/components/styled/PageCard";
 import SourceArea from "@/app/components/SourceArea";
@@ -131,6 +132,9 @@ const ChineseConversion = () => {
       return true;
     } catch (err) {
       console.error("chinese-conversion failed", err);
+      // 发版后旧会话去取旧 hash 名的字典 chunk(点击时才拉的 1.1MB async chunk)
+      // 会 404,而这个 catch 把它变成一句「转换失败」—— 不重载就永远好不了。
+      if (tryAutoReload()) return false;
       message.error(t("conversionFailed"));
       return false;
     }
