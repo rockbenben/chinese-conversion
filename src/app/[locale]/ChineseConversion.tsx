@@ -36,11 +36,14 @@ const ChineseConversion = () => {
   const tCommon = useTranslations("common");
   const tPR = useTranslations("ProtectedRuleManager");
 
-  const localizedCnLanguages = [
+  // 显式标注类型:值会原样交给 js-opencc,不标注的话 "hpk" 这类拼写错误
+  // 编译期查不出来(下面已无 as LocaleCode 强转兜底),要到点击时才炸。
+  const localizedCnLanguages: { value: LocaleCode; label: string }[] = [
     { value: "cn", label: t("langSimplified") },
     { value: "tw", label: t("langTaiwan") },
     { value: "twp", label: t("langTaiwanPhrase") },
     { value: "hk", label: t("langHongKong") },
+    { value: "hkp", label: t("langHongKongPhrase") },
     { value: "t", label: t("langOpenCC") },
     { value: "jp", label: t("langJapanese") },
   ];
@@ -58,8 +61,8 @@ const ChineseConversion = () => {
   const [directExport, setDirectExport] = useLocalStorage("chinese-conversion-directExport", false);
   const [smartLineBreak, setSmartLineBreak] = useLocalStorage("chinese-conversion-smartLineBreak", false);
 
-  const [customFrom, setCustomFrom] = useLocalStorage("chinese-conversion-customFrom", "cn");
-  const [customTo, setCustomTo] = useLocalStorage("chinese-conversion-customTo", "twp");
+  const [customFrom, setCustomFrom] = useLocalStorage<LocaleCode>("chinese-conversion-customFrom", "cn");
+  const [customTo, setCustomTo] = useLocalStorage<LocaleCode>("chinese-conversion-customTo", "twp");
 
   const [s2tRules, setS2tRules] = useLocalStorage<ProtectedRule[]>("chinese-conversion-protectedRules-s2t", []);
   const [t2sRules, setT2sRules] = useLocalStorage<ProtectedRule[]>("chinese-conversion-protectedRules-t2s", []);
@@ -78,7 +81,7 @@ const ChineseConversion = () => {
     message.success(tCommon("fileExported", { fileName }));
   };
 
-  const handleConversion = async (from: string, to: string, sourceText: string, fileName?: string): Promise<boolean> => {
+  const handleConversion = async (from: LocaleCode, to: LocaleCode, sourceText: string, fileName?: string): Promise<boolean> => {
     setResult("");
     if (!sourceText.trim()) {
       message.warning(tCommon("noSourceText"));
@@ -88,10 +91,34 @@ const ChineseConversion = () => {
     const activeRules: ProtectedRule[] = enableProtectedRules ? (direction === "s2t" ? s2tRules : direction === "t2s" ? t2sRules : []) : [];
     const protectedDict: string[][] = activeRules.filter((r) => r.from && r.to).map((r) => [r.from, r.to]);
 
+    // localStorage 里的值只有【编译期】类型,JSON.parse 出来什么都可能(旧版本残留、
+    // 手改 devtools)。坏值会让 createConverter 同步抛 Unknown locale —— 那一步正是
+    // 下面唯一允许重载的地方,于是刷掉用户输入还治不好(坏值仍在 localStorage)。
+    // 先挡在门外:重载只该用于重载救得了的故障。
+    if (!localizedCnLanguages.some((o) => o.value === from) || !localizedCnLanguages.some((o) => o.value === to)) {
+      message.error(t("conversionFailed"));
+      return false;
+    }
+
+    let converter: (input: string) => string;
     try {
-      // 传 [] 而非 undefined:undefined 会触发 createConverter 自动加载打包内
-      // ProtectedDict.txt(走 node:fs,浏览器里多余),[] 显式跳过 + 表示不保护。
-      const converter = await createConverter({ from: from as LocaleCode, to: to as LocaleCode }, protectedDict.length > 0 ? protectedDict : []);
+      // 传数组而非 undefined:undefined 会触发 createConverter 自动加载打包内
+      // ProtectedDict.txt(走 node:fs,浏览器里多余);空数组即「不保护」。
+      converter = await createConverter({ from, to }, protectedDict);
+    } catch (err) {
+      console.error("chinese-conversion dict load failed", err);
+      // 自愈【只】包这一句 —— 它是唯一会拉字典 chunk 的一步。发版后旧会话按旧
+      // hash 名取 chunk 会 404,不重载就永远好不了。后面的转换/断行/导出若抛错
+      // (如保护词条超过 6400 个 PUA 槽的 RangeError、导出失败),重载既救不了,
+      // 还会刷掉用户尚未保存的源文本 —— 那些错误一律只弹提示。
+      if (tryAutoReload()) return false;
+      // 批量模式由 handleMultipleConversion 汇总报错 —— 字典是共享的一次构建,
+      // N 个文件会同时失败,逐个弹会在正在重载的页面上糊 N 条一样的提示。
+      if (!fileName) message.error(tCommon("dictLoadFailed"));
+      return false;
+    }
+
+    try {
       let convertedText = converter(sourceText);
       if (smartLineBreak) {
         const lines = cleanLines(convertedText, true);
@@ -132,15 +159,12 @@ const ChineseConversion = () => {
       return true;
     } catch (err) {
       console.error("chinese-conversion failed", err);
-      // 发版后旧会话去取旧 hash 名的字典 chunk(点击时才拉的 1.1MB async chunk)
-      // 会 404,而这个 catch 把它变成一句「转换失败」—— 不重载就永远好不了。
-      if (tryAutoReload()) return false;
-      message.error(t("conversionFailed"));
+      if (!fileName) message.error(t("conversionFailed"));
       return false;
     }
   };
 
-  const handleMultipleConversion = async (from: string, to: string) => {
+  const handleMultipleConversion = async (from: LocaleCode, to: LocaleCode) => {
     if (multipleFiles.length === 0) {
       message.error(t("uploadFilesFirst"));
       return;
@@ -175,8 +199,8 @@ const ChineseConversion = () => {
   };
 
   const runQuick = async (direction: "t2s" | "s2t") => {
-    const fromLang = direction === "t2s" ? (phraseConversion ? "twp" : "t") : "cn";
-    const toLang = direction === "t2s" ? "cn" : phraseConversion ? "twp" : "t";
+    const fromLang: LocaleCode = direction === "t2s" ? (phraseConversion ? "twp" : "t") : "cn";
+    const toLang: LocaleCode = direction === "t2s" ? "cn" : phraseConversion ? "twp" : "t";
     setProcessing(true);
     try {
       if (uploadMode === "single") await handleConversion(fromLang, toLang, sourceText);
@@ -280,26 +304,26 @@ const ChineseConversion = () => {
           <Flex vertical gap="middle">
             <PageCard title={t("conversionSettings")}>
               <Flex vertical gap="small">
-                <Flex justify="space-between" align="center">
+                <Flex component="label" className="cursor-pointer" justify="space-between" align="center">
                   <Tooltip title={t("phraseConversionTooltip")}>
                     <span>{t("phraseConversion")}</span>
                   </Tooltip>
                   <Switch size="small" checked={phraseConversion} onChange={setPhraseConversion} aria-label={t("phraseConversion")} />
                 </Flex>
-                <Flex justify="space-between" align="center">
+                <Flex component="label" className="cursor-pointer" justify="space-between" align="center">
                   <Tooltip title={t("smartLineBreakTooltip")}>
                     <span>{tCommon("smartLineBreak")}</span>
                   </Tooltip>
                   <Switch size="small" checked={smartLineBreak} onChange={setSmartLineBreak} aria-label={tCommon("smartLineBreak")} />
                 </Flex>
-                <Flex justify="space-between" align="center">
+                <Flex component="label" className="cursor-pointer" justify="space-between" align="center">
                   <Tooltip title={tCommon("singleFileModeTooltip")}>
                     <span>{tCommon("singleFileMode")}</span>
                   </Tooltip>
                   <Switch size="small" checked={singleFileMode} onChange={setSingleFileMode} aria-label={tCommon("singleFileMode")} />
                 </Flex>
                 {multipleFiles.length < 2 && (
-                  <Flex justify="space-between" align="center">
+                  <Flex component="label" className="cursor-pointer" justify="space-between" align="center">
                     <Tooltip title={t("directExportTooltip")}>
                       <span>{tCommon("directExport")}</span>
                     </Tooltip>
