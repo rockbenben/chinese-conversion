@@ -270,6 +270,7 @@ const ChineseConversion = () => {
               </Dragger>
               {uploadMode === "single" && (
                 <SourceArea
+                  textDirection="auto"
                   sourceText={sourceText}
                   setSourceText={setSourceText}
                   stats={sourceStats}
@@ -290,6 +291,7 @@ const ChineseConversion = () => {
 
             {result && (
               <ResultCard
+                textDirection="auto"
                 content={result}
                 stats={resultStats}
                 onChange={setResult}
