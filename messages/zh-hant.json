@@ -123,7 +123,7 @@
     "copyAllFailed": "複製全部",
     "closeFailedLinesModal": "關閉",
     "failedLanguagesTitle": "翻譯失敗 {count} 種語言",
-    "failedLanguagesDesc": "這幾種語言的所有批次都翻掛了——常見於本地 LLM 抽風、API 限流或模型拒譯特定語種。可點「複製語言代碼」拿到清單,下次只對它們重跑(在「快速輸入語言代碼」裡貼上即可),其它語言走快取不重翻。",
+    "failedLanguagesDesc": "這幾種語言的所有批次都翻掛了——常見於本地 LLM 抽風、API 限流或模型拒譯特定語種。可點「複製語言代碼」拿到清單，下次只對它們重跑（在「多語言設定」裡貼上即可），其它語言走快取不重翻。",
     "copyAllFailedLanguages": "複製語言代碼",
     "apiStatusFreeApi": "Free API",
     "apiStatusNeedsConfig": "需配置",
@@ -182,7 +182,7 @@
     },
     "jsonTranslate": {
       "title": "JSON 多語言翻譯",
-      "description": "高效的多語言 JSON 翻譯工具"
+      "description": "批次翻譯 i18n 語言包，支援 JSONPath 匹配和鍵名映射"
     },
     "mdTranslator": {
       "title": "Markdown 翻譯",
@@ -208,7 +208,7 @@
         },
         {
           "q": "整理簡體小說後想再做繁化、章節切分和廣告清理，有更整套的流程嗎？",
-          "a": "推薦配合 [小說排版整理](../novel-processor) 使用：先用小說排版工具修復網文 TXT 的換行、章節、廣告等格式問題，再用本工具做簡繁轉換，可共用同一份「保護詞典」保留人名、地名等不被誤轉。如果還需要批次替換章節標題、擷取人物名單等操作，可接 [文字處理神器](../text-toolbox) 做正則匹配和過濾。"
+          "a": "推薦配合 [小說排版整理](../novel-processor) 使用：先用小說排版工具修復網文 TXT 的換行、章節、廣告等格式問題，再用本工具做簡繁轉換，可共用同一份「自訂替換」保留人名、地名等不被誤轉。如果還需要批次替換章節標題、擷取人物名單等操作，可接 [文字處理神器](../text-toolbox) 做正則匹配和過濾。"
         },
         {
           "q": "簡繁轉換會洩露我的文字內容嗎？",
@@ -399,7 +399,7 @@
   },
   "AppError": {
     "title": "頁面載入出錯",
-    "description": "頁面載入失敗,可能是網站剛更新到新版本,請重新載入。",
+    "description": "頁面載入失敗，可能是網站剛更新到新版本，請重新載入。",
     "reload": "重新載入"
   },
   "NotFound": {
