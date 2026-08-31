@@ -13,7 +13,7 @@ const ClientPage = () => {
   const userGuideUrl = getDocUrl("guide/text/chinese-conversion.html", locale);
 
   return (
-    <ToolPage icon={<ProfileOutlined />} toolKey="chineseConversion" description={`${t("description1")} ${t("description2")}`} guideUrl={userGuideUrl}>
+    <ToolPage showExportFolder icon={<ProfileOutlined />} toolKey="chineseConversion" description={`${t("description1")} ${t("description2")}`} guideUrl={userGuideUrl}>
       <ChineseConversion />
     </ToolPage>
   );

@@ -16,6 +16,7 @@ import ResultCard from "@/app/components/ResultCard";
 import PageCard from "@/app/components/styled/PageCard";
 import SourceArea from "@/app/components/SourceArea";
 import { ProtectedRuleDrawer, ProtectedRulePanel, effectiveCount, type ProtectedRule } from "@/app/components/protectedRuleManager";
+import { useFileExport } from "@/app/hooks/useFileExport";
 
 const { Dragger } = Upload;
 
@@ -31,6 +32,7 @@ const getProtectedDirection = (from: string, to: string): "s2t" | "t2s" | null =
 
 const ChineseConversion = () => {
   const { message } = App.useApp();
+  const exportFile = useFileExport();
   const { copyToClipboard } = useCopyToClipboard();
   const t = useTranslations("ChineseConversion");
   const tCommon = useTranslations("common");
@@ -77,8 +79,7 @@ const ChineseConversion = () => {
   const handleExportFile = (text: string) => {
     const uploadFileName = multipleFiles[0]?.name;
     const fileName = uploadFileName || "jianfan.txt";
-    void downloadFile(text, fileName);
-    message.success(tCommon("fileExported", { fileName }));
+    void exportFile(text, fileName);
   };
 
   const handleConversion = async (from: LocaleCode, to: LocaleCode, sourceText: string, fileName?: string): Promise<boolean> => {
