@@ -50,7 +50,7 @@ const ChineseConversion = () => {
     { value: "jp", label: t("langJapanese") },
   ];
 
-  const { isFileProcessing, fileList, multipleFiles, readFile, sourceText, setSourceText, uploadMode, singleFileMode, setSingleFileMode, handleFileUpload, handleUploadRemove, handleUploadChange, resetUpload } = useFileUpload();
+  const { isFileProcessing, fileList, multipleFiles, readFile, sourceText, setSourceText, uploadMode, singleFileMode, setSingleFileMode, handleFileUpload, handleUploadRemove, handleUploadChange, resetUpload } = useFileUpload("chinese-conversion");
   const [result, setResult] = useState("");
   // Single-text conversion is async (cold js-opencc load can take a beat) and isn't covered
   // by the file-reading Spin — track it so the buttons show progress and block double-submit.
