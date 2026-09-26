@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button, Typography, Select, App, Upload, Tooltip, Space, Spin, Row, Col, Switch, Flex } from "antd";
-import { SwapOutlined, InboxOutlined, ClearOutlined } from "@ant-design/icons";
+import { Button, Typography, Select, App, Spin, Row, Col, Switch, Flex, Card } from "antd";
+import { SwapOutlined } from "@ant-design/icons";
 import { cleanLines, downloadFile, punctuationEndRegex, specialLineStartRegex, pureNumberRegex, chapterTitleRegex, getFileTypePresetConfig } from "@/app/utils";
 import { useTextStats } from "@/app/hooks/useTextStats";
 import { useCopyToClipboard } from "@/app/hooks/useCopyToClipboard";
@@ -13,12 +13,10 @@ import { useResetOnSourceChange } from "@/app/hooks/useResetOnSourceChange";
 import { createConverter, type LocaleCode } from "js-opencc";
 import { tryAutoReload } from "@/app/lib/autoReload";
 import ResultCard from "@/app/components/ResultCard";
-import PageCard from "@/app/components/styled/PageCard";
-import SourceArea from "@/app/components/SourceArea";
+import ToggleRow from "@/app/components/styled/ToggleRow";
+import UploadSourceCard from "@/app/components/UploadSourceCard";
 import { ProtectedRuleDrawer, ProtectedRulePanel, effectiveCount, type ProtectedRule } from "@/app/components/protectedRuleManager";
 import { useFileExport } from "@/app/hooks/useFileExport";
-
-const { Dragger } = Upload;
 
 const uploadFileTypes = getFileTypePresetConfig("richText");
 
@@ -50,7 +48,8 @@ const ChineseConversion = () => {
     { value: "jp", label: t("langJapanese") },
   ];
 
-  const { isFileProcessing, fileList, multipleFiles, readFile, sourceText, setSourceText, uploadMode, singleFileMode, setSingleFileMode, handleFileUpload, handleUploadRemove, handleUploadChange, resetUpload } = useFileUpload("chinese-conversion");
+  const upload = useFileUpload("chinese-conversion");
+  const { isFileProcessing, multipleFiles, readFile, sourceText, uploadMode, singleFileMode, setSingleFileMode } = upload;
   const [result, setResult] = useState("");
   // Single-text conversion is async (cold js-opencc load can take a beat) and isn't covered
   // by the file-reading Spin — track it so the buttons show progress and block double-submit.
@@ -230,56 +229,7 @@ const ChineseConversion = () => {
       <Row gutter={[16, 16]}>
         <Col xs={24} md={16}>
           <Flex vertical gap="middle">
-            <PageCard
-              title={
-                <Space>
-                  <InboxOutlined /> {tCommon("sourceArea")}
-                </Space>
-              }
-              extra={
-                <Tooltip title={tCommon("clearInputTooltip")}>
-                  <Button
-                    type="text"
-                    danger
-                    onClick={() => {
-                      resetUpload();
-                      message.success(tCommon("resetUploadSuccess"));
-                    }}
-                    icon={<ClearOutlined />}>
-                    {tCommon("clearAll")}
-                  </Button>
-                </Tooltip>
-              }>
-              <Dragger
-                customRequest={({ file }) => handleFileUpload(file as File)}
-                accept={uploadFileTypes.accept}
-                multiple={!singleFileMode}
-                showUploadList
-                beforeUpload={singleFileMode ? resetUpload : undefined}
-                onRemove={handleUploadRemove}
-                onChange={handleUploadChange}
-                fileList={fileList}
-                className="mb-2">
-                <p className="ant-upload-drag-icon">
-                  <InboxOutlined />
-                </p>
-                <p className="ant-upload-text">{tCommon("dragAndDropText")}</p>
-                <p className="ant-upload-hint">
-                  {tCommon("supportedFormats")}
-                  {uploadFileTypes.formatLabel({ maxVisible: 8, separator: " " })}
-                </p>
-              </Dragger>
-              {uploadMode === "single" && (
-                <SourceArea
-                  textDirection="auto"
-                  sourceText={sourceText}
-                  setSourceText={setSourceText}
-                  stats={sourceStats}
-                  placeholder={tCommon("sourceTextPlaceholder")}
-                  ariaLabel={tCommon("sourceArea")}
-                />
-              )}
-            </PageCard>
+            <UploadSourceCard upload={upload} stats={sourceStats} fileTypes={uploadFileTypes} formatsHint={uploadFileTypes.formatLabel({ maxVisible: 8, separator: " " })} multiFile textDirection="auto" />
 
             <Flex gap="small" wrap>
               <Button type="primary" size="large" block className="flex-1 !min-w-[140px]" loading={processing} onClick={() => runQuick("t2s")}>
@@ -305,38 +255,26 @@ const ChineseConversion = () => {
 
         <Col xs={24} md={8}>
           <Flex vertical gap="middle">
-            <PageCard title={t("conversionSettings")}>
+            <Card title={t("conversionSettings")}>
               <Flex vertical gap="small">
-                <Flex component="label" className="cursor-pointer" justify="space-between" align="center">
-                  <Tooltip title={t("phraseConversionTooltip")}>
-                    <span>{t("phraseConversion")}</span>
-                  </Tooltip>
+                <ToggleRow label={t("phraseConversion")} tooltip={t("phraseConversionTooltip")}>
                   <Switch size="small" checked={phraseConversion} onChange={setPhraseConversion} aria-label={t("phraseConversion")} />
-                </Flex>
-                <Flex component="label" className="cursor-pointer" justify="space-between" align="center">
-                  <Tooltip title={t("smartLineBreakTooltip")}>
-                    <span>{tCommon("smartLineBreak")}</span>
-                  </Tooltip>
+                </ToggleRow>
+                <ToggleRow label={tCommon("smartLineBreak")} tooltip={t("smartLineBreakTooltip")}>
                   <Switch size="small" checked={smartLineBreak} onChange={setSmartLineBreak} aria-label={tCommon("smartLineBreak")} />
-                </Flex>
-                <Flex component="label" className="cursor-pointer" justify="space-between" align="center">
-                  <Tooltip title={tCommon("singleFileModeTooltip")}>
-                    <span>{tCommon("singleFileMode")}</span>
-                  </Tooltip>
+                </ToggleRow>
+                <ToggleRow label={tCommon("singleFileMode")} tooltip={tCommon("singleFileModeTooltip")}>
                   <Switch size="small" checked={singleFileMode} onChange={setSingleFileMode} aria-label={tCommon("singleFileMode")} />
-                </Flex>
+                </ToggleRow>
                 {multipleFiles.length < 2 && (
-                  <Flex component="label" className="cursor-pointer" justify="space-between" align="center">
-                    <Tooltip title={t("directExportTooltip")}>
-                      <span>{tCommon("directExport")}</span>
-                    </Tooltip>
+                  <ToggleRow label={tCommon("directExport")} tooltip={t("directExportTooltip")}>
                     <Switch size="small" checked={directExport} onChange={setDirectExport} aria-label={tCommon("directExport")} />
-                  </Flex>
+                  </ToggleRow>
                 )}
               </Flex>
-            </PageCard>
+            </Card>
 
-            <PageCard title={t("customLanguage")}>
+            <Card title={t("customLanguage")}>
               <Flex vertical gap="small">
                 <Flex vertical gap={4}>
                   <Typography.Text type="secondary" className="!text-xs">
@@ -359,7 +297,7 @@ const ChineseConversion = () => {
                   {t("customConvert")}
                 </Button>
               </Flex>
-            </PageCard>
+            </Card>
 
             <ProtectedRulePanel
               enabled={enableProtectedRules}
@@ -371,7 +309,9 @@ const ChineseConversion = () => {
           </Flex>
         </Col>
       </Row>
-      <ProtectedRuleDrawer open={ruleDrawerOpen} onClose={() => setRuleDrawerOpen(false)} s2tRules={s2tRules} setS2tRules={setS2tRules} t2sRules={t2sRules} setT2sRules={setT2sRules} />
+      {ruleDrawerOpen && (
+        <ProtectedRuleDrawer open={ruleDrawerOpen} onClose={() => setRuleDrawerOpen(false)} s2tRules={s2tRules} setS2tRules={setS2tRules} t2sRules={t2sRules} setT2sRules={setT2sRules} />
+      )}
     </Spin>
   );
 };
