@@ -142,12 +142,10 @@
     "resultToSourceTooltip": "Ghi đè văn bản kết quả vào ô nhập liệu",
     "readOnlyMode": "Chế độ chỉ đọc",
     "readOnlyModeTooltip": "Văn bản quá dài: trình soạn thảo tạm thời ở chế độ chỉ đọc và chỉ hiển thị bản xem trước một phần. Toàn bộ nội dung của bạn không bị ảnh hưởng — xử lý và xuất vẫn dùng toàn bộ văn bản.",
-    "clearInputTooltip": "Xóa nội dung đã nhập và tệp đã tải lên",
     "fileExported": "Đã xuất tệp: {fileName}",
     "exportFailed": "Không thể xuất tệp: {fileName}",
     "exportedToFolder": "Đã lưu vào {dir}: {fileName}",
     "batchDownloaded": "Xử lý hoàn tất, tệp đã được tải xuống tự động",
-    "sourceTextPlaceholder": "Nhập hoặc dán văn bản cần xử lý...",
     "smartLineBreak": "Xuống dòng thông minh",
     "replaceText": "Thay thế văn bản",
     "generateJson": "Tạo JSON",
@@ -205,39 +203,49 @@
     },
     "chineseConversion": {
       "title": "Chuyển đổi Giản thể ↔ Phồn thể",
-      "description": "Chuyển đổi hàng loạt giữa giản thể, phồn thể Đài Loan, phồn thể Hồng Kông và chữ Nhật mới",
-      "metaTitle": "Chuyển Đổi Chữ Hán - Giản Thể, Phồn Thể, Shinjitai",
-      "metaDescription": "Trình chuyển đổi tiếng Trung OpenCC chạy cục bộ: giản thể, phồn thể Đài Loan, phồn thể Hồng Kông, Shinjitai. Từ điển bảo vệ.",
+      "description": "Hỗ trợ tải lên tệp và xử lý hàng loạt giữa chữ Giản thể, Phồn thể Đài Loan, Phồn thể Hồng Kông và Shinjitai Nhật Bản",
+      "metaTitle": "Chuyển Đổi Chữ Hán - Tải Lên Tệp Hàng Loạt (TXT/Markdown), Giản Thể & Phồn Thể",
+      "metaDescription": "Công cụ chuyển đổi Giản thể - Phồn thể OpenCC hỗ trợ tải tệp hàng loạt (TXT, Markdown, JSON). Chạy 100% cục bộ trong trình duyệt bảo đảm quyền riêng tư, hỗ trợ từ vựng theo vùng miền.",
       "faq": [
         {
-          "q": "Công cụ trực tuyến nào tốt nhất để chuyển đổi giản thể sang phồn thể?",
-          "a": "Công cụ này sử dụng engine OpenCC, hỗ trợ chuyển đổi giản thể↔phồn thể Đài Loan↔phồn thể Hồng Kông↔chữ Nhật mới. Chạy hoàn toàn trên trình duyệt, không cần cài đặt phần mềm, chuyển đổi chính xác và bảo mật riêng tư."
+          "q": "Công cụ có hỗ trợ tải tệp trực tiếp để chuyển đổi không? Hỗ trợ các định dạng tệp nào?",
+          "a": "Có. Khác với các công cụ thông thường chỉ cho phép sao chép dán, công cụ này được tối ưu cho tệp văn bản: hỗ trợ kéo thả hoặc tải lên TXT, Markdown (.md), JSON và tệp phụ đề (SRT, VTT). Hỗ trợ cả xử lý tệp đơn và tải lên, chuyển đổi và tải xuống hàng loạt."
         },
         {
-          "q": "Phồn thể Đài Loan và phồn thể Hồng Kông khác nhau như thế nào?",
-          "a": "Phồn thể Đài Loan và Hồng Kông có sự khác biệt ở một số ký tự và từ vựng, ví dụ như「記憶體」(Đài Loan) và「內存」(Hồng Kông). Công cụ này hỗ trợ phân biệt chính xác hai tiêu chuẩn phồn thể, đáp ứng nhu cầu sử dụng chữ của từng khu vực."
+          "q": "Khi tải lên tiểu thuyết hoặc tệp văn bản lớn để chuyển đổi, có bị giới hạn số lượng từ hoặc kích thước không?",
+          "a": "Hoàn toàn không có giới hạn về số từ hay kích thước tệp. Nhờ công cụ OpenCC hiệu năng cao chạy cục bộ trong trình duyệt, các tiểu thuyết dài hàng trăm nghìn chữ hoặc tài liệu kỹ thuật lớn đều được chuyển đổi xong trong vài giây."
         },
         {
-          "q": "Nếu cần sửa định dạng tiểu thuyết Giản thể trước khi chuyển, công cụ nào kết hợp với cái này?",
-          "a": "Dùng [Định Dạng Tiểu Thuyết](../novel-processor) trước để sửa ngắt dòng, tiêu đề chương và xóa quảng cáo khỏi tệp TXT tiểu thuyết web, rồi chạy bộ chuyển này cho phần Giản/Phồn. Cả hai công cụ chia sẻ cùng định dạng từ điển từ được bảo vệ, nên tên nhân vật và địa danh được giữ nguyên xuyên suốt. Để thay thế regex hàng loạt, trích xuất tên nhân vật hoặc lọc thêm, nối tiếp với [Hộp Công Cụ Văn Bản](../text-toolbox)."
+          "q": "Công cụ chuyển đổi Giản thể - Phồn thể trực tuyến nào tốt và chính xác nhất?",
+          "a": "Chúng tôi khuyên dùng công cụ này. Dựa trên bộ chuyển đổi OpenCC, hỗ trợ chuyển đổi qua lại giữa Giản thể↔Phồn thể Đài Loan↔Hồng Kông↔Shinjitai Nhật Bản. Hỗ trợ tải tệp, chuyển đổi chính xác từ vựng địa phương (như 内存↔記憶體, 视频↔影片) và từ điển bảo vệ, chạy 100% cục bộ an toàn."
         },
         {
-          "q": "Việc chuyển đổi giản thể phồn thể có làm lộ nội dung văn bản không?",
-          "a": "Không. Tất cả chuyển đổi đều được xử lý hoàn toàn trên trình duyệt, văn bản không được tải lên bất kỳ máy chủ nào. Bạn có thể yên tâm xử lý nội dung nhạy cảm và văn bản số lượng lớn."
+          "q": "Chữ Phồn thể Đài Loan và Phồn thể Hồng Kông có gì khác nhau?",
+          "a": "Phồn thể Đài Loan và Hồng Kông khác nhau ở một số tự hình và từ ngữ thông dụng (ví dụ: «記憶體» và «軟體» ở Đài Loan so với «內存» và «軟件» ở Hồng Kông). Công cụ phân biệt rõ từ vựng Đài Loan (twp) và Hồng Kông (hkp) theo chuẩn bản địa."
         },
         {
-          "q": "Công cụ có mã nguồn mở không? Văn bản đã chuyển có được lưu lại không?",
-          "a": "100% chạy nội bộ trình duyệt: từ điển OpenCC được đóng gói vào frontend, không văn bản hay danh sách từ bảo vệ nào của bạn bị tải lên. Mã nguồn mở trên GitHub (rockbenben/chinese-conversion) để tự host hoặc kiểm tra."
+          "q": "Sau khi định dạng tiểu thuyết tiếng Trung giản thể, tôi muốn chuyển sang phồn thể, chia chương và xóa quảng cáo thì có quy trình nào hoàn chỉnh không?",
+          "a": "Khuyên dùng kết hợp với [Trình định dạng tiểu thuyết](../novel-processor): dùng nó trước để sửa ngắt dòng, tiêu đề chương và quảng cáo trong tệp TXT, sau đó tải lên đây để chuyển đổi Giản-Phồn. Cả hai dùng chung quy tắc thay thế tùy chỉnh để bảo vệ tên riêng. Nếu cần regex trích xuất, kết hợp thêm với [Hộp công cụ văn bản](../text-toolbox)."
+        },
+        {
+          "q": "Chuyển đổi Giản thể - Phồn thể có làm lộ tệp hoặc văn bản riêng tư của tôi không?",
+          "a": "Tuyệt đối không. Toàn bộ quá trình đọc tệp, tra cứu từ điển OpenCC và xuất dữ liệu đều diễn ra trong sandbox cục bộ của trình duyệt. Không có dữ liệu nào được gửi lên máy chủ. Bạn có thể yên tâm xử lý tài liệu mật."
+        },
+        {
+          "q": "Công cụ này có miễn phí và mã nguồn mở không? Tệp chuyển đổi có được lưu lại không?",
+          "a": "100% cục bộ trong trình duyệt: từ điển OpenCC được đóng gói ở frontend, không văn bản hay tệp nào gửi đến máy chủ. Mã nguồn mở trên GitHub (rockbenben/chinese-conversion) để tự lưu trữ hoặc kiểm tra."
         }
       ],
       "features": [
-        "Tiếng Trung giản thể sang phồn thể (Đài Loan/Hồng Kông)",
-        "Tiếng Trung phồn thể sang giản thể",
-        "Chuyển đổi sang Shinjitai Nhật Bản",
+        "Hỗ trợ tải lên và chuyển đổi hàng loạt tệp TXT, Markdown, JSON",
+        "Xử lý cục bộ cực nhanh cho tệp lớn, hỗ trợ xuất tải về chỉ với một cú nhấp",
         "Xử lý hoàn toàn ngoại tuyến trong trình duyệt — không tải lên máy chủ",
-        "Chuyển đổi văn bản hàng loạt không giới hạn",
-        "Công cụ OpenCC cho chuyển đổi chính xác",
-        "Quy tắc thay thế tùy chỉnh — các từ khớp bỏ qua từ điển tích hợp"
+        "Chữ Hán giản thể sang phồn thể (Đài Loan/Hồng Kông/chuẩn)",
+        "Chữ Hán phồn thể sang giản thể và Shinjitai Nhật Bản",
+        "Chuyển đổi từ vựng theo vùng miền (vd: 内存↔記憶體, 视频↔影片)",
+        "Bộ máy OpenCC phân đoạn từ ngữ chính xác, không nhầm lẫn",
+        "Quy tắc thay thế và bảo vệ tùy chỉnh để tránh chuyển sai danh từ riêng",
+        "Tự động sửa lỗi ngắt dòng và ghép lại các đoạn văn bị đứt gãy"
       ]
     },
     "novelProcessor": {
@@ -307,7 +315,9 @@
     "otherTools": "Thêm công cụ",
     "externalTools": {
       "legendtalk": "Bàn tròn nhà tư tưởng AI",
-      "imgprompt": "Câu lệnh tạo ảnh AI"
+      "imgprompt": "Câu lệnh tạo ảnh AI",
+      "lives": "Thousand Lives",
+      "learndata": "LearnData Ghi chú nguồn mở"
     }
   },
   "Metadata": {
@@ -325,7 +335,7 @@
     "failure": "Sao chép thất bại, vui lòng sao chép thủ công"
   },
   "ChineseConversion": {
-    "description1": "Không tải văn bản lên máy chủ bên thứ ba — mọi chuyển đổi chạy cục bộ trong trình duyệt của bạn để bảo vệ quyền riêng tư. Hỗ trợ chuyển đổi hai chiều giữa tiếng Trung giản thể, tiếng Trung phồn thể (Đài Loan), tiếng Trung phồn thể (Hồng Kông) và Shinjitai Nhật Bản. Lý tưởng cho xử lý hàng loạt khối lượng văn bản lớn. Nhấp vào nút hướng tương ứng để chuyển đổi trong một cú nhấp; người dùng nâng cao có thể tự do chọn chữ viết nguồn và đích.",
+    "description1": "Hỗ trợ tải lên trực tiếp tệp TXT, Markdown, JSON hoặc xử lý hàng loạt khối lượng văn bản lớn ngoại tuyến trong trình duyệt — không gửi lên máy chủ để bảo đảm quyền riêng tư tuyệt đối. Chuyển đổi chính xác giữa Giản thể, Phồn thể (Đài Loan/Hồng Kông) và Shinjitai Nhật Bản với khả năng thích ứng từ ngữ địa phương, xuất tệp trực tiếp và từ điển bảo vệ.",
     "description2": "Ví dụ: Giản thể 自行车 → Phồn thể Đài Loan 腳踏車, 视频 → 影片, 内存 → 記憶體 — khác biệt từ vựng vùng miền được chuyển đổi tự động. Nếu có câu hỏi hoặc đề xuất, vui lòng liên hệ qua cộng đồng hoặc trang phản hồi.",
     "conversionSettings": "Cài đặt chuyển đổi",
     "phraseConversionTooltip": "Đồng thời chuyển đổi từ vựng thông dụng của vùng Đài Loan (ví dụ: 视频↔影片、幼儿园↔幼稚園)",

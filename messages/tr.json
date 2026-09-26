@@ -142,12 +142,10 @@
     "resultToSourceTooltip": "Giriş kutusunun içeriğini sonuç metniyle değiştir",
     "readOnlyMode": "Salt Okunur Mod",
     "readOnlyModeTooltip": "Metin çok uzun: düzenleyici geçici olarak salt okunur ve yalnızca kısmi bir önizleme gösteriyor. Tüm içeriğiniz etkilenmez; işleme ve dışa aktarma hâlâ metnin tamamını kullanır.",
-    "clearInputTooltip": "Giriş içeriğini ve yüklenen dosyaları temizle",
     "fileExported": "Dışa aktarılan dosya: {fileName}",
     "exportFailed": "Dosya dışa aktarılamadı: {fileName}",
     "exportedToFolder": "{dir} klasörüne kaydedildi: {fileName}",
     "batchDownloaded": "İşlem tamamlandı, dosyalar otomatik olarak indirildi",
-    "sourceTextPlaceholder": "İşlenecek metni girin veya yapıştırın...",
     "smartLineBreak": "Akıllı satır sonu",
     "replaceText": "Metni değiştir",
     "generateJson": "JSON Oluştur",
@@ -205,39 +203,49 @@
     },
     "chineseConversion": {
       "title": "Bas/Gel Çince Dönüştürücü",
-      "description": "Basitleştirilmiş, Tayvan geleneksel, Hong Kong geleneksel ve Japonca karakterleri toplu dönüştür",
-      "metaTitle": "Çince Dönüştürücü - Basitleştirilmiş, Geleneksel, Shinjitai",
-      "metaDescription": "OpenCC Çince dönüştürücü, tarayıcıda: Basitleştirilmiş, Tayvan Geleneksel, Hong Kong Geleneksel, Shinjitai. Korumalı sözlük.",
+      "description": "Dosya yükleme ve toplu işlem desteğiyle Basitleştirilmiş, Tayvan/Hong Kong Geleneksel Çince ve Japon Shinjitai dönüştürme",
+      "metaTitle": "Çince Dönüştürücü - Toplu Dosya Yükleme (TXT/Markdown), Basitleştirilmiş ve Geleneksel",
+      "metaDescription": "Toplu dosya yüklemeyi (TXT, Markdown, JSON) destekleyen hızlı OpenCC Çince dönüştürücü. Tam gizlilik için tarayıcıda %100 çevrimdışı. Bölgesel ifade uyarlaması ve korumalı sözlük desteği.",
       "faq": [
         {
-          "q": "Basitleştirilmiş'ten geleneksele dönüştürmek için en iyi çevrimiçi araç hangisi?",
-          "a": "Bu araç OpenCC motorunu kullanır ve basitleştirilmiş↔Tayvan geleneksel↔Hong Kong↔modern Japonca karakterleri karşılıklı dönüştürmeyi destekler; yazılım yüklemeden tamamen tarayıcıda çalışır. Hassas ve gizliliğe saygılı dönüştürme."
+          "q": "Dönüştürücü doğrudan dosya yüklemeyi destekliyor mu? Hangi dosya formatları destekleniyor?",
+          "a": "Evet. Yalnızca kopyala-yapıştır kabul eden geleneksel araçların aksine, bu araç dosya işleme için özel olarak tasarlanmıştır: TXT, Markdown (.md), JSON ve altyazı dosyalarını (SRT, VTT) sürükleyip bırakabilir veya yükleyebilirsiniz. Hem tekli dosya hem de toplu yükleme, dönüştürme ve tek tıkla dışa aktarma desteklenir."
         },
         {
-          "q": "Tayvan gelenekseli ve Hong Kong gelenekseli arasındaki fark nedir?",
-          "a": "Tayvan gelenekseli ve Hong Kong gelenekseli bazı karakterler ve kelimeler bakımından farklılık gösterir; örneğin «記憶體» (Tayvan) ve «內存» (Hong Kong). Bu araç iki geleneksel standardı hassas biçimde ayırt eder."
+          "q": "Roman veya büyük metin dosyaları yüklenirken karakter veya dosya boyutu sınırı var mı?",
+          "a": "Hiçbir karakter veya dosya boyutu sınırı yoktur. Tarayıcıda yerel olarak çalışan yüksek performanslı OpenCC motoru sayesinde, yüz binlerce karakterlik uzun romanlar veya büyük teknik belgeler bile birkaç saniye içinde dönüştürülür."
         },
         {
-          "q": "Dönüştürmeden önce bir Basitleştirilmiş Çince romanın biçimini de düzeltmem gerekirse hangi araç bununla eşleşir?",
-          "a": "Önce [Roman Metin Düzenleyici](../novel-processor) ile web roman TXT dosyalarındaki satır sonu, bölüm başlığı ve reklamları düzeltin, ardından bu dönüştürücüyü Basitleştirilmiş/Geleneksel geçişi için çalıştırın. Her iki araç aynı korunan kelime sözlüğü biçimini paylaşır, böylece karakter ve yer adları uçtan uca korunur. Daha fazla toplu regex değişimi, karakter adı ayıklama veya filtreleme için [Metin Araç Kutusu](../text-toolbox) ile zincirleyin."
+          "q": "Basitleştirilmişten geleneksele dönüştürme için en iyi çevrimiçi araç hangisidir?",
+          "a": "Bu aracı öneririz. Yüksek performanslı OpenCC motorunu temel alarak Basitleştirilmiş↔Tayvan Geleneksel↔Hong Kong Geleneksel↔Japon Shinjitai arasında çift yönlü dönüştürmeyi destekler. Dosya yüklemenin yanı sıra bölgesel terimleri (örn. 内存↔記憶體, 视频↔影片) doğru dönüştürür ve korumalı sözlük sunar, %100 yerel ve güvenlidir."
         },
         {
-          "q": "Basitleştirilmiş/geleneksel dönüştürme içeriklerimi sızdırabilir mi?",
-          "a": "Hayır. Tüm dönüştürme işlemi tarayıcıda yerel olarak gerçekleşir; metin hiçbir sunucuya gönderilmez. Hassas içerikleri ve büyük metin hacimlerini güvenle işleyebilirsiniz."
+          "q": "Tayvan Geleneksel ile Hong Kong Geleneksel arasındaki fark nedir?",
+          "a": "Tayvan ve Hong Kong Geleneksel Çincesi bazı karakter biçimlerinde ve günlük kelimelerde farklılık gösterir (örneğin Tayvan'da «記憶體» ve «軟體», Hong Kong'da «內存» ve «軟件»). Aracımız yerel alışkanlıklara göre Tayvan sözlüğü (twp) ve Hong Kong sözlüğünü (hkp) hassas biçimde ayırt eder."
         },
         {
-          "q": "Araç açık kaynak mı? Dönüştürülen metin bir yere kaydediliyor mu?",
-          "a": "%100 tarayıcıda yerel: OpenCC sözlüğü frontend'e gömülüdür ve ne metniniz ne de korunan kelime listeniz sunucuya yüklenmez. Kaynak kod GitHub'da (rockbenben/chinese-conversion) açık, kendi sunucunuza kurabilir veya inceleyebilirsiniz."
+          "q": "Basitleştirilmiş Çince bir romanı düzenledikten sonra geleneksele çevirmek, bölümlere ayırmak ve reklamları kaldırmak için eksiksiz bir iş akışı var mı?",
+          "a": "[Web Romanı Formatlayıcı](../novel-processor) ile birlikte kullanılması önerilir: önce web romanı TXT dosyalarındaki satır sonlarını, bölümleri ve reklamları düzeltmek için roman aracını kullanın, ardından Basitleştirilmiş/Geleneksel dönüştürme için buraya yükleyin. Her iki araç da özel adları korumak için korumalı sözlük kurallarını paylaşır. İlave regex için [Metin Araç Kutusu](../text-toolbox) ile birleştirin."
+        },
+        {
+          "q": "Basitleştirilmiş/Geleneksel dönüştürme dosyalarımı veya metin içeriğimi sızdırabilir mi?",
+          "a": "Kesinlikle hayır. Tüm dosya okuma, OpenCC sözlük eşleme ve dışa aktarma işlemleri tarayıcınızın yerel korumalı alanında gerçekleşir. Metin ve dosyalar hiçbir sunucuya gönderilmez. Gizli belgelerinizi güvenle işleyebilirsiniz."
+        },
+        {
+          "q": "Araç ücretsiz ve açık kaynaklı mı? Dönüştürülen metin kaydediliyor mu?",
+          "a": "Tarayıcıda %100 yerel, ücretsiz, reklamsız ve GitHub'da açık kaynaklıdır (rockbenben/chinese-conversion). Dönüştürülen tüm dosyalar cihazınızda oluşturulur ve sayfa kapatıldığında silinir. Bulutta hiçbir kullanıcı verisi saklanmaz."
         }
       ],
       "features": [
-        "Basitleştirilmiş Çinceden Geleneksele (Tayvan/Hong Kong)",
-        "Geleneksel Çinceden Basitleştirilmişe",
-        "Japon Shinjitai dönüşümü",
-        "Tarayıcıda tamamen çevrimdışı işleme — sunucuya yükleme yok",
-        "Sınırsız toplu metin dönüştürme",
-        "Doğru dönüşüm için OpenCC motoru",
-        "Özel değiştirme kuralları — eşleşen terimler yerleşik sözlüğü atlar"
+        "TXT, Markdown ve JSON dosyalarının toplu yüklenmesi ve dönüştürülmesi desteği",
+        "Büyük dosyaların tek tıkla doğrudan dışa aktarımı ile son derece hızlı yerel işleme",
+        "Tarayıcıda %100 çevrimdışı işleme — sunucuya yükleme yapılmaz",
+        "Basitleştirilmiş Çinceden Geleneksel Çinceye (Tayvan/Hong Kong/standart)",
+        "Geleneksel Çinceden Basitleştirilmiş Çinceye ve Japon Shinjitaiye",
+        "Bölgesel kelime dönüştürme (örn.: 内存↔記憶體, 视频↔影片)",
+        "Hassas sözcük ayrımı için OpenCC motoru",
+        "Özel adların hatalı dönüşmesini önlemek için koruma kuralları",
+        "Bölünmüş paragrafları otomatik birleştiren akıllı satır sonu onarımı"
       ]
     },
     "novelProcessor": {
@@ -307,7 +315,9 @@
     "otherTools": "Daha Fazla Araç",
     "externalTools": {
       "legendtalk": "AI Düşünürler Yuvarlak Masası",
-      "imgprompt": "AI Görsel İstemleri"
+      "imgprompt": "AI Görsel İstemleri",
+      "lives": "Thousand Lives",
+      "learndata": "LearnData Açık Kaynak Notlar"
     }
   },
   "Metadata": {
@@ -325,7 +335,7 @@
     "failure": "Kopyalama başarısız, manuel kopyalayın"
   },
   "ChineseConversion": {
-    "description1": "Üçüncü taraf sunuculara metin yüklenmez — tüm dönüştürmeler gizliliği korumak için yerel olarak tarayıcınızda çalışır. Basitleştirilmiş Çince, Geleneksel Çince (Tayvan), Geleneksel Çince (Hong Kong) ve Japon Shinjitai arasında çift yönlü dönüştürmeyi destekler. Büyük metin hacimlerinin toplu işlenmesi için idealdir. Tek tıkla dönüştürmek için ilgili yön düğmesine tıklayın; ileri düzey kullanıcılar kaynak ve hedef yazıları serbestçe seçebilir.",
+    "description1": "TXT, Markdown ve JSON dosyalarını doğrudan yüklemeyi veya büyük metin hacimlerini tarayıcınızda çevrimdışı olarak toplu işlemeyi destekler — tam gizlilik için sunucuya yükleme yapılmaz. Bölgesel ifade uyarlaması, doğrudan dosya dışa aktarma ve korumalı sözlük desteğiyle Basitleştirilmiş, Geleneksel (Tayvan/Hong Kong) ve Japon Shinjitai arasında doğru dönüştürme.",
     "description2": "Örnekler: Basitleştirilmiş 自行车 → Tayvan Geleneksel 腳踏車, 视频 → 影片, 内存 → 記憶體 — bölgesel kelime farkları otomatik olarak dönüştürülür. Sorularınız veya önerileriniz için topluluk veya geri bildirim sayfası üzerinden bize ulaşın.",
     "conversionSettings": "Dönüştürme Ayarları",
     "phraseConversionTooltip": "Tayvan bölgesel kelimelerini de dönüştür (örn.: 视频↔影片, 幼儿园↔幼稚園)",

@@ -86,7 +86,6 @@
     "serviceUnavailableSwitched": "{service} est temporairement inaccessible : basculement automatique vers {fallback}. Vérifiez-le puis revenez-y dans les paramètres si vous souhaitez continuer à l'utiliser.",
     "noFileUploaded": "Veuillez d'abord télécharger un fichier.",
     "translationExported": "Traduction terminée, fichiers exportés",
-    "sourceTextPlaceholder": "Entrez ou collez le texte à traiter...",
     "noSourceText": "Veuillez entrer ou coller du texte.",
     "textExtracted": "Texte extrait, ",
     "sourceArea": "Zone d'entrée",
@@ -102,7 +101,6 @@
     "resultToSourceTooltip": "Écraser la zone de saisie avec le texte du résultat",
     "readOnlyMode": "Mode lecture seule",
     "readOnlyModeTooltip": "Texte trop long : l'éditeur est temporairement en lecture seule et n'affiche qu'un aperçu partiel. Votre contenu complet n'est pas affecté — le traitement et l'export utilisent toujours l'intégralité du texte.",
-    "clearInputTooltip": "Effacer le contenu saisi et les fichiers téléchargés",
     "smartLineBreak": "Saut de ligne intelligent",
     "replaceText": "Remplacer le texte",
     "generateJson": "Générer JSON",
@@ -205,10 +203,18 @@
     },
     "chineseConversion": {
       "title": "Conversion chinois",
-      "description": "Convertir en masse simplifié, traditionnel Taïwan, traditionnel Hong Kong et nouveaux caractères japonais",
-      "metaTitle": "Convertisseur chinois - Simplifié, Traditionnel, Shinjitai",
-      "metaDescription": "Convertisseur chinois OpenCC en local: simplifié, traditionnel taïwanais, traditionnel hongkongais, shinjitai. Dictionnaire protégé.",
+      "description": "Convertir par lots simplifié, traditionnel Taïwan, traditionnel Hong Kong et shinjitai avec support de téléversement de fichiers",
+      "metaTitle": "Convertisseur chinois - Téléversement de fichiers (TXT/Markdown), Simplifié & Traditionnel",
+      "metaDescription": "Convertisseur chinois professionnel avec téléversement de fichiers (TXT, Markdown, JSON) et traitement par lots. Fonctionne en local dans le navigateur via OpenCC, sans envoi sur serveur. Vocabulaire régional précis et dictionnaire protégé.",
       "faq": [
+        {
+          "q": "Cet outil supporte-t-il le téléversement direct de fichiers ? Quels formats sont acceptés ?",
+          "a": "Oui. Contrairement à la plupart des outils en ligne limités à un champ texte, cet outil est conçu pour le traitement de fichiers. Vous pouvez glisser-déposer ou téléverser des fichiers TXT, Markdown (.md), JSON et sous-titres (SRT, VTT). Il prend en charge le traitement de fichiers uniques ou par lots avec conversion en un clic et téléchargement direct."
+        },
+        {
+          "q": "Y a-t-il des limites de taille ou de nombre de mots pour les romans ou gros fichiers ?",
+          "a": "Aucune limite de mots ni de taille. La conversion est propulsée par le moteur OpenCC haute performance en local dans votre navigateur et traite des centaines de milliers de mots en quelques secondes."
+        },
         {
           "q": "Quel est le meilleur outil en ligne de conversion simplifié vers traditionnel ?",
           "a": "Cet outil est propulsé par le moteur OpenCC et supporte simplifié ↔ traditionnel Taïwan ↔ traditionnel Hong Kong ↔ nouveaux caractères japonais, entièrement en local dans votre navigateur — précis et respectueux de la vie privée."
@@ -222,8 +228,8 @@
           "a": "Utilisez d'abord le [Formateur de romans](../novel-processor) pour réparer sauts de ligne, titres de chapitres et supprimer les publicités des fichiers TXT de web novels, puis lancez ce convertisseur pour la passe Simplifié/Traditionnel. Les deux outils partagent le même format de dictionnaire de mots protégés, donc les noms de personnages et lieux sont préservés de bout en bout. Pour remplacement regex en masse, extraction de noms ou filtrage supplémentaires, chaînez avec la [Boîte à outils texte](../text-toolbox)."
         },
         {
-          "q": "La conversion chinoise expose-t-elle le contenu de mon texte ?",
-          "a": "Non. Toute conversion se déroule entièrement dans votre navigateur ; le texte n'est jamais envoyé à un serveur, vous pouvez donc traiter en toute sécurité des contenus sensibles et de grands volumes de texte."
+          "q": "La conversion chinoise expose-t-elle mes fichiers ou mon texte ?",
+          "a": "Non. Tout traitement de fichier et de texte s'effectue entièrement dans le bac à sable local de votre navigateur ; aucune donnée n'est jamais transmise à un serveur."
         },
         {
           "q": "L'outil est-il open source ? Le texte converti est-il stocké quelque part ?",
@@ -231,13 +237,15 @@
         }
       ],
       "features": [
-        "Chinois simplifié vers traditionnel (Taïwan/Hong Kong)",
-        "Chinois traditionnel vers simplifié",
-        "Conversion en Shinjitai japonais",
-        "Traitement entièrement hors ligne dans le navigateur — aucun envoi serveur",
-        "Conversion par lots illimitée",
-        "Moteur OpenCC pour une conversion précise",
-        "Règles de remplacement personnalisées — les termes correspondants ignorent le dictionnaire intégré"
+        "Téléversement et conversion par lots de fichiers TXT, Markdown et JSON",
+        "Traitement local rapide de gros fichiers avec téléchargement direct",
+        "100% hors ligne dans le navigateur — aucun envoi serveur",
+        "Chinois simplifié vers traditionnel (Taïwan/Hong Kong/Standard)",
+        "Chinois traditionnel vers simplifié et conversion Shinjitai",
+        "Conversion des termes régionaux idiomatiques (ex. 内存 ↔ 記憶體, 视频 ↔ 影片)",
+        "Moteur OpenCC pour une conversion précise et standardisée",
+        "Règles personnalisées de protection pour éviter les erreurs de traduction",
+        "Formatage intelligent des sauts de ligne pour refusionner les paragraphes"
       ]
     },
     "novelProcessor": {
@@ -307,7 +315,9 @@
     "otherTools": "Plus d'outils",
     "externalTools": {
       "legendtalk": "Table ronde des penseurs IA",
-      "imgprompt": "Prompts d'images IA"
+      "imgprompt": "Prompts d'images IA",
+      "lives": "Thousand Lives",
+      "learndata": "LearnData Notes Open Source"
     }
   },
   "Metadata": {
@@ -325,7 +335,7 @@
     "failure": "Échec copie, copiez manuellement"
   },
   "ChineseConversion": {
-    "description1": "Aucun texte téléchargé sur des serveurs tiers — toutes les conversions s'exécutent localement dans votre navigateur pour préserver la confidentialité. Prend en charge la conversion bidirectionnelle entre chinois simplifié, chinois traditionnel (Taïwan), chinois traditionnel (Hong Kong) et shinjitai japonais. Idéal pour le traitement par lots de grands volumes de texte. Cliquez sur le bouton de direction correspondant pour convertir en un clic ; les utilisateurs avancés peuvent choisir librement les écritures source et cible.",
+    "description1": "Prend en charge le téléversement direct de fichiers TXT, Markdown et JSON ou le traitement par lots de textes volumineux hors ligne dans votre navigateur — aucun envoi vers un serveur pour une confidentialité totale. Convertissez avec précision entre chinois simplifié, chinois traditionnel (Taïwan/Hong Kong) et shinjitai japonais avec adaptation des termes régionaux, export direct et dictionnaire protégé.",
     "description2": "Exemples : Chinois simplifié 自行车 → traditionnel Taïwan 腳踏車, 视频 → 影片, 内存 → 記憶體 — les différences régionales de vocabulaire sont converties automatiquement. Pour toute question ou suggestion, contactez-nous via la communauté ou la page de retour.",
     "conversionSettings": "Paramètres de conversion",
     "phraseConversionTooltip": "Convertit aussi le vocabulaire régional (ex. 视频 ↔ 影片, 幼儿园 ↔ 幼稚園)",

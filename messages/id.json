@@ -142,12 +142,10 @@
     "resultToSourceTooltip": "Timpa kotak input dengan teks hasil",
     "readOnlyMode": "Mode Hanya-Baca",
     "readOnlyModeTooltip": "Teks terlalu panjang: editor sementara hanya-baca dan hanya menampilkan pratinjau sebagian. Konten lengkap Anda tidak terpengaruh — pemrosesan dan ekspor tetap menggunakan seluruh teks.",
-    "clearInputTooltip": "Bersihkan konten input dan file yang diunggah",
     "fileExported": "File diekspor: {fileName}",
     "exportFailed": "Gagal mengekspor file: {fileName}",
     "exportedToFolder": "Disimpan ke {dir}: {fileName}",
     "batchDownloaded": "Pemrosesan selesai, file diunduh otomatis",
-    "sourceTextPlaceholder": "Masukkan atau tempel teks yang akan diproses...",
     "smartLineBreak": "Jeda Baris Cerdas",
     "replaceText": "Ganti Teks",
     "generateJson": "Hasilkan JSON",
@@ -201,39 +199,49 @@
     },
     "chineseConversion": {
       "title": "Konversi Karakter Tionghoa",
-      "description": "Konversi batch antara Sederhana, Tradisional Taiwan, Tradisional Hong Kong, dan Aksara Jepang Baru",
-      "metaTitle": "Konverter Tionghoa - Sederhana, Tradisional, Shinjitai",
-      "metaDescription": "Konverter Tionghoa OpenCC, berjalan di browser: Sederhana, Tradisional Taiwan, Tradisional Hong Kong, Shinjitai. Kamus terlindungi.",
+      "description": "Mendukung unggah file dan pemrosesan batch antara Tionghoa Sederhana, Tradisional Taiwan/Hong Kong, dan Shinjitai Jepang",
+      "metaTitle": "Konverter Tionghoa - Unggah File Batch (TXT/Markdown), Sederhana & Tradisional",
+      "metaDescription": "Konverter Tionghoa OpenCC cepat dengan dukungan unggah file batch (TXT, Markdown, JSON). 100% offline di browser untuk privasi penuh. Konversi Sederhana, Tradisional Taiwan/HK, dan istilah regional.",
       "faq": [
         {
-          "q": "Apa alat terbaik untuk konversi Tionghoa Sederhana ke Tradisional online?",
-          "a": "Alat ini berbasis mesin OpenCC dan berjalan sepenuhnya lokal di browser. Mendukung konversi Sederhana ↔ Tradisional (Taiwan dan Hong Kong) dengan akurat, tanpa instalasi perangkat lunak."
+          "q": "Apakah konverter mendukung unggah file langsung untuk konversi? Format apa saja yang didukung?",
+          "a": "Ya. Tidak seperti alat konvensional yang hanya mendukung salin-tempel, alat ini dirancang khusus untuk file: Anda dapat menyeret atau mengunggah file TXT, Markdown (.md), JSON, dan file subtitle (SRT, VTT). Mendukung file tunggal maupun unggah, konversi, dan unduh ekspor batch sekali klik."
         },
         {
-          "q": "Apa perbedaan Tradisional Taiwan dan Tradisional Hong Kong?",
-          "a": "Keduanya berbeda dalam beberapa karakter dan kosakata, misalnya「記憶體」(Taiwan) dan「內存」(Hong Kong). Alat ini membedakan kedua standar dengan akurat."
+          "q": "Apakah ada batasan jumlah karakter atau ukuran file saat mengunggah novel atau file teks besar?",
+          "a": "Tidak ada batasan jumlah karakter atau ukuran file. Berkat mesin OpenCC berkinerja tinggi yang berjalan secara lokal di browser, novel panjang dengan ratusan ribu karakter atau dokumen teknis besar dapat dikonversi dalam hitungan detik."
         },
         {
-          "q": "Setelah merapikan novel Sederhana, saya ingin lanjut melakukan konversi ke Tradisional, pemisahan bab, dan pembersihan iklan — adakah alur kerja yang lebih lengkap?",
-          "a": "Disarankan gabungkan dengan [Pemformat Novel](../novel-processor): pertama perbaiki masalah format TXT novel web seperti line break, bab, iklan, lalu gunakan alat ini untuk konversi Sederhana-Tradisional. Kedua alat dapat berbagi «Penggantian Kustom» yang sama untuk menjaga nama tokoh, tempat dll dari konversi salah. Untuk operasi penggantian massal judul bab, ekstraksi daftar tokoh, dll, hubungkan dengan [Pemroses Teks](../text-toolbox) untuk pencocokan regex."
+          "q": "Alat online mana yang terbaik untuk mengubah Sederhana ke Tradisional?",
+          "a": "Kami merekomendasikan alat ini. Berbasis mesin OpenCC berkinerja tinggi, alat ini mendukung konversi dua arah antara Tionghoa Sederhana↔Tradisional Taiwan↔Tradisional Hong Kong↔Shinjitai Jepang. Selain mendukung file, alat ini mengonversi kosakata regional (misalnya 内存↔記憶體, 视频↔影片) secara akurat dan mendukung kamus perlindungan, 100% lokal dan aman."
         },
         {
-          "q": "Apakah konversi karakter Tionghoa akan membocorkan teks saya?",
-          "a": "Tidak. Semua konversi dilakukan sepenuhnya di browser secara lokal, tidak ada teks yang dikirim ke server mana pun."
+          "q": "Apa perbedaan antara Tradisional Taiwan dan Tradisional Hong Kong?",
+          "a": "Tradisional Taiwan dan Tradisional Hong Kong memiliki perbedaan dalam beberapa bentuk karakter dan kosakata sehari-hari (misalnya «記憶體» dan «軟體» di Taiwan vs «內存» dan «軟件» di Hong Kong). Alat kami membedakan kosakata Taiwan (twp) dan Hong Kong (hkp) sesuai dengan preferensi lokal."
         },
         {
-          "q": "Apakah alat ini open source? Apakah teks yang dikonversi disimpan?",
-          "a": "Pemrosesan lokal browser 100%, kamus OpenCC juga dibundel di frontend, teks dan kamus terlindungi tidak diunggah ke server. Kode sumber open source di GitHub (rockbenben/chinese-conversion), bisa self-deploy atau audit detail implementasi."
+          "q": "Setelah merapikan novel Tionghoa Sederhana, saya ingin mengubahnya ke Tradisional, membaginya per bab, dan menghapus iklan. Apakah ada alur kerja lengkap?",
+          "a": "Disarankan digunakan bersama [Pemformat Novel Web](../novel-processor): gunakan pemformat terlebih dahulu untuk memperbaiki pemisah baris, bab, dan iklan pada file TXT, lalu unggah ke sini untuk konversi Sederhana/Tradisional. Kedua alat berbagi kamus aturan penggantian yang sama untuk melindungi nama tokoh. Untuk regex tambahan, padukan dengan [Kotak Alat Teks](../text-toolbox)."
+        },
+        {
+          "q": "Apakah konversi Sederhana/Tradisional dapat membocorkan file atau teks saya?",
+          "a": "Sama sekali tidak. Semua pembacaan file, pencocokan kamus OpenCC, dan ekspor dilakukan di sandbox lokal browser Anda. Teks dan file tidak dikirim ke server mana pun. Anda dapat memproses dokumen rahasia dengan tenang."
+        },
+        {
+          "q": "Apakah alat ini gratis dan sumber terbuka? Apakah teks yang dikonversi disimpan?",
+          "a": "100% lokal di browser, gratis, tanpa iklan, dan bersumber terbuka di GitHub (rockbenben/chinese-conversion). Semua file yang dikonversi dibuat di perangkat Anda dan dihapus saat halaman ditutup. Kami tidak menyimpan data pengguna apa pun di cloud."
         }
       ],
       "features": [
-        "Tionghoa Sederhana ke Tradisional (Taiwan/Hong Kong)",
-        "Tionghoa Tradisional ke Sederhana",
-        "Konversi Shinjitai Jepang",
-        "Pemrosesan browser sepenuhnya offline — tanpa unggah server",
-        "Konversi teks batch tak terbatas",
-        "Mesin OpenCC untuk konversi akurat",
-        "Aturan penggantian kustom — istilah yang cocok melewati kamus bawaan"
+        "Dukungan unggah dan konversi batch file TXT, Markdown, dan JSON",
+        "Pemrosesan lokal ultra-cepat untuk file besar dengan ekspor unduhan sekali klik",
+        "100% pemrosesan offline di browser — tidak ada unggahan ke server",
+        "Tionghoa Sederhana ke Tradisional (Taiwan/Hong Kong/standar)",
+        "Tionghoa Tradisional ke Sederhana dan Shinjitai Jepang",
+        "Konversi kosakata regional (misal: 内存↔記憶體, 视频↔影片)",
+        "Mesin OpenCC untuk segmentasi kata yang akurat tanpa ambiguitas",
+        "Aturan penggantian dan perlindungan khusus untuk menjaga nama diri",
+        "Perbaikan pemisah baris cerdas untuk menggabungkan paragraf yang terputus"
       ]
     },
     "novelProcessor": {
@@ -307,7 +315,9 @@
     "otherTools": "Alat Lainnya",
     "externalTools": {
       "legendtalk": "Meja Bundar Pemikir AI",
-      "imgprompt": "Prompt Gambar AI"
+      "imgprompt": "Prompt Gambar AI",
+      "lives": "Thousand Lives",
+      "learndata": "LearnData Catatan Sumber Terbuka"
     }
   },
   "Metadata": {
@@ -325,7 +335,7 @@
     "failure": "Gagal menyalin, salin secara manual"
   },
   "ChineseConversion": {
-    "description1": "Tidak ada teks yang diunggah ke server pihak ketiga — semua konversi berjalan lokal di browser Anda untuk menjaga privasi. Mendukung konversi dua arah antara Tionghoa Sederhana, Tionghoa Tradisional (Taiwan), Tionghoa Tradisional (Hong Kong), dan Shinjitai Jepang. Ideal untuk pemrosesan batch volume teks besar. Klik tombol arah yang sesuai untuk mengonversi dalam satu klik; pengguna tingkat lanjut dapat memilih skrip sumber dan target dengan bebas.",
+    "description1": "Mendukung unggah langsung file TXT, Markdown, dan JSON atau pemrosesan batch teks besar secara offline di browser Anda — tanpa unggah ke server untuk privasi penuh. Konversi akurat antara Tionghoa Sederhana, Tradisional (Taiwan/Hong Kong), dan Shinjitai Jepang dengan adaptasi istilah regional, ekspor langsung, dan kamus kata yang dilindungi.",
     "description2": "Contoh: Sederhana 自行车 → Tradisional Taiwan 腳踏車, 视频 → 影片, 内存 → 記憶體 — perbedaan kosakata regional dikonversi secara otomatis. Untuk pertanyaan atau saran, hubungi kami melalui komunitas atau halaman umpan balik.",
     "conversionSettings": "Pengaturan Konversi",
     "phraseConversionTooltip": "Konversi kosakata regional Taiwan juga (misal: 视频 ↔ 影片)",

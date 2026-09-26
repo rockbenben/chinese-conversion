@@ -86,7 +86,6 @@
     "serviceUnavailableSwitched": "{service} is temporarily unreachable — switched automatically to {fallback}. Check it and switch back in settings if you want to keep using it.",
     "noFileUploaded": "Please upload a file to process first.",
     "translationExported": "Translation complete, files exported",
-    "sourceTextPlaceholder": "Enter or paste text to process...",
     "noSourceText": "Please enter or paste text content.",
     "textExtracted": "Text extracted, ",
     "sourceArea": "Input area",
@@ -102,7 +101,6 @@
     "resultToSourceTooltip": "Overwrite input area with result text",
     "readOnlyMode": "Read-only mode",
     "readOnlyModeTooltip": "Text is too long: the editor is temporarily read-only and shows a partial preview only. Your full content is unaffected — processing and export still use the entire text.",
-    "clearInputTooltip": "Clear input content and uploaded files",
     "smartLineBreak": "Smart line break",
     "replaceText": "Replace text",
     "generateJson": "Generate JSON",
@@ -205,25 +203,33 @@
     },
     "chineseConversion": {
       "title": "Chinese Conversion",
-      "description": "Bulk convert Simplified, Taiwan Traditional, Hong Kong Traditional, and Japanese New Character Form",
-      "metaTitle": "Chinese Converter - Simplified, Traditional, Shinjitai",
-      "metaDescription": "OpenCC Chinese converter, runs in browser: Simplified, Taiwan Traditional, Hong Kong Traditional, Japanese Shinjitai. Protected-words dict.",
+      "description": "Batch convert Simplified, Taiwan Traditional, Hong Kong Traditional, and Japanese Shinjitai with file upload support",
+      "metaTitle": "Chinese Converter - Batch File Upload (TXT/Markdown), Simplified & Traditional",
+      "metaDescription": "Professional Chinese converter supporting batch TXT, Markdown, and JSON file upload. Runs locally in-browser via OpenCC, zero server upload. Accurate Taiwan/HK phrase conversion and custom protected words.",
       "faq": [
         {
+          "q": "Does this Chinese conversion tool support direct file uploads? Which formats are supported?",
+          "a": "Yes. Unlike most online tools that only allow pasting into a text box, this tool is specifically designed for file processing. You can drag and drop or upload TXT, Markdown (.md), JSON, and subtitle files (SRT, VTT). It supports both single-file processing and batch uploading multiple files with one-click conversion and direct export download."
+        },
+        {
+          "q": "Are there file size or word count limits when uploading novels or large documents?",
+          "a": "No word count or file size limits. All conversion is powered by the high-performance OpenCC engine running locally in your browser. Whether you have novel manuscripts with hundreds of thousands of words or large technical documentation, it converts in seconds without manual copy-pasting."
+        },
+        {
           "q": "Which online Simplified-to-Traditional Chinese converter is the best?",
-          "a": "This tool is powered by the OpenCC engine and supports Simplified ↔ Taiwan Traditional ↔ Hong Kong Traditional ↔ Japanese New Character Form, running entirely locally in your browser with no software to install — accurate and privacy-safe."
+          "a": "This tool is powered by the OpenCC engine and supports Simplified ↔ Taiwan Traditional ↔ Hong Kong Traditional ↔ Japanese New Character Form (Shinjitai). It features direct file uploads, regional phrase conversion (e.g. 视频 ↔ 影片, 内存 ↔ 記憶體), and custom replacement dictionaries, running entirely locally in your browser with high accuracy and zero privacy risk."
         },
         {
           "q": "What is the difference between Taiwan Traditional and Hong Kong Traditional Chinese?",
-          "a": "Taiwan Traditional and Hong Kong Traditional differ in some characters and vocabulary — for example 記憶體 (Taiwan) vs 內存 (Hong Kong). This tool accurately distinguishes the two standards to meet the needs of different regions."
+          "a": "Taiwan Traditional and Hong Kong Traditional differ in characters and vocabulary — for example 記憶體 (Taiwan) vs 內存 (Hong Kong), 軟體 (Taiwan) vs 軟件 (Hong Kong). This tool accurately distinguishes between Taiwan phrases (twp) and Hong Kong phrases (hkp) to meet regional publishing and localization standards."
         },
         {
           "q": "If I need to also fix the formatting of a Simplified-Chinese novel before converting, what tool pairs with this?",
-          "a": "Use [Novel Text Formatter](../novel-processor) first to fix line breaks, chapter headers, and remove ads from web-novel TXT files, then run this converter for the Simplified/Traditional pass. Both tools share the same protected-words dictionary format so character and place names are preserved end-to-end. For further bulk regex replacement, character-name extraction, or filtering, chain it with the [Text Toolbox](../text-toolbox)."
+          "a": "Use [Novel Text Formatter](../novel-processor) first to fix line breaks, chapter headers, and remove ads from web-novel TXT files, then upload here for the Simplified/Traditional pass. Both tools share the same protected-words dictionary format so character and place names are preserved end-to-end. For further bulk regex replacement, character-name extraction, or filtering, chain it with the [Text Toolbox](../text-toolbox)."
         },
         {
-          "q": "Does Chinese conversion expose my text content?",
-          "a": "No. All conversion happens entirely in your browser; text is never uploaded to any server, so you can safely process sensitive content and large volumes of text."
+          "q": "Does Chinese conversion expose my files or text content?",
+          "a": "No. All file reading, OpenCC conversion, and export happen entirely in your browser sandbox; files and text are never uploaded to any server, making it safe for confidential business documents, unpublished manuscripts, and sensitive personal data."
         },
         {
           "q": "Is the tool open source? Is converted text saved anywhere?",
@@ -231,13 +237,15 @@
         }
       ],
       "features": [
-        "Simplified Chinese to Traditional (Taiwan/Hong Kong)",
-        "Traditional Chinese to Simplified",
-        "Japanese Shinjitai conversion",
-        "Fully offline browser processing — no server upload",
-        "Unlimited batch text conversion",
-        "OpenCC engine for accurate conversion",
-        "Custom replacement rules — matched terms bypass the built-in dictionary"
+        "Batch upload and convert TXT, Markdown, and JSON files",
+        "Fast local processing for large files with direct export download",
+        "100% offline in-browser processing — zero server upload",
+        "Simplified Chinese to Traditional (Taiwan/Hong Kong/Standard)",
+        "Traditional Chinese to Simplified and Japanese Shinjitai conversion",
+        "Regional vocabulary conversion (e.g., 内存 ↔ 記憶體, 视频 ↔ 影片)",
+        "OpenCC engine for accurate, standardized conversion",
+        "Custom protected-word rules to prevent misconverting proper nouns",
+        "Smart line break formatting to reflow broken paragraphs"
       ]
     },
     "novelProcessor": {
@@ -307,7 +315,9 @@
     "otherTools": "More tools",
     "externalTools": {
       "legendtalk": "AI Thinkers Roundtable",
-      "imgprompt": "AI Image Prompts"
+      "imgprompt": "AI Image Prompts",
+      "lives": "Thousand Lives",
+      "learndata": "LearnData Open Source Notes"
     }
   },
   "Metadata": {
@@ -325,7 +335,7 @@
     "failure": "Copy failed, please copy manually"
   },
   "ChineseConversion": {
-    "description1": "No text is uploaded to third-party servers — all conversions run locally in your browser to ensure privacy. Supports bidirectional conversion between Simplified Chinese, Traditional Chinese (Taiwan), Traditional Chinese (Hong Kong), and Japanese New Character Form. Ideal for bulk processing large volumes of text. Click the matching direction button to convert in one click; advanced users can choose custom source and target scripts for precise conversions between specific forms.",
+    "description1": "Supports uploading TXT, Markdown, and JSON files or batch processing large text offline in your browser — zero server upload ensures full privacy. Convert accurately between Simplified Chinese, Traditional Chinese (Taiwan), Traditional Chinese (Hong Kong), and Japanese Shinjitai with automatic regional phrase adaptation, direct file export, and custom protected-words rules.",
     "description2": "Examples: Simplified 自行车 → Taiwan Traditional 腳踏車, 视频 → 影片, 内存 → 記憶體 — regional vocabulary differences are auto-converted. For questions or suggestions, please reach out via the community or feedback page.",
     "conversionSettings": "Conversion settings",
     "phraseConversionTooltip": "Also convert region-specific vocabulary (e.g. 视频 ↔ 影片, 幼儿园 ↔ 幼稚園)",
