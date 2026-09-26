@@ -118,7 +118,7 @@ With Auto-Export enabled, the preview is skipped and the result downloads immedi
 
 ### Requirements
 
-- Node.js >= 20.9.0
+- Node.js >= 24
 - Package manager: Yarn (recommended), npm, or pnpm
 
 ### Install & run
