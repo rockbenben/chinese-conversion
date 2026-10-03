@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Button, Typography, Select, App, Spin, Row, Col, Switch, Flex, Card } from "antd";
 import { SwapOutlined } from "@ant-design/icons";
-import { cleanLines, downloadFile, punctuationEndRegex, specialLineStartRegex, pureNumberRegex, chapterTitleRegex, getFileTypePresetConfig } from "@/app/utils";
+import { cleanLines, downloadFile, punctuationEndRegex, specialLineStartRegex, pureNumberRegex, isChapterTitleLine, getFileTypePresetConfig } from "@/app/utils";
 import { useTextStats } from "@/app/hooks/useTextStats";
 import { useCopyToClipboard } from "@/app/hooks/useCopyToClipboard";
 import { useTranslations } from "next-intl";
@@ -132,7 +132,7 @@ const ChineseConversion = () => {
           // "一部/三幕/十集…" —— 硬折行首的量词短语("一部手机递了过来。")
           // 会被当标题在句子中间插空行。无第前缀的纯数词标题在本合并启发式
           // 里与量词散文不可区分,放弃支持(novel-processor 不受影响)。
-          const isTitleForBreak = (l: string) => chapterTitleRegex.test(l) && !/^[\d〇零一二两三四五六七八九十百千万壹贰叁肆伍陆柒捌玖拾佰仟]/.test(l);
+          const isTitleForBreak = (l: string) => isChapterTitleLine(l) && !/^[\d〇零一二两三四五六七八九十百千万壹贰叁肆伍陆柒捌玖拾佰仟]/.test(l);
           convertedText = lines.reduce((merged, current, index, arr) => {
             if (index === 0) return current;
             const shouldAddNewline =
@@ -293,7 +293,7 @@ const ChineseConversion = () => {
                     {t("customRulesNotActive")}
                   </Typography.Text>
                 )}
-                <Button block loading={processing} onClick={handleCustomConversion} icon={<SwapOutlined />}>
+                <Button block loading={processing} onClick={handleCustomConversion} icon={<SwapOutlined aria-hidden />}>
                   {t("customConvert")}
                 </Button>
               </Flex>
