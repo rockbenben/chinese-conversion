@@ -31,12 +31,12 @@
     "noTargetLanguage": "Pilih setidaknya satu bahasa target.",
     "translationError": "Terjemahan gagal",
     "translationCancelled": "Terjemahan dibatalkan",
-    "translationStopped": "Berhenti",
+    "translationStopped": "Dihentikan",
     "resumeFromCache": "Baris yang sudah diterjemahkan tersimpan di cache — terjemahkan lagi untuk melanjutkan dari titik berhenti",
-    "cancelKeepsProgress": "Membatalkan tetap menyimpan hasil yang sudah ada",
+    "cancelKeepsProgress": "Pembatalan tetap menyimpan hasil yang sudah ada",
     "dismiss": "Tutup",
     "translationAPI": "API Terjemahan",
-    "enter": "Masuk",
+    "enter": "Masukkan",
     "getApiKey": "Dapatkan Kunci API",
     "charLabel": "Karakter",
     "lineLabel": "Baris",
@@ -118,14 +118,14 @@
     "customExportFilenameTooltip": "'{'name'}' = nama file asli, '{'lang'}' = bahasa, '{'ext'}' = ekstensi, '{'date'}' = tanggal, '{'time'}' = waktu; dalam mode multibahasa, '{'lang'}' ditambahkan otomatis untuk mencegah bentrokan nama",
     "partialFailureTitle": "{count} baris gagal diterjemahkan",
     "partialFailureDesc": "Baris-baris itu tetap berisi teks asli, jadi struktur berkas utuh. Coba lagi hanya mengirim ulang baris tersebut; sisanya dari cache.",
-    "partialFailureWhy": "Umum pada layanan gratis dan swa-inang — biasanya bukan masalah pengaturan Anda.",
+    "partialFailureWhy": "Umum pada layanan gratis dan self-hosted — biasanya bukan masalah pengaturan Anda.",
     "retryFailedLines": "Coba lagi baris yang gagal",
     "viewFailedLines": "Lihat baris yang gagal",
     "failedLinesModalTitle": "{count} baris yang gagal",
     "copyAllFailed": "Salin semua",
     "closeFailedLinesModal": "Tutup",
     "failedLanguagesTitle": "{count} bahasa target gagal",
-    "failedLanguagesDesc": "Semua batch untuk bahasa-bahasa ini gagal — biasanya karena masalah LLM lokal, batas tingkat API, atau penolakan model terhadap bahasa tertentu. Salin kode dan jalankan ulang hanya untuk mereka (tempelkan di 'Pengaturan Multi-Bahasa'); yang lain akan dilewati dari cache.",
+    "failedLanguagesDesc": "Semua batch untuk bahasa-bahasa ini gagal — biasanya karena masalah LLM lokal, batas laju API, atau penolakan model terhadap bahasa tertentu. Salin kode dan jalankan ulang hanya untuk mereka (tempelkan di 'Pengaturan Multi-Bahasa'); yang lain akan dilewati dari cache.",
     "copyAllFailedLanguages": "Salin kode bahasa",
     "apiStatusFreeApi": "Free API",
     "apiStatusNeedsConfig": "Perlu konfig.",
@@ -182,7 +182,22 @@
     "errorHintRelay403": "API mengembalikan 403 Forbidden — aktifkan \"Relay API\" di \"Pengaturan Provider lain\"",
     "errorHintCors": "Tidak dapat terhubung ke alamat ini — periksa alamatnya dan pastikan layanan mengizinkan permintaan lintas-asal (CORS). Gateway mandiri dan model lokal harus mengaktifkannya sendiri, atau gunakan Relay API milik Anda",
     "errorHintGeminiKey": "Tidak dapat terhubung ke Gemini: periksa jaringan Anda terlebih dahulu (beberapa jaringan tidak dapat mengakses layanan Google secara langsung). Jika jaringan baik-baik saja, sejak 19 Juni 2026 Google menolak kunci API tanpa pembatasan — buat ulang kunci di AI Studio (dibatasi secara default) atau tambahkan pembatasan Gemini API pada kunci lama di Google Cloud Console",
-    "rateLimitCooldown": "Batas permintaan tercapai — jeda sejenak, akan dicoba ulang otomatis"
+    "rateLimitCooldown": "Batas permintaan tercapai — jeda sejenak, akan dicoba ulang otomatis",
+    "faqHeading": "Pertanyaan umum",
+    "homeIndexEyebrow": "Indeks",
+    "homeCategoryEyebrow": "{n} kategori",
+    "openNavigation": "Buka navigasi",
+    "goHome": "Kembali ke beranda",
+    "primaryNav": "Navigasi utama",
+    "toggleTheme": "Ganti tema",
+    "communityLinks": "Tautan komunitas",
+    "viewOnGitHub": "Lihat di GitHub",
+    "toolCategories": "Kategori alat",
+    "searchLanguage": "Cari bahasa",
+    "selectLanguage": "Pilih bahasa",
+    "noMatchFound": "Tidak ada hasil",
+    "backToTop": "Kembali ke atas",
+    "exportOptions": "Opsi ekspor"
   },
   "tools": {
     "subtitleTranslator": {
@@ -201,7 +216,7 @@
       "title": "Konversi Karakter Tionghoa",
       "description": "Mendukung unggah file dan pemrosesan batch antara Tionghoa Sederhana, Tradisional Taiwan/Hong Kong, dan Shinjitai Jepang",
       "metaTitle": "Konverter Tionghoa - Unggah File Batch (TXT/Markdown), Sederhana & Tradisional",
-      "metaDescription": "Konverter Tionghoa OpenCC cepat dengan dukungan unggah file batch (TXT, Markdown, JSON). 100% offline di browser untuk privasi penuh. Konversi Sederhana, Tradisional Taiwan/HK, dan istilah regional.",
+      "metaDescription": "Konverter Tionghoa Sederhana/Tradisional berbasis OpenCC untuk TXT, Markdown, JSON. 100% offline di browser tanpa unggah ke server, dengan istilah Taiwan/HK.",
       "faq": [
         {
           "q": "Apakah konverter mendukung unggah file langsung untuk konversi? Format apa saja yang didukung?",
@@ -239,7 +254,7 @@
         "Tionghoa Sederhana ke Tradisional (Taiwan/Hong Kong/standar)",
         "Tionghoa Tradisional ke Sederhana dan Shinjitai Jepang",
         "Konversi kosakata regional (misal: 内存↔記憶體, 视频↔影片)",
-        "Mesin OpenCC untuk segmentasi kata yang akurat tanpa ambiguitas",
+        "Mesin OpenCC sehingga konversi akurat dan andal",
         "Aturan penggantian dan perlindungan khusus untuk menjaga nama diri",
         "Perbaikan pemisah baris cerdas untuk menggabungkan paragraf yang terputus"
       ]
@@ -253,7 +268,7 @@
       "description": "Pencocokan regex, pengurutan, penyaringan, dan pemrosesan teks batch"
     },
     "dataBatch": {
-      "title": "Pemrosesan Teks Pribadi",
+      "title": "Pemrosesan Data Batch",
       "description": "Pemrosesan data Excel batch — deduplikasi, ekstraksi kolom, gabung teks, aturan berurutan"
     },
     "textJoiner": {
@@ -316,8 +331,8 @@
     "externalTools": {
       "legendtalk": "Meja Bundar Pemikir AI",
       "imgprompt": "Prompt Gambar AI",
-      "lives": "Thousand Lives",
-      "learndata": "LearnData Catatan Sumber Terbuka"
+      "learndata": "LearnData Catatan Sumber Terbuka",
+      "hub365": "365 Sumber Terbuka"
     }
   },
   "Metadata": {
@@ -325,7 +340,7 @@
     "description": "ToolsByAI: 19 alat open source untuk menerjemahkan subtitle, Markdown, dan JSON i18n. Tanpa instalasi, berbasis browser.",
     "homeTitle": "Suite ToolsByAI",
     "homeDescription": "19 alat untuk terjemahan, teks, JSON, dan konversi data. Tingkatkan efisiensi pengembang dan kreator.",
-    "ogTitle": "ToolsByAI - Alat Dev AI Gratis dan Open Source",
+    "ogTitle": "ToolsByAI - Peralatan Data & Terjemahan AI untuk Developer",
     "ogDescription": "ToolsByAI: 19 alat open source untuk menerjemahkan subtitle, Markdown, dan JSON i18n. Tanpa instalasi, berbasis browser."
   },
   "CopyToClipboard": {
@@ -356,7 +371,7 @@
     "langHongKong": "Tionghoa Tradisional (Hong Kong)",
     "langHongKongPhrase": "Tradisional (Hong Kong) dengan konversi kosakata",
     "langOpenCC": "Tionghoa Tradisional (OpenCC)",
-    "langJapanese": "Aksara Jepang Baru"
+    "langJapanese": "Shinjitai Jepang"
   },
   "ProtectedRuleManager": {
     "drawerTitle": "Aturan Penggantian Kustom",
@@ -416,7 +431,7 @@
     "reaction3": "Apa?",
     "reaction4": "Bingung",
     "placeholder": "Tinggalkan pesan (tidak perlu login, email opsional untuk balasan)",
-    "metaDescription": "Halaman feedback Tools By AI: laporkan bug, sarankan fitur, atau bagikan ide. Berbasis Waline, posting anonim, gratis."
+    "metaDescription": "Halaman Umpan Balik Tools By AI: laporkan bug, sarankan fitur, atau bagikan ide. Berbasis Waline, posting anonim, gratis."
   },
   "AppError": {
     "title": "Halaman gagal dimuat",

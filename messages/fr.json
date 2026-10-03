@@ -2,7 +2,7 @@
   "common": {
     "exportFolder": "Dossier d'export",
     "exportFolderDefault": "Les exports vont dans le dossier de téléchargement par défaut.",
-    "exportFolderBlocked": "Le navigateur refuse le Bureau, Documents, Téléchargements et le dossier utilisateur eux-mêmes : choisissez un sous-dossier ou un autre dossier.",
+    "exportFolderBlocked": "Le navigateur n'autorise pas le choix du Bureau, Documents, Téléchargements et le dossier utilisateur eux-mêmes : choisissez un sous-dossier ou un autre dossier.",
     "exportFolderCurrent": "Les exports vont dans {dir}",
     "exportFolderReset": "Revenir au dossier de téléchargement",
     "exportFolderFailed": "Impossible de définir le dossier d'export.",
@@ -15,7 +15,7 @@
     "partialExportFailed": "Échec de l'export de certaines langues : {items}",
     "userGuide": "Guide d'utilisation",
     "apiKeyPrivacy": "Enregistrée uniquement dans ce navigateur, jamais synchronisée avec un serveur.",
-    "dragAndDropText": "Cliquez ou glissez un fichier ici pour télécharger",
+    "dragAndDropText": "Cliquez ou glissez un fichier ici pour téléverser",
     "supportedFormats": "Formats supportés :",
     "configuration": "Configuration",
     "operation": "Opération",
@@ -57,7 +57,7 @@
     "multiLanguageModeTooltip": "Traduire vers plusieurs langues simultanément, enregistrées séparément",
     "translate": "Traduire",
     "totalLanguages": "Total langues :",
-    "resetUploadTooltip": "Effacer l'entrée actuelle et les fichiers téléchargés",
+    "resetUploadTooltip": "Effacer l'entrée actuelle et les fichiers téléversés",
     "resetUploadSuccess": "Effacé",
     "extractText": "Extraire le texte",
     "translationResult": "Résultat",
@@ -84,7 +84,7 @@
     "enterApiUrl": "Veuillez configurer l'URL de l'API dans « Plus de paramètres Provider ».",
     "serviceUnavailable": "{service} est temporairement inaccessible — vérifiez le réseau et l'adresse du service, réessayez plus tard ou choisissez un autre service de traduction.",
     "serviceUnavailableSwitched": "{service} est temporairement inaccessible : basculement automatique vers {fallback}. Vérifiez-le puis revenez-y dans les paramètres si vous souhaitez continuer à l'utiliser.",
-    "noFileUploaded": "Veuillez d'abord télécharger un fichier.",
+    "noFileUploaded": "Veuillez d'abord téléverser un fichier.",
     "translationExported": "Traduction terminée, fichiers exportés",
     "noSourceText": "Veuillez entrer ou coller du texte.",
     "textExtracted": "Texte extrait, ",
@@ -126,19 +126,19 @@
     "retryCount": "Nombre de tentatives",
     "retryCountTooltip": "Nombre de tentatives en cas d'échec de la traduction",
     "requestTimeoutSec": "Délai d'attente",
-    "requestTimeoutSecTooltip": "Attente maximale par requête (secondes). La réflexion des LLM prend plus de temps ; 180 s ou plus recommandé.",
+    "requestTimeoutSecTooltip": "Attente maximale par requête (secondes). Le raisonnement des LLM prend plus de temps ; 180 s ou plus recommandé.",
     "customExportFilename": "Modèle de nom de fichier",
     "customExportFilenameTooltip": "'{'name'}' = nom original, '{'lang'}' = langue, '{'ext'}' = extension, '{'date'}' = date, '{'time'}' = heure; en mode multilingue, '{'lang'}' est ajouté automatiquement pour éviter les conflits de noms",
     "partialFailureTitle": "{count} ligne(s) ont échoué",
-    "partialFailureDesc": "Ces lignes conservent le texte d'origine, la structure du fichier reste intacte. Réessayer ne renvoie qu'elles ; le reste vient du cache.",
+    "partialFailureDesc": "Ces lignes conservent le texte d'origine, la structure du fichier reste intacte. Relancer ne renverra que ces lignes ; le reste vient du cache.",
     "partialFailureWhy": "Fréquent avec les services gratuits et auto-hébergés — ce n'est généralement pas votre configuration.",
     "retryFailedLines": "Réessayer les lignes en échec",
-    "viewFailedLines": "Voir les lignes échouées",
+    "viewFailedLines": "Voir les lignes en échec",
     "failedLinesModalTitle": "{count} ligne(s) échouée(s)",
     "copyAllFailed": "Tout copier",
     "closeFailedLinesModal": "Fermer",
     "failedLanguagesTitle": "Échec de la traduction de {count} langue(s)",
-    "failedLanguagesDesc": "Tous les lots de ces langues ont échoué — généralement à cause de défauts de LLM local, de limites de débit API ou du refus du modèle pour une langue spécifique. Copiez les codes et relancez uniquement avec elles (collez dans 'Paramètres multilingues') ; les autres utiliseront le cache et seront ignorées.",
+    "failedLanguagesDesc": "Tous les lots de ces langues ont échoué — généralement à cause de un LLM local instable, de limites de débit API ou du refus du modèle pour une langue spécifique. Copiez les codes et relancez uniquement avec elles (collez dans 'Paramètres multilingues') ; les autres utiliseront le cache et seront ignorées.",
     "copyAllFailedLanguages": "Copier les codes de langue",
     "apiStatusFreeApi": "Free API",
     "apiStatusNeedsConfig": "Config. requise",
@@ -182,7 +182,22 @@
     "errorHintRelay403": "L'API a renvoyé 403 Forbidden — activez « Relais API » dans « Plus de paramètres Provider »",
     "errorHintCors": "Impossible de joindre cette adresse — vérifiez l'adresse et que le service autorise les requêtes cross-origin (CORS). Les passerelles auto-hébergées et les modèles locaux doivent l'activer eux-mêmes, ou utilisez votre propre relais API",
     "errorHintGeminiKey": "Impossible de joindre Gemini : vérifiez d'abord votre réseau (certains réseaux ne peuvent pas atteindre directement les services Google). Si le réseau fonctionne, Google rejette depuis le 19 juin 2026 les clés API sans restriction — régénérez votre clé dans AI Studio (restreinte par défaut) ou ajoutez une restriction Gemini API à l'ancienne clé dans la console Google Cloud",
-    "rateLimitCooldown": "Limite de requêtes atteinte — courte pause, nouvelle tentative automatique"
+    "rateLimitCooldown": "Limite de requêtes atteinte — courte pause, nouvelle tentative automatique",
+    "faqHeading": "Questions fréquentes",
+    "homeIndexEyebrow": "Sommaire",
+    "homeCategoryEyebrow": "{n} catégories",
+    "openNavigation": "Ouvrir la navigation",
+    "goHome": "Aller à la page d’accueil",
+    "primaryNav": "Navigation principale",
+    "toggleTheme": "Changer de thème",
+    "communityLinks": "Liens de la communauté",
+    "viewOnGitHub": "Voir sur GitHub",
+    "toolCategories": "Catégories d’outils",
+    "searchLanguage": "Rechercher une langue",
+    "selectLanguage": "Choisir une langue",
+    "noMatchFound": "Aucun résultat",
+    "backToTop": "Revenir en haut",
+    "exportOptions": "Options d’exportation"
   },
   "tools": {
     "subtitleTranslator": {
@@ -205,7 +220,7 @@
       "title": "Conversion chinois",
       "description": "Convertir par lots simplifié, traditionnel Taïwan, traditionnel Hong Kong et shinjitai avec support de téléversement de fichiers",
       "metaTitle": "Convertisseur chinois - Téléversement de fichiers (TXT/Markdown), Simplifié & Traditionnel",
-      "metaDescription": "Convertisseur chinois professionnel avec téléversement de fichiers (TXT, Markdown, JSON) et traitement par lots. Fonctionne en local dans le navigateur via OpenCC, sans envoi sur serveur. Vocabulaire régional précis et dictionnaire protégé.",
+      "metaDescription": "Convertisseur chinois simplifié/traditionnel pour TXT, Markdown et JSON. Local via OpenCC, sans envoi serveur, vocabulaire de Taïwan et Hong Kong.",
       "faq": [
         {
           "q": "Cet outil supporte-t-il le téléversement direct de fichiers ? Quels formats sont acceptés ?",
@@ -257,7 +272,7 @@
       "description": "Correspondance regex, tri, filtrage et plus pour le traitement en masse de texte"
     },
     "dataBatch": {
-      "title": "Processeur de texte",
+      "title": "Processeur de données par lots",
       "description": "Traitement par lots de données Excel — déduplication, extraction de colonnes, fusion, règles enchaînées"
     },
     "textJoiner": {
@@ -316,17 +331,17 @@
     "externalTools": {
       "legendtalk": "Table ronde des penseurs IA",
       "imgprompt": "Prompts d'images IA",
-      "lives": "Thousand Lives",
-      "learndata": "LearnData Notes Open Source"
+      "learndata": "LearnData Notes Open Source",
+      "hub365": "365 Open Source"
     }
   },
   "Metadata": {
     "title": "ToolsByAI | Outils de Traduction & Dev IA Gratuits",
-    "description": "ToolsByAI: 19 outils open source gratuits pour la traduction de sous-titres, Markdown, JSON i18n et le traitement par lots. 25+ moteurs IA.",
+    "description": "ToolsByAI: 19 outils open source gratuits pour la traduction de sous-titres, Markdown, JSON i18n et le traitement par lots. 30+ moteurs IA.",
     "homeTitle": "Suite ToolsByAI",
     "homeDescription": "19 outils pour traduction, texte, JSON et conversion de données. Boostez l'efficacité des développeurs et créateurs.",
     "ogTitle": "ToolsByAI | Outils de Traduction & Dev IA Gratuits",
-    "ogDescription": "ToolsByAI: 19 outils open source gratuits pour la traduction de sous-titres, Markdown, JSON i18n et le traitement par lots. 25+ moteurs IA."
+    "ogDescription": "ToolsByAI: 19 outils open source gratuits pour la traduction de sous-titres, Markdown, JSON i18n et le traitement par lots. 30+ moteurs IA."
   },
   "CopyToClipboard": {
     "empty": "Contenu vide, rien à copier",
@@ -348,7 +363,7 @@
     "customRulesNotActive": "⚠ Les règles de remplacement personnalisées sont inactives dans cette direction (le script source ou cible doit être Simplifié)",
     "customConvert": "Conversion personnalisée",
     "conversionFailed": "Échec de la conversion, vérifiez la saisie ou les règles protégées",
-    "uploadFilesFirst": "Veuillez d'abord télécharger les fichiers à traiter",
+    "uploadFilesFirst": "Veuillez d'abord téléverser les fichiers à traiter",
     "sameLangError": "Les scripts source et cible ne peuvent pas être identiques",
     "langSimplified": "Chinois simplifié",
     "langTaiwan": "Chinois traditionnel (Taïwan)",
@@ -386,7 +401,7 @@
     "searchAriaLabel": "Rechercher des règles",
     "sortOriginal": "Ordre original",
     "sortAlphabetical": "Ordre alphabétique",
-    "sortRecent": "Ajouté récemment",
+    "sortRecent": "Ajout récent",
     "filteringCount": "Filtrage {filtered} / {total}",
     "selectedCount": "{count} sélectionné(s)",
     "confirmDeleteSelected": "Supprimer {count} règle(s) sélectionnée(s) ?",
@@ -408,7 +423,7 @@
   },
   "feedback": {
     "feedback1": "Commentaires & Suggestions",
-    "feedback2": "Si vous rencontrez des problèmes ou avez des suggestions, dites-le moi!",
+    "feedback2": "Si vous rencontrez des problèmes ou avez des suggestions, dites-le-moi ! Vos retours orientent les développements futurs.",
     "feedback3": "Décrivez votre cas d'usage, problème ou idée. Je lis chaque message et répondrai/optimiserai dès que possible.",
     "reaction0": "J'aime",
     "reaction1": "Soutien",

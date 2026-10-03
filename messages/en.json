@@ -56,7 +56,7 @@
     "multiLanguageMode": "Multi-language mode",
     "multiLanguageModeTooltip": "Translate to multiple languages simultaneously, saved as separate files",
     "translate": "Translate",
-    "totalLanguages": "Total Languages:",
+    "totalLanguages": "Target languages:",
     "resetUploadTooltip": "Clear current input and uploaded files",
     "resetUploadSuccess": "Cleared",
     "extractText": "Extract text",
@@ -78,8 +78,8 @@
     "translateDoneIncomplete": "Some items were not completed",
     "multiTranslating": "Translating, total target languages:",
     "model": "Model",
-    "sameLanguageTarget": "Source and target languages are the same; automatically adjusted target to",
-    "sameLanguageSource": "Source and target languages are the same; automatically adjusted source to",
+    "sameLanguageTarget": "Source and target languages are the same; automatically adjusted the target to",
+    "sameLanguageSource": "Source and target languages are the same; automatically adjusted the source to",
     "enterApiKey": "Enter API key or switch to Free API.",
     "enterApiUrl": "Please configure the API URL in 'More provider settings'.",
     "serviceUnavailable": "{service} is temporarily unreachable — check your network and the service address, try again later, or switch to a different translation service.",
@@ -182,12 +182,27 @@
     "errorHintRelay403": "The API returned 403 Forbidden — enable \"API relay\" under \"More provider settings\"",
     "errorHintCors": "Can't reach this endpoint — check the address, and make sure the service allows cross-origin requests (CORS). Self-hosted gateways and local models have to enable it themselves, or use your own API relay",
     "errorHintGeminiKey": "Cannot reach Gemini: check your network first (some networks cannot reach Google services directly). If the network is fine, Google has been rejecting unrestricted API keys since June 19, 2026 — regenerate your key in AI Studio (restricted by default) or add a Gemini API restriction to the old key in Google Cloud Console",
-    "rateLimitCooldown": "Rate limited — pausing briefly, will retry automatically"
+    "rateLimitCooldown": "Rate limited — pausing briefly, will retry automatically",
+    "faqHeading": "FAQ",
+    "homeIndexEyebrow": "Index",
+    "homeCategoryEyebrow": "{n} categories",
+    "openNavigation": "Open navigation",
+    "goHome": "Go to homepage",
+    "primaryNav": "Primary navigation",
+    "toggleTheme": "Toggle theme",
+    "communityLinks": "Community links",
+    "viewOnGitHub": "View on GitHub",
+    "toolCategories": "Tool categories",
+    "searchLanguage": "Search language",
+    "selectLanguage": "Select language",
+    "noMatchFound": "No match",
+    "backToTop": "Back to top",
+    "exportOptions": "Export options"
   },
   "tools": {
     "subtitleTranslator": {
       "title": "Subtitle Translator",
-      "description": "Batch translate SRT, ASS, VTT, SBV, LRC subtitles. 120+ languages."
+      "description": "Batch translate SRT, ASS, VTT, SBV, LRC subtitles. 120+ languages"
     },
     "jsonTranslate": {
       "title": "JSON Multi-Language Translator",
@@ -205,7 +220,7 @@
       "title": "Chinese Conversion",
       "description": "Batch convert Simplified, Taiwan Traditional, Hong Kong Traditional, and Japanese Shinjitai with file upload support",
       "metaTitle": "Chinese Converter - Batch File Upload (TXT/Markdown), Simplified & Traditional",
-      "metaDescription": "Professional Chinese converter supporting batch TXT, Markdown, and JSON file upload. Runs locally in-browser via OpenCC, zero server upload. Accurate Taiwan/HK phrase conversion and custom protected words.",
+      "metaDescription": "Chinese simplified/traditional converter for TXT, Markdown and JSON batches. Runs locally via OpenCC with no server upload and Taiwan/HK regional phrasing.",
       "faq": [
         {
           "q": "Does this Chinese conversion tool support direct file uploads? Which formats are supported?",
@@ -250,7 +265,7 @@
     },
     "novelProcessor": {
       "title": "Chinese Novel Formatter",
-      "description": "One-click formatting for downloaded Chinese web novels — smart line breaks, chapter splitting, and clean layout."
+      "description": "One-click formatting for downloaded Chinese web novels — smart line breaks, chapter splitting, and clean layout"
     },
     "textToolbox": {
       "title": "Multi-Function Text Processor",
@@ -282,7 +297,7 @@
     },
     "jsonNodeInserter": {
       "title": "JSON Node Bulk Insert",
-      "description": "Batch insert new nodes at specified position"
+      "description": "Batch insert new nodes at a specified position"
     },
     "jsonSortClassify": {
       "title": "JSON Sort & Group",
@@ -302,7 +317,7 @@
     },
     "textDiff": {
       "title": "Text Diff",
-      "description": "Compare two texts or files side by side and pinpoint the first difference."
+      "description": "Compare two texts or files side by side and pinpoint the first difference"
     }
   },
   "navigation": {
@@ -316,17 +331,17 @@
     "externalTools": {
       "legendtalk": "AI Thinkers Roundtable",
       "imgprompt": "AI Image Prompts",
-      "lives": "Thousand Lives",
-      "learndata": "LearnData Open Source Notes"
+      "learndata": "LearnData Open Source Notes",
+      "hub365": "365 Open Source"
     }
   },
   "Metadata": {
     "title": "ToolsByAI | Free Open Source AI Translation & Data Tools",
-    "description": "ToolsByAI: 19 free open-source tools for subtitle, Markdown, JSON i18n translation and text/JSON batch processing. 25+ AI engines.",
+    "description": "ToolsByAI: 19 free open-source tools for subtitle, Markdown, JSON i18n translation and text/JSON batch processing. 30+ AI engines.",
     "homeTitle": "ToolsByAI Toolset",
     "homeDescription": "19 tools for translation, text, JSON, and data conversion. Boost efficiency for developers and creators.",
     "ogTitle": "ToolsByAI | Free Open Source AI Translation & Data Tools",
-    "ogDescription": "ToolsByAI: 19 free open-source tools for subtitle, Markdown, JSON i18n translation and text/JSON batch processing. 25+ AI engines."
+    "ogDescription": "ToolsByAI: 19 free open-source tools for subtitle, Markdown, JSON i18n translation and text/JSON batch processing. 30+ AI engines."
   },
   "CopyToClipboard": {
     "empty": "Content empty, nothing to copy",
@@ -356,7 +371,7 @@
     "langHongKong": "Traditional Chinese (Hong Kong)",
     "langHongKongPhrase": "Traditional (Hong Kong) + regional terms",
     "langOpenCC": "Traditional Chinese (OpenCC)",
-    "langJapanese": "Japanese new character form"
+    "langJapanese": "Japanese Shinjitai"
   },
   "ProtectedRuleManager": {
     "drawerTitle": "Custom replacement rules",
@@ -369,13 +384,13 @@
     "exportAll": "Export all",
     "importHint": "Import supports OpenCC format text (each line: key[TAB]value, lines starting with # are comments). Rules are appended to the current direction; duplicate sources are removed automatically.",
     "puaSanitized": "PUA characters (internal placeholder range) automatically removed",
-    "clearedDirection": "Rules cleared for {direction} direction",
+    "clearedDirection": "Rules cleared for the {direction} direction",
     "deletedNRules": "Deleted {count} rule(s)",
     "exportEmpty": "No valid rules to export",
     "exportedNRules": "Exported {count} rule(s)",
     "importNoRules": "No valid rules found in file (OpenCC format: each line key[TAB]value)",
     "importedWithDedup": "Imported {added} rule(s) to {direction}, automatically removed {dedup} duplicate source(s)",
-    "imported": "Imported {added} rule(s) to {direction} direction",
+    "imported": "Imported {added} rule(s) to the {direction} direction",
     "autoDeduped": "Automatically deduplicated {count} duplicate source rule(s)",
     "statusCounts": "Total {total} · Valid {valid}",
     "showingIssues": "Showing {count} problematic rule(s)",
@@ -416,7 +431,7 @@
     "reaction3": "What?",
     "reaction4": "Confused",
     "placeholder": "Leave a message (no login required, email optional for reply)",
-    "metaDescription": "Feedback for Tools By AI: report bugs, suggest features, share use-case ideas. Built on Waline, anonymous posting allowed, free."
+    "metaDescription": "Feedback for ToolsByAI: report bugs, suggest features, share use-case ideas. Built on Waline, anonymous posting allowed, free."
   },
   "AppError": {
     "title": "Page failed to load",
