@@ -23,11 +23,11 @@
 ## Key Features
 
 - 🛡️ **Privacy-First**: Conversion runs entirely in the browser — text never leaves your machine.
-- 🌍 **6-code matrix**: Simplified (`cn`), Traditional Taiwan (`tw`), Traditional Taiwan + regional vocab (`twp`), Traditional Hong Kong (`hk`), OpenCC-mode Traditional (`t`), Japanese Shinjitai (`jp`). Any pair, any direction.
+- 🌍 **7-code matrix**: Simplified (`cn`), Traditional Taiwan (`tw`), Traditional Taiwan + regional vocab (`twp`), Traditional Hong Kong (`hk`), Traditional Hong Kong + regional vocab (`hkp`), OpenCC-mode Traditional (`t`), Japanese Shinjitai (`jp`). Any pair, any direction.
 - 📝 **Protected Dictionary**: A user-editable list of terms that should NOT be converted. `s2t` and `t2s` rules are managed independently, applied only when one side is Simplified.
 - 📚 **Smart Line Break**: Re-merge wrap-broken lines based on Chinese end-of-sentence punctuation — built for OCR / PDF copy cleanup.
 - 📦 **Batch Processing**: Drop multiple TXT files; results export under original filenames. Toggle Single-File Mode for replace-on-upload behavior.
-- 🌐 **Multi-locale UI**: Powered by next-intl, with full UI translation across 18 languages.
+- 🌐 **Multi-locale UI**: Powered by next-intl, with full UI translation across 19 languages.
 
 ## Supported language codes
 
