@@ -202,7 +202,7 @@
   "tools": {
     "subtitleTranslator": {
       "title": "Trình Dịch Phụ Đề",
-      "description": "Dịch hàng loạt SRT, ASS, VTT, SBV, LRC. 120+ ngôn ngữ."
+      "description": "Dịch hàng loạt SRT, ASS, SSA, VTT, SBV, LRC. 120+ ngôn ngữ."
     },
     "jsonTranslate": {
       "title": "Trình Dịch JSON i18n",
@@ -247,8 +247,8 @@
           "a": "Tuyệt đối không. Toàn bộ quá trình đọc tệp, tra cứu từ điển OpenCC và xuất dữ liệu đều diễn ra trong sandbox cục bộ của trình duyệt. Không có dữ liệu nào được gửi lên máy chủ. Bạn có thể yên tâm xử lý tài liệu mật."
         },
         {
-          "q": "Công cụ này có miễn phí và mã nguồn mở không? Tệp chuyển đổi có được lưu lại không?",
-          "a": "100% cục bộ trong trình duyệt: từ điển OpenCC được đóng gói ở frontend, không văn bản hay tệp nào gửi đến máy chủ. Mã nguồn mở trên GitHub (rockbenben/chinese-conversion) để tự lưu trữ hoặc kiểm tra."
+          "q": "Tệp chuyển đổi có được lưu lại không?",
+          "a": "100% cục bộ trong trình duyệt: từ điển OpenCC được đóng gói ở frontend, không văn bản hay tệp nào gửi đến máy chủ."
         }
       ],
       "features": [
@@ -309,7 +309,7 @@
     },
     "dataParserFlare": {
       "title": "Trình chuyển đổi Flare",
-      "description": "Chuyển đổi bookmark trình duyệt và định dạng Flare"
+      "description": "Bookmark HTML sang Flare YAML (làm phẳng)"
     },
     "dataParserImgPrompt": {
       "title": "Trình tạo dữ liệu IMGPrompt",

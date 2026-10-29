@@ -202,7 +202,7 @@
   "tools": {
     "subtitleTranslator": {
       "title": "Feliratfordító",
-      "description": "SRT, ASS, VTT, SBV, LRC feliratok kötegelt fordítása. 120+ nyelv."
+      "description": "SRT, ASS, SSA, VTT, SBV, LRC feliratok kötegelt fordítása. 120+ nyelv."
     },
     "jsonTranslate": {
       "title": "JSON többnyelvű fordító",
@@ -247,8 +247,8 @@
           "a": "Nem. A fájlok beolvasása, az OpenCC átalakítás és az exportálás is teljesen a böngésződ homokozójában történik; a fájlok és a szöveg soha nem kerülnek fel szerverre, így bizalmas üzleti dokumentumokhoz, nem publikált kéziratokhoz és érzékeny személyes adatokhoz is biztonságos."
         },
         {
-          "q": "Nyílt forráskódú az eszköz? Elmentődik valahol az átalakított szöveg?",
-          "a": "100%-ban böngészőn belüli: az OpenCC szótár a frontendbe van csomagolva, és sem a szöveged, sem a védett szavak listája nem kerül fel. A forráskód nyílt a GitHubon (rockbenben/chinese-conversion) saját üzemeltetéshez vagy ellenőrzéshez."
+          "q": "Elmentődik valahol az átalakított szöveg?",
+          "a": "100%-ban böngészőn belüli: az OpenCC szótár a frontendbe van csomagolva, és sem a szöveged, sem a védett szavak listája nem kerül fel."
         }
       ],
       "features": [
@@ -309,7 +309,7 @@
     },
     "dataParserFlare": {
       "title": "Flare könyvjelző-konverter",
-      "description": "Könyvjelzők konvertálása Flare formátumba és abból vissza"
+      "description": "Könyvjelző HTML-ből Flare YAML (lapos)"
     },
     "dataParserImgPrompt": {
       "title": "IMGPrompt adatgenerátor",

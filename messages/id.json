@@ -202,7 +202,7 @@
   "tools": {
     "subtitleTranslator": {
       "title": "Penerjemah Subtitle",
-      "description": "Terjemahan batch SRT, ASS, VTT, SBV, LRC. 120+ bahasa."
+      "description": "Terjemahan batch SRT, ASS, SSA, VTT, SBV, LRC. 120+ bahasa."
     },
     "jsonTranslate": {
       "title": "Penerjemah JSON i18n",
@@ -243,8 +243,8 @@
           "a": "Sama sekali tidak. Semua pembacaan file, pencocokan kamus OpenCC, dan ekspor dilakukan di sandbox lokal browser Anda. Teks dan file tidak dikirim ke server mana pun. Anda dapat memproses dokumen rahasia dengan tenang."
         },
         {
-          "q": "Apakah alat ini gratis dan sumber terbuka? Apakah teks yang dikonversi disimpan?",
-          "a": "100% lokal di browser, gratis, tanpa iklan, dan bersumber terbuka di GitHub (rockbenben/chinese-conversion). Semua file yang dikonversi dibuat di perangkat Anda dan dihapus saat halaman ditutup. Kami tidak menyimpan data pengguna apa pun di cloud."
+          "q": "Apakah teks yang dikonversi disimpan?",
+          "a": "100% lokal di browser, gratis, tanpa iklan. Semua file yang dikonversi dibuat di perangkat Anda dan dihapus saat halaman ditutup. Kami tidak menyimpan data pengguna apa pun di cloud."
         }
       ],
       "features": [
@@ -309,7 +309,7 @@
     },
     "dataParserFlare": {
       "title": "Konverter Flare",
-      "description": "Konversi bookmark browser dan format Flare"
+      "description": "Bookmark HTML ke Flare YAML (rata)"
     },
     "dataParserImgPrompt": {
       "title": "Generator Data IMGPrompt",

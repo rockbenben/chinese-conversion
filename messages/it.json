@@ -202,7 +202,7 @@
   "tools": {
     "subtitleTranslator": {
       "title": "Traduttore Sottotitoli",
-      "description": "Traduzione in batch SRT, ASS, VTT, SBV, LRC. 120+ lingue."
+      "description": "Traduzione in batch SRT, ASS, SSA, VTT, SBV, LRC. 120+ lingue."
     },
     "jsonTranslate": {
       "title": "Traduttore JSON i18n",
@@ -247,8 +247,8 @@
           "a": "Assolutamente no. Tutto il parsing dei file, la corrispondenza dei dizionari OpenCC e l'esportazione avvengono nella sandbox locale del browser. Nessun dato viene inviato a server terzi. Puoi elaborare documenti riservati in totale sicurezza."
         },
         {
-          "q": "Lo strumento è gratuito e open source? Il testo convertito viene memorizzato?",
-          "a": "È completamente gratuito, open source su GitHub (rockbenben/chinese-conversion) e privo di pubblicità. Tutti i file convertiti vengono generati sul tuo dispositivo e cancellati alla chiusura della pagina. Nessun dato viene memorizzato nel cloud."
+          "q": "Il testo convertito viene memorizzato?",
+          "a": "È completamente gratuito e privo di pubblicità. Tutti i file convertiti vengono generati sul tuo dispositivo e cancellati alla chiusura della pagina. Nessun dato viene memorizzato nel cloud."
         }
       ],
       "features": [
@@ -309,7 +309,7 @@
     },
     "dataParserFlare": {
       "title": "Convertitore Flare",
-      "description": "Conversione preferiti browser e formato Flare"
+      "description": "Segnalibri HTML in Flare YAML (appiattito)"
     },
     "dataParserImgPrompt": {
       "title": "Generatore Dati IMGPrompt",

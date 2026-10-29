@@ -202,7 +202,7 @@
   "tools": {
     "subtitleTranslator": {
       "title": "Altyazı Çevirici",
-      "description": "Toplu SRT, ASS, VTT, SBV, LRC çevirisi. 120+ dil."
+      "description": "Toplu SRT, ASS, SSA, VTT, SBV, LRC çevirisi. 120+ dil."
     },
     "jsonTranslate": {
       "title": "i18n JSON Çevirici",
@@ -247,8 +247,8 @@
           "a": "Kesinlikle hayır. Tüm dosya okuma, OpenCC sözlük eşleme ve dışa aktarma işlemleri tarayıcınızın yerel korumalı alanında gerçekleşir. Metin ve dosyalar hiçbir sunucuya gönderilmez. Gizli belgelerinizi güvenle işleyebilirsiniz."
         },
         {
-          "q": "Araç ücretsiz ve açık kaynaklı mı? Dönüştürülen metin kaydediliyor mu?",
-          "a": "Tarayıcıda %100 yerel, ücretsiz, reklamsız ve GitHub'da açık kaynaklıdır (rockbenben/chinese-conversion). Dönüştürülen tüm dosyalar cihazınızda oluşturulur ve sayfa kapatıldığında silinir. Bulutta hiçbir kullanıcı verisi saklanmaz."
+          "q": "Dönüştürülen metin kaydediliyor mu?",
+          "a": "Tarayıcıda %100 yerel, ücretsiz, reklamsız. Dönüştürülen tüm dosyalar cihazınızda oluşturulur ve sayfa kapatıldığında silinir. Bulutta hiçbir kullanıcı verisi saklanmaz."
         }
       ],
       "features": [
@@ -309,7 +309,7 @@
     },
     "dataParserFlare": {
       "title": "Flare Dönüştürücü",
-      "description": "Tarayıcı yer imleri ve Flare formatı dönüşümü"
+      "description": "Yer imi HTML'ini Flare YAML'ye dönüştür (düz)"
     },
     "dataParserImgPrompt": {
       "title": "IMGPrompt Veri Oluşturucu",

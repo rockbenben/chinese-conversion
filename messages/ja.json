@@ -202,7 +202,7 @@
   "tools": {
     "subtitleTranslator": {
       "title": "字幕翻訳機",
-      "description": "SRT、ASS、VTT、SBV、LRC字幕を一括翻訳、120以上の言語に対応"
+      "description": "SRT、ASS、SSA、VTT、SBV、LRC字幕を一括翻訳、120以上の言語に対応"
     },
     "jsonTranslate": {
       "title": "i18n JSON翻訳",
@@ -247,8 +247,8 @@
           "a": "絶対にありません。すべてのファイル読み込み、OpenCC 辞書マッチング、結果エクスポートはブラウザのローカルサンドボックス内で完結し、テキストやファイルはいかなるサーバーにも送信されません。機密性の高い文書や原稿も安心して処理できます。"
         },
         {
-          "q": "ツールはオープンソースですか？変換テキストは保存されますか？",
-          "a": "100% ブラウザ内ローカル処理。OpenCC 辞書もフロントエンドにバンドルされ、テキストも保護辞書もサーバーへ送信されません。ソースコードは GitHub（rockbenben/chinese-conversion）で公開され、セルフホスティングや実装の監査が可能です。"
+          "q": "変換テキストは保存されますか？",
+          "a": "100% ブラウザ内ローカル処理。OpenCC 辞書もフロントエンドにバンドルされ、テキストも保護辞書もサーバーへ送信されません。"
         }
       ],
       "features": [
@@ -309,7 +309,7 @@
     },
     "dataParserFlare": {
       "title": "Flareブックマーク変換",
-      "description": "ブラウザブックマークとFlare形式の相互変換"
+      "description": "ブックマーク HTML を Flare YAML に変換（フラット化）"
     },
     "dataParserImgPrompt": {
       "title": "IMGPromptデータ生成",

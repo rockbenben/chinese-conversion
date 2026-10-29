@@ -202,7 +202,7 @@
   "tools": {
     "subtitleTranslator": {
       "title": "Tradutor Legendas",
-      "description": "Tradução em lote SRT, ASS, VTT, SBV, LRC. 120+ idiomas."
+      "description": "Tradução em lote SRT, ASS, SSA, VTT, SBV, LRC. 120+ idiomas."
     },
     "jsonTranslate": {
       "title": "Tradutor JSON i18n",
@@ -247,8 +247,8 @@
           "a": "Com certeza não. Toda a leitura de arquivos, busca em dicionários OpenCC e exportação são realizadas na sandbox local do seu navegador. Nenhum dado é enviado a servidores de terceiros. Você pode processar documentos confidenciais com total segurança."
         },
         {
-          "q": "A ferramenta é open source? O texto convertido é salvo em algum lugar?",
-          "a": "100% local no navegador: o dicionário OpenCC vem empacotado no frontend e nem seu texto nem seus arquivos são enviados a servidores. Código aberto no GitHub (rockbenben/chinese-conversion) para auto-hospedagem ou auditoria."
+          "q": "O texto convertido é salvo em algum lugar?",
+          "a": "100% local no navegador: o dicionário OpenCC vem empacotado no frontend e nem seu texto nem seus arquivos são enviados a servidores."
         }
       ],
       "features": [
@@ -309,7 +309,7 @@
     },
     "dataParserFlare": {
       "title": "Conversor Flare",
-      "description": "Conversão favoritos navegador e formato Flare"
+      "description": "Favoritos HTML para Flare YAML (achatado)"
     },
     "dataParserImgPrompt": {
       "title": "Gerador Dados IMGPrompt",

@@ -202,7 +202,7 @@
   "tools": {
     "subtitleTranslator": {
       "title": "字幕翻譯器",
-      "description": "批次翻譯 SRT、ASS、VTT、SBV、LRC 字幕，支援 120+ 語言"
+      "description": "批次翻譯 SRT、ASS、SSA、VTT、SBV、LRC 字幕，支援 120+ 語言"
     },
     "jsonTranslate": {
       "title": "JSON 多語言翻譯",
@@ -247,8 +247,8 @@
           "a": "絕不洩漏。所有檔案讀取、OpenCC 字典匹配和結果匯出均在瀏覽器本地沙盒內完成，文字與檔案不會上傳到任何伺服器，可以放心處理敏感商業文件、個人書稿及大量私密文字。"
         },
         {
-          "q": "工具是否開源？轉換的文字會被儲存嗎？",
-          "a": "100% 瀏覽器本地處理，OpenCC 詞典也打包在前端，文字和保護詞典都不上傳任何伺服器。原始碼開源在 GitHub（rockbenben/chinese-conversion），可自部署或審查實作細節。"
+          "q": "轉換的文字會被儲存嗎？",
+          "a": "100% 瀏覽器本地處理，OpenCC 詞典也打包在前端，文字和保護詞典都不上傳任何伺服器。"
         }
       ],
       "features": [
@@ -309,7 +309,7 @@
     },
     "dataParserFlare": {
       "title": "Flare 書籤轉換",
-      "description": "瀏覽器書籤與 Flare 格式互轉"
+      "description": "瀏覽器書籤轉 Flare YAML（扁平化匯入）"
     },
     "dataParserImgPrompt": {
       "title": "IMGPrompt 資料產生",

@@ -202,7 +202,7 @@
   "tools": {
     "subtitleTranslator": {
       "title": "Traducteur Sous-titres",
-      "description": "Traduction par lot SRT, ASS, VTT, SBV, LRC. 120+ langues."
+      "description": "Traduction par lot SRT, ASS, SSA, VTT, SBV, LRC. 120+ langues."
     },
     "jsonTranslate": {
       "title": "Traducteur JSON i18n",
@@ -247,8 +247,8 @@
           "a": "Non. Tout traitement de fichier et de texte s'effectue entièrement dans le bac à sable local de votre navigateur ; aucune donnée n'est jamais transmise à un serveur."
         },
         {
-          "q": "L'outil est-il open source ? Le texte converti est-il stocké quelque part ?",
-          "a": "100% local au navigateur : le dictionnaire OpenCC est embarqué dans le front-end, et ni votre texte ni votre liste de mots protégés ne sont jamais envoyés. Code source ouvert sur GitHub (rockbenben/chinese-conversion) pour auto-hébergement ou audit."
+          "q": "Le texte converti est-il stocké quelque part ?",
+          "a": "100% local au navigateur : le dictionnaire OpenCC est embarqué dans le front-end, et ni votre texte ni votre liste de mots protégés ne sont jamais envoyés."
         }
       ],
       "features": [
@@ -309,7 +309,7 @@
     },
     "dataParserFlare": {
       "title": "Convertisseur Flare",
-      "description": "Conversion favoris navigateur et format Flare"
+      "description": "Favoris HTML vers Flare YAML (aplati)"
     },
     "dataParserImgPrompt": {
       "title": "Générateur Données IMGPrompt",
